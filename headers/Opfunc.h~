@@ -1,0 +1,7 @@
+#ifndef OPFUNC_H
+#define OPFUNC_H
+/*Funzione da chiamare durante le iterazioni per ricavare le informazioni sulla struttura del file.
+  Queste informazioni sono raccolte nel buffer operator_data*/
+herr_t op_func (hid_t loc_id, const char *name, const H5L_info_t *info,
+            void *operator_data);
+#endif

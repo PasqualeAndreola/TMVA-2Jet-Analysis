@@ -1,6 +1,6 @@
 /************************************************
  *
- * Struttura che contiene indirizzo e nome di un dataset
+ * Struttura che contiene nome, token e dimensioni di un dataset
  *
  *************************************************/
 
@@ -12,11 +12,14 @@
 class Dataset_info{
     private:
         std::string dataname;
-        haddr_t dataaddr;
+        H5O_token_t datatoken;
+        int numerorighe, numerocolonne;
     public:
-        Dataset_info(std::string dataname, haddr_t dataaddr);
+        Dataset_info(std::string dataname, H5O_token_t datatoken, int numerorighe, int numerocolonne);
         std::string get_name();
-        haddr_t get_addr();
+        H5O_token_t get_token();
+        int get_raw();
+        int get_column();
 };
 
 #endif

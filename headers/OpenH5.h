@@ -16,10 +16,7 @@
 
 #ifndef OPENH5_H
 #define OPENH5_H
-#include "H5Cpp.h"
-#include <vector>
-#include <string>
 
-int openh5 (const char *file_name);
+void openh5 (const char *file_name);
 
 #endif

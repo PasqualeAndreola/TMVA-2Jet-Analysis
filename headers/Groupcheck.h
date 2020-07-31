@@ -14,6 +14,6 @@
 #ifndef GROUPCHECK_H
 #define GROUPCHECK_H
 
-int groupcheck (struct opdata *od, haddr_t target_addr);
+int groupcheck (hid_t loc_id, struct opdata *od, H5O_token_t target_token);
 
 #endif

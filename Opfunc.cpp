@@ -10,6 +10,8 @@ std::vector<Dataset_info> dataset_info_list;
 herr_t opfunc (hid_t loc_id, const char *name, const H5L_info_t *info,
 	       void *operator_data)
 {
+    hid_t dataset_id , dataspace_id;
+    hsize_t dims_out[2] = {1, 1};
     herr_t          status, return_val = 0;
     H5O_info_t      infobuf;
     struct opdata   *od = (struct opdata *) operator_data; /*Conversione di tipo*/
@@ -19,7 +21,7 @@ herr_t opfunc (hid_t loc_id, const char *name, const H5L_info_t *info,
      * Viene riconosciuto il tipo di oggetto ed il suo nome.
      * Il nome viene passato al puntatore argomento della funzione.
      */
-    status = H5Oget_info_by_name (loc_id, name, &infobuf, H5P_DEFAULT);
+    status = H5Oget_info_by_name(loc_id, name, &infobuf, H5O_INFO_ALL,H5P_DEFAULT);
     printf ("%*s", spaces, "");     /*Formattazione della stampa*/
     switch (infobuf.type) {
         case H5O_TYPE_GROUP:
@@ -30,7 +32,7 @@ herr_t opfunc (hid_t loc_id, const char *name, const H5L_info_t *info,
              * Il controllo viene effettuato comunque, perché il counter 
              * non è affidabile in presenza di eventuali collegamenti simbolici.
              */
-            if ( groupcheck (od, infobuf.addr) ) {
+            if ( groupcheck (loc_id, od, infobuf.token) ) {
                 printf ("%*s  Warning: Loop detected!\n", spaces, "");
             }
             else {
@@ -42,7 +44,7 @@ herr_t opfunc (hid_t loc_id, const char *name, const H5L_info_t *info,
                 struct opdata nextod;
                 nextod.recurs = (od->recurs) + 1;
                 nextod.prev = od;
-                nextod.addr = infobuf.addr;
+                nextod.token = infobuf.token;
                 return_val = H5Literate_by_name (loc_id, name, H5_INDEX_NAME,
                             H5_ITER_NATIVE, NULL, opfunc, (void *) &nextod,
                             H5P_DEFAULT);
@@ -50,7 +52,10 @@ herr_t opfunc (hid_t loc_id, const char *name, const H5L_info_t *info,
             printf ("%*s}\n", spaces, "");
             break;
         case H5O_TYPE_DATASET:
-            dataset_info_list.push_back(Dataset_info(std::string(name), infobuf.addr));
+            dataset_id = H5Oopen_by_token(loc_id, infobuf.token);
+            dataspace_id = H5Dget_space(dataset_id);
+            H5Sget_simple_extent_dims(dataspace_id,dims_out,NULL);
+            dataset_info_list.push_back(Dataset_info(std::string(name), infobuf.token, dims_out[0], dims_out[1]));
             printf ("Dataset: %s\n", name);
             break;
         case H5O_TYPE_NAMED_DATATYPE:

@@ -13,7 +13,7 @@
 struct opdata{
   unsigned        recurs = 0;         /**< Indice ricorsivo, parte dalla radice*/
   struct opdata   *prev  = NULL;      /**< Puntatore all'iterazione precedente*/
-  haddr_t         addr;               /**< Sito dove è localizzato il gruppo nel dataset*/
+  H5O_token_t         token;               /**< Sito dove è localizzato il gruppo nel dataset*/
 };
 
 #endif

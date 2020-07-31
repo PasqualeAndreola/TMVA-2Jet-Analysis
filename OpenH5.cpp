@@ -7,7 +7,7 @@
 #include "headers/OpenH5.h"
 
 /*Corpo della funzione OpenH5, atta ad aprire il file .h5 ed estrarne la struttura*/
-int openh5(const char *FILE_NAME)
+void openh5(const char *FILE_NAME)
 {
   H5O_info_t      infobuf;
   hid_t           file;
@@ -18,10 +18,10 @@ int openh5(const char *FILE_NAME)
   file = H5Fopen(FILE_NAME, H5F_ACC_RDONLY, H5P_DEFAULT);
 
   /*Vengono scaricate le informazioni del file nel buffer "infobuf" definito all'inizio del main*/
-  status = H5Oget_info(file, &infobuf);
+  status = H5Oget_info(file, &infobuf, H5O_INFO_ALL);
 
   /*Si inizializza il sito di partenza dell'iterazione*/
-  op.addr = infobuf.addr;
+  op.token = infobuf.token;
   
   /*Stampo qualcosa*/
   std::cout <<"/ {\n";

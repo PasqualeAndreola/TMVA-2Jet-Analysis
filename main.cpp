@@ -5,8 +5,8 @@
 #include <TGraph.h>
 #include <THStack.h>
 #include <TLegend.h>
-#include <ClusterSequence.hh>
 #include "headers/TreeCreator.h"
+#include "headers/TreeJetCreator.h"
 
 //Può essere comodo usare questi namespace, visto che si vedono tanti jet
 using namespace std;
@@ -21,65 +21,33 @@ int main(int argc, char *argv[])
   Double_t E, px, py, pz;
 
   /*Leggo il file .h5 e creo un file contenente un albero per ciascun dataset*/
-  cout << "Vuoi creare l'albero: " << nomefile << " ? [Y/N]" << endl;
-  cin.get(str,256);
-  if(strcmp(str,"Y") == 0) TreeCreator(nomefile);
-  cin.ignore();
-  cout << "Vuoi analizzare l'albero: " << nomefile << " ? [Y/N]" << endl;
-  cin.get(str,256);
-  if(strcmp(str,"N") == 0) return 0;
-  cout << "Stiamo analizzando il file: " << nomefile << ".h5" << " costituito da:" << endl;
+  cout << "Si sta analizzando il file: " << nomefile << ".h5." <<endl;
+  cout << "Esso è costituito da:" << endl;
   strcpy(str,nomefile);
   strcat(str,".h5");
   openh5(str);
+  strcpy(str,nomefile);
+  cout << "Would you create the tree " << nomefile << " containing kinematic quantities? [Y/N]" << endl;
+  cin.get(str,256);
+  if(strcmp(str,"Y") == 0) TreeCreator(nomefile);
+  cin.ignore();
+  cout << "Would you add to the file " << nomefile << " a tree containing the jet? [Y/N]" << endl;
+  cin.get(str,256);
+  if(strcmp(str,"Y") == 0) TreeJetCreator(nomefile, 1.0, 20);
+  cin.ignore();
+  cout << "Would you analize the jets stored in " << nomefile << " ? [Y/N]" << endl;
+  cin.get(str,256);
+  if(strcmp(str,"N") == 0) return 0;
+  cin.ignore();
 
-  /*Leggo il file .h5 e creo un file contenente un albero per ciascun dataset*/
+  /*Leggo l'albero dei jet*/
   TApplication *Analysisroot_app = new TApplication("Analysis", &argc, argv);
-  TFile *filealberello = new TFile(strcat(nomefile,".root"));
-  TTree *alberello = (TTree*)filealberello->Get("Alberello3");
-  Double_t value;
-  TBranch *block0values = alberello->GetBranch("block0_values");
-  block0values->SetAddress(&value);
-
-  /*Scelgo la mia definizione di jet, specificando:
-    algoritmo di clustering;
-    raggio del cono dello sviluppo del jet;
-    schema di ricombinazione (tipicamente si usa l'E_scheme);
-    strategia(tipicamente best).
-    Definisco anche un vettore di particelle da clusterare, di jet e di jet_background*/
-  JetDefinition jet_def = JetDefinition(antikt_algorithm, 1.0, E_scheme, Best);
-  vector<PseudoJet> particelle, jets;
-  vector<vector<PseudoJet>> jets_signal, jets_background;
-  
-  //read only the destep branch for all entries
-  Int_t nentries = (Int_t)alberello->GetEntries();
-  Int_t i = 0, j = 0, flag_segnale = 0;
-  for (i=0; i<dataset_info_list[3].get_column()*1000; i+=dataset_info_list[3].get_column()) 
-  {
-    particelle.clear();
-    jets.clear();
-    for (j=0; j<=dataset_info_list[3].get_column()-3; j+=3)
-    {
-      block0values->GetEntry(i+dataset_info_list[3].get_column()-1);
-      flag_segnale = value;
-      block0values->GetEntry(i+j);
-      if (value > 0)
-      {
-        pT = value;
-        block0values->GetEntry(i+j+1);
-        eta = value;
-        block0values->GetEntry(i+j+2);
-        phi = value;
-        particelle.push_back(PseudoJet(pT*cos(phi), pT*sin(phi), pT*sinh(eta), pT*cosh(eta)));
-      }
-    }
-    ClusterSequence cluster_seq(particelle, jet_def);
-    jets = sorted_by_pt(cluster_seq.inclusive_jets(pT_min));
-    //cout << jets[0].pt() << endl;
-    if (flag_segnale != 0) jets_signal.push_back(jets);
-    else jets_background.push_back(jets);
-  }
-
+  TFile rootfile(strcat(nomefile,".root"));
+  TTree *alberello = (TTree*)rootfile.Get("Jet_tree");
+  vector<PseudoJet> jet;
+  TBranch *Jet = alberello->GetBranch("Jet");
+  Jet->SetAddress(&jet);
+/*
   //Istogrammi per l'impulso dei leading jet e per la massa
   TH1F *hpTsignal = new TH1F("Sign","Sign[GeV]", 50,1.1e3,2.6*1e3);
   TH1F *hmjjsignal = new TH1F("M_Sign","M_Sign[GeV]", 50, 2e3, 7e3);
@@ -118,6 +86,7 @@ int main(int argc, char *argv[])
     Analysisroot_app->Run();
   }*/
   
+  /*
   //Inserisco gli istogrammi del pt in una collezione e li rappresento
   THStack *hpTstack = new THStack("hs","");
   hpTbackground->SetLineColor(kRed);
@@ -174,5 +143,6 @@ int main(int argc, char *argv[])
   c2->Update();
   c2->SaveAs("massjj.png");
 
+  */
   return 0;
 }

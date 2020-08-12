@@ -14,13 +14,11 @@ void Dataset_2Dread(hid_t dataset_id, int dimensionebuffer, int numerodataset,co
     char nomefile[100], nomealbero[100];
     snprintf(nomealbero, sizeof(nomealbero), "Alberello%d", numerodataset);
 
-    /*Elimino eventuali alberi residui da esecuzioni precedenti*/
-    strcpy(nomefile, scaricobuffer);
-    if(numerodataset==0) remove(strcat(nomefile,".root"));
-
     /*Creo un file e un albero dove scaricare i dataset,associandoli a foglie*/
     strcpy(nomefile, scaricobuffer);   
     TFile rootfile(strcat(nomefile,".root"), "update");
+    /*Elimino eventuali residui di alberi scritti precedentemente*/
+    if (rootfile.Get(nomealbero)!=0) rootfile.Get(nomealbero)->Delete("all");
     TTree roottree(nomealbero,"Alberello con dati");
     
     /*Creiamo il file dove scaricare il buffer*/

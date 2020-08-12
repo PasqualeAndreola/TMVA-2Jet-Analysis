@@ -7,7 +7,7 @@ int TreeCreator(const char * filename)
   /*Creo file*/
   char nome[100];
   strcpy(nome, filename);
-  openh5(strcat(nome,".h5"));
+  strcat(nome,".h5");
 
   /*Viene aperto il file in lettura*/
   hid_t file = H5Fopen(nome, H5F_ACC_RDONLY, H5P_DEFAULT);

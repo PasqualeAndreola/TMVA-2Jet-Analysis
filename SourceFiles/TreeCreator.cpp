@@ -51,7 +51,7 @@ int TreeCreator(const char *filename, const int bufferdimension)
     }
     case (1):
     {
-      std::cout << "\nDataset made of loat\n";
+      std::cout << "\nDataset made of float\n";
       Dataset_2Dread<double>(dataset_id, bufferdimension, numerodataset, nome.data());
       break;
     }

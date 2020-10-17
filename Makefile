@@ -21,7 +21,7 @@ CXXFLAGS 	 := -O3 -g
 INCROOT 	 := -I/home/pasquale/root/include/root
 INCJET  	 := -I/home/pasquale/fastjet/include -I/home/pasquale/fastjet/include/fastjet
 INCHDF5 	 := -I/home/pasquale/hdf5/include
-INCLUDES     :=  $(INCROOT) $(INCJET)  $(INCHDF5)
+INCLUDES     :=  $(INCROOT) $(INCJET) $(INCHDF5)
 
 #Libraries that has to be linked
 LIBSROOT 	 := -L/home/pasquale/root/lib/root -lTMVA -lCore -lImt -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lROOTVecOps
@@ -48,8 +48,9 @@ directories:
 
 #Making of the root dictionaries
 rootdictionaries:
-	@rm $(TARGETDIR)/JetDictionary.cpp
-	@rootcling $(INCLUDES) $(TARGETDIR)/JetDictionary.cpp $(SRCDIR)/headers/jetdict.h $(LIBSJET)
+	@rm --force $(TARGETDIR)/JetDictionary.cpp
+	#@export 	ROOT_INCLUDE_PATH=/home/pasquale/fastjet/lib
+	@rootcling  $(INCLUDES) $(TARGETDIR)/JetDictionary.cpp $(SRCDIR)/headers/jetdict.h 
 
 #Clean Build
 clean:

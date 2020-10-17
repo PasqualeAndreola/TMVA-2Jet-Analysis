@@ -1,0 +1,134 @@
+\hypertarget{classCatch_1_1Generators_1_1ChunkGenerator}{}\doxysection{Catch\+::Generators\+::Chunk\+Generator$<$ T $>$ Class Template Reference}
+\label{classCatch_1_1Generators_1_1ChunkGenerator}\index{Catch::Generators::ChunkGenerator$<$ T $>$@{Catch::Generators::ChunkGenerator$<$ T $>$}}
+Inheritance diagram for Catch\+::Generators\+::Chunk\+Generator$<$ T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classCatch_1_1Generators_1_1ChunkGenerator}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCatch_1_1Generators_1_1ChunkGenerator_a50c334d00cde3166d71e9b90ebc2d2e3}{Chunk\+Generator}} (size\+\_\+t size, \mbox{\hyperlink{classCatch_1_1Generators_1_1GeneratorWrapper}{Generator\+Wrapper}}$<$ T $>$ generator)
+\item 
+std\+::vector$<$ T $>$ const  \& \mbox{\hyperlink{classCatch_1_1Generators_1_1ChunkGenerator_aa41c7d08a165b6a18560f2ab9e977f0b}{get}} () const override
+\item 
+bool \mbox{\hyperlink{classCatch_1_1Generators_1_1ChunkGenerator_a545e89f80eb1e3c953491541ea083f86}{next}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ T $>$ \mbox{\hyperlink{classCatch_1_1Generators_1_1ChunkGenerator_ab5e382bc5be2e327331bd694a40fa827}{m\+\_\+chunk}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classCatch_1_1Generators_1_1ChunkGenerator_a222b9cd460e6d48b12f939833b1b0beb}{m\+\_\+chunk\+\_\+size}}
+\item 
+\mbox{\hyperlink{classCatch_1_1Generators_1_1GeneratorWrapper}{Generator\+Wrapper}}$<$ T $>$ \mbox{\hyperlink{classCatch_1_1Generators_1_1ChunkGenerator_aa12b90ee9d029c44528fdba6b9de17bb}{m\+\_\+generator}}
+\item 
+bool \mbox{\hyperlink{classCatch_1_1Generators_1_1ChunkGenerator_a4a5f14d8f6c7a94e5771eb999c1ffe5a}{m\+\_\+used\+\_\+up}} = false
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class Catch\+::\+Generators\+::\+Chunk\+Generator$<$ T $>$}
+
+
+
+Definition at line 4290 of file catch.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCatch_1_1Generators_1_1ChunkGenerator_a50c334d00cde3166d71e9b90ebc2d2e3}\label{classCatch_1_1Generators_1_1ChunkGenerator_a50c334d00cde3166d71e9b90ebc2d2e3}} 
+\index{Catch::Generators::ChunkGenerator$<$ T $>$@{Catch::Generators::ChunkGenerator$<$ T $>$}!ChunkGenerator@{ChunkGenerator}}
+\index{ChunkGenerator@{ChunkGenerator}!Catch::Generators::ChunkGenerator$<$ T $>$@{Catch::Generators::ChunkGenerator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ChunkGenerator()}{ChunkGenerator()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classCatch_1_1Generators_1_1ChunkGenerator}{Catch\+::\+Generators\+::\+Chunk\+Generator}}$<$ T $>$\+::\mbox{\hyperlink{classCatch_1_1Generators_1_1ChunkGenerator}{Chunk\+Generator}} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size,  }\item[{\mbox{\hyperlink{classCatch_1_1Generators_1_1GeneratorWrapper}{Generator\+Wrapper}}$<$ T $>$}]{generator }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 4296 of file catch.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCatch_1_1Generators_1_1ChunkGenerator_aa41c7d08a165b6a18560f2ab9e977f0b}\label{classCatch_1_1Generators_1_1ChunkGenerator_aa41c7d08a165b6a18560f2ab9e977f0b}} 
+\index{Catch::Generators::ChunkGenerator$<$ T $>$@{Catch::Generators::ChunkGenerator$<$ T $>$}!get@{get}}
+\index{get@{get}!Catch::Generators::ChunkGenerator$<$ T $>$@{Catch::Generators::ChunkGenerator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::vector$<$T$>$ const\& \mbox{\hyperlink{classCatch_1_1Generators_1_1ChunkGenerator}{Catch\+::\+Generators\+::\+Chunk\+Generator}}$<$ T $>$\+::get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}}
+
+
+
+Definition at line 4310 of file catch.\+hpp.
+
+\mbox{\Hypertarget{classCatch_1_1Generators_1_1ChunkGenerator_a545e89f80eb1e3c953491541ea083f86}\label{classCatch_1_1Generators_1_1ChunkGenerator_a545e89f80eb1e3c953491541ea083f86}} 
+\index{Catch::Generators::ChunkGenerator$<$ T $>$@{Catch::Generators::ChunkGenerator$<$ T $>$}!next@{next}}
+\index{next@{next}!Catch::Generators::ChunkGenerator$<$ T $>$@{Catch::Generators::ChunkGenerator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{next()}{next()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classCatch_1_1Generators_1_1ChunkGenerator}{Catch\+::\+Generators\+::\+Chunk\+Generator}}$<$ T $>$\+::next (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classCatch_1_1Generators_1_1GeneratorUntypedBase_aeed3c0cd6233c5f553549e453b8d6638}{Catch\+::\+Generators\+::\+Generator\+Untyped\+Base}}.
+
+
+
+Definition at line 4313 of file catch.\+hpp.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classCatch_1_1Generators_1_1ChunkGenerator_ab5e382bc5be2e327331bd694a40fa827}\label{classCatch_1_1Generators_1_1ChunkGenerator_ab5e382bc5be2e327331bd694a40fa827}} 
+\index{Catch::Generators::ChunkGenerator$<$ T $>$@{Catch::Generators::ChunkGenerator$<$ T $>$}!m\_chunk@{m\_chunk}}
+\index{m\_chunk@{m\_chunk}!Catch::Generators::ChunkGenerator$<$ T $>$@{Catch::Generators::ChunkGenerator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{m\_chunk}{m\_chunk}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::vector$<$T$>$ \mbox{\hyperlink{classCatch_1_1Generators_1_1ChunkGenerator}{Catch\+::\+Generators\+::\+Chunk\+Generator}}$<$ T $>$\+::m\+\_\+chunk\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 4291 of file catch.\+hpp.
+
+\mbox{\Hypertarget{classCatch_1_1Generators_1_1ChunkGenerator_a222b9cd460e6d48b12f939833b1b0beb}\label{classCatch_1_1Generators_1_1ChunkGenerator_a222b9cd460e6d48b12f939833b1b0beb}} 
+\index{Catch::Generators::ChunkGenerator$<$ T $>$@{Catch::Generators::ChunkGenerator$<$ T $>$}!m\_chunk\_size@{m\_chunk\_size}}
+\index{m\_chunk\_size@{m\_chunk\_size}!Catch::Generators::ChunkGenerator$<$ T $>$@{Catch::Generators::ChunkGenerator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{m\_chunk\_size}{m\_chunk\_size}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t \mbox{\hyperlink{classCatch_1_1Generators_1_1ChunkGenerator}{Catch\+::\+Generators\+::\+Chunk\+Generator}}$<$ T $>$\+::m\+\_\+chunk\+\_\+size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 4292 of file catch.\+hpp.
+
+\mbox{\Hypertarget{classCatch_1_1Generators_1_1ChunkGenerator_aa12b90ee9d029c44528fdba6b9de17bb}\label{classCatch_1_1Generators_1_1ChunkGenerator_aa12b90ee9d029c44528fdba6b9de17bb}} 
+\index{Catch::Generators::ChunkGenerator$<$ T $>$@{Catch::Generators::ChunkGenerator$<$ T $>$}!m\_generator@{m\_generator}}
+\index{m\_generator@{m\_generator}!Catch::Generators::ChunkGenerator$<$ T $>$@{Catch::Generators::ChunkGenerator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{m\_generator}{m\_generator}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classCatch_1_1Generators_1_1GeneratorWrapper}{Generator\+Wrapper}}$<$T$>$ \mbox{\hyperlink{classCatch_1_1Generators_1_1ChunkGenerator}{Catch\+::\+Generators\+::\+Chunk\+Generator}}$<$ T $>$\+::m\+\_\+generator\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 4293 of file catch.\+hpp.
+
+\mbox{\Hypertarget{classCatch_1_1Generators_1_1ChunkGenerator_a4a5f14d8f6c7a94e5771eb999c1ffe5a}\label{classCatch_1_1Generators_1_1ChunkGenerator_a4a5f14d8f6c7a94e5771eb999c1ffe5a}} 
+\index{Catch::Generators::ChunkGenerator$<$ T $>$@{Catch::Generators::ChunkGenerator$<$ T $>$}!m\_used\_up@{m\_used\_up}}
+\index{m\_used\_up@{m\_used\_up}!Catch::Generators::ChunkGenerator$<$ T $>$@{Catch::Generators::ChunkGenerator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{m\_used\_up}{m\_used\_up}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classCatch_1_1Generators_1_1ChunkGenerator}{Catch\+::\+Generators\+::\+Chunk\+Generator}}$<$ T $>$\+::m\+\_\+used\+\_\+up = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 4294 of file catch.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Source\+Files/headers/\mbox{\hyperlink{catch_8hpp}{catch.\+hpp}}\end{DoxyCompactItemize}

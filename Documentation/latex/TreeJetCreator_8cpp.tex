@@ -1,0 +1,45 @@
+\hypertarget{TreeJetCreator_8cpp}{}\doxysection{Source\+Files/\+Tree\+Jet\+Creator.cpp File Reference}
+\label{TreeJetCreator_8cpp}\index{SourceFiles/TreeJetCreator.cpp@{SourceFiles/TreeJetCreator.cpp}}
+
+
+Source file for \mbox{\hyperlink{TreeJetCreator_8cpp_aaa5e1d49a1d092268f6a77af4f08068b}{Tree\+Jet\+Creator}} function implementation.  
+
+
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{TreeJetCreator_8cpp_aaa5e1d49a1d092268f6a77af4f08068b}{Tree\+Jet\+Creator}} (const char $\ast$filename, double R, double p\+T\+\_\+min)
+\begin{DoxyCompactList}\small\item\em Function that open a $\ast$.root file, read particles\textquotesingle{} kinematics data and cluster them in jets, which will be stored in a tree. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Source file for \mbox{\hyperlink{TreeJetCreator_8cpp_aaa5e1d49a1d092268f6a77af4f08068b}{Tree\+Jet\+Creator}} function implementation. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{TreeJetCreator_8cpp_aaa5e1d49a1d092268f6a77af4f08068b}\label{TreeJetCreator_8cpp_aaa5e1d49a1d092268f6a77af4f08068b}} 
+\index{TreeJetCreator.cpp@{TreeJetCreator.cpp}!TreeJetCreator@{TreeJetCreator}}
+\index{TreeJetCreator@{TreeJetCreator}!TreeJetCreator.cpp@{TreeJetCreator.cpp}}
+\doxysubsubsection{\texorpdfstring{TreeJetCreator()}{TreeJetCreator()}}
+{\footnotesize\ttfamily int Tree\+Jet\+Creator (\begin{DoxyParamCaption}\item[{const char $\ast$}]{filename,  }\item[{double}]{R,  }\item[{double}]{p\+T\+\_\+min }\end{DoxyParamCaption})}
+
+
+
+Function that open a $\ast$.root file, read particles\textquotesingle{} kinematics data and cluster them in jets, which will be stored in a tree. 
+
+This function should fill the input $\ast$.root file with other trees, containing the jet structure clustered from particles\textquotesingle{} kinematics./n This is not working due to an internal bug of R\+O\+OT which complains because there is no initializer for a parameter of the jet structure\+: it\textquotesingle{}s not easy to solve this problem, because this parameter is a pointer to the structure which is not available to the user. The problem is avoided, storing jet characteristics in standard leaves using the \mbox{\hyperlink{SBTreeJetKinematicsCreator_8cpp_ab82137830be055907fcf02493eb56dda}{S\+B\+Tree\+Jet\+Kinematics\+Creator}} function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$filename} & Name of the $\ast$.root file that will include trees filled with jet read from kinematics trees. \\
+\hline
+{\em R} & Jet radius, usually related to the angular reach of the jet. Can be found in the anti-\/kT algorithm formula \\
+\hline
+{\em p\+T\+\_\+min} & Minimum transverse jet momentum that is accepted for user\textquotesingle{}s analysis \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 23 of file Tree\+Jet\+Creator.\+cpp.
+

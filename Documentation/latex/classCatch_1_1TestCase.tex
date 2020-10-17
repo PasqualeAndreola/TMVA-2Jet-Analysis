@@ -1,0 +1,96 @@
+\hypertarget{classCatch_1_1TestCase}{}\doxysection{Catch\+::Test\+Case Class Reference}
+\label{classCatch_1_1TestCase}\index{Catch::TestCase@{Catch::TestCase}}
+Inheritance diagram for Catch\+::Test\+Case\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classCatch_1_1TestCase}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCatch_1_1TestCase_aae5709fc1cb68e19ab0ac27e1ffd6a76}{Test\+Case}} (\mbox{\hyperlink{structCatch_1_1ITestInvoker}{I\+Test\+Invoker}} $\ast$test\+Case, \mbox{\hyperlink{structCatch_1_1TestCaseInfo}{Test\+Case\+Info}} \&\&info)
+\item 
+\mbox{\hyperlink{classCatch_1_1TestCase}{Test\+Case}} \mbox{\hyperlink{classCatch_1_1TestCase_a0812e8a216d09b087d5874687009f0d6}{with\+Name}} (std\+::string const \&\+\_\+new\+Name) const
+\item 
+void \mbox{\hyperlink{classCatch_1_1TestCase_a26f346c8446dded0562fe3818ae71651}{invoke}} () const
+\item 
+\mbox{\hyperlink{structCatch_1_1TestCaseInfo}{Test\+Case\+Info}} const  \& \mbox{\hyperlink{classCatch_1_1TestCase_a1ea0d79f49156cebea076fe1ba50d2b6}{get\+Test\+Case\+Info}} () const
+\item 
+bool \mbox{\hyperlink{classCatch_1_1TestCase_a5456d03a90f75292835c158f3a3374a1}{operator==}} (\mbox{\hyperlink{classCatch_1_1TestCase}{Test\+Case}} const \&other) const
+\item 
+bool \mbox{\hyperlink{classCatch_1_1TestCase_a030e4b9282e9b32e08c8bd5e5cd6fa98}{operator$<$}} (\mbox{\hyperlink{classCatch_1_1TestCase}{Test\+Case}} const \&other) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structCatch_1_1ITestInvoker}{I\+Test\+Invoker}} $>$ \mbox{\hyperlink{classCatch_1_1TestCase_a7aaa375d6f2bda735095eaa43395b54b}{test}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 4799 of file catch.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCatch_1_1TestCase_aae5709fc1cb68e19ab0ac27e1ffd6a76}\label{classCatch_1_1TestCase_aae5709fc1cb68e19ab0ac27e1ffd6a76}} 
+\index{Catch::TestCase@{Catch::TestCase}!TestCase@{TestCase}}
+\index{TestCase@{TestCase}!Catch::TestCase@{Catch::TestCase}}
+\doxysubsubsection{\texorpdfstring{TestCase()}{TestCase()}}
+{\footnotesize\ttfamily Catch\+::\+Test\+Case\+::\+Test\+Case (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCatch_1_1ITestInvoker}{I\+Test\+Invoker}} $\ast$}]{test\+Case,  }\item[{\mbox{\hyperlink{structCatch_1_1TestCaseInfo}{Test\+Case\+Info}} \&\&}]{info }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCatch_1_1TestCase_a1ea0d79f49156cebea076fe1ba50d2b6}\label{classCatch_1_1TestCase_a1ea0d79f49156cebea076fe1ba50d2b6}} 
+\index{Catch::TestCase@{Catch::TestCase}!getTestCaseInfo@{getTestCaseInfo}}
+\index{getTestCaseInfo@{getTestCaseInfo}!Catch::TestCase@{Catch::TestCase}}
+\doxysubsubsection{\texorpdfstring{getTestCaseInfo()}{getTestCaseInfo()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structCatch_1_1TestCaseInfo}{Test\+Case\+Info}} const\& Catch\+::\+Test\+Case\+::get\+Test\+Case\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classCatch_1_1TestCase_a26f346c8446dded0562fe3818ae71651}\label{classCatch_1_1TestCase_a26f346c8446dded0562fe3818ae71651}} 
+\index{Catch::TestCase@{Catch::TestCase}!invoke@{invoke}}
+\index{invoke@{invoke}!Catch::TestCase@{Catch::TestCase}}
+\doxysubsubsection{\texorpdfstring{invoke()}{invoke()}}
+{\footnotesize\ttfamily void Catch\+::\+Test\+Case\+::invoke (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classCatch_1_1TestCase_a030e4b9282e9b32e08c8bd5e5cd6fa98}\label{classCatch_1_1TestCase_a030e4b9282e9b32e08c8bd5e5cd6fa98}} 
+\index{Catch::TestCase@{Catch::TestCase}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Catch::TestCase@{Catch::TestCase}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Catch\+::\+Test\+Case\+::operator$<$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCatch_1_1TestCase}{Test\+Case}} const \&}]{other }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classCatch_1_1TestCase_a5456d03a90f75292835c158f3a3374a1}\label{classCatch_1_1TestCase_a5456d03a90f75292835c158f3a3374a1}} 
+\index{Catch::TestCase@{Catch::TestCase}!operator==@{operator==}}
+\index{operator==@{operator==}!Catch::TestCase@{Catch::TestCase}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Catch\+::\+Test\+Case\+::operator== (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCatch_1_1TestCase}{Test\+Case}} const \&}]{other }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classCatch_1_1TestCase_a0812e8a216d09b087d5874687009f0d6}\label{classCatch_1_1TestCase_a0812e8a216d09b087d5874687009f0d6}} 
+\index{Catch::TestCase@{Catch::TestCase}!withName@{withName}}
+\index{withName@{withName}!Catch::TestCase@{Catch::TestCase}}
+\doxysubsubsection{\texorpdfstring{withName()}{withName()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classCatch_1_1TestCase}{Test\+Case}} Catch\+::\+Test\+Case\+::with\+Name (\begin{DoxyParamCaption}\item[{std\+::string const \&}]{\+\_\+new\+Name }\end{DoxyParamCaption}) const}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classCatch_1_1TestCase_a7aaa375d6f2bda735095eaa43395b54b}\label{classCatch_1_1TestCase_a7aaa375d6f2bda735095eaa43395b54b}} 
+\index{Catch::TestCase@{Catch::TestCase}!test@{test}}
+\index{test@{test}!Catch::TestCase@{Catch::TestCase}}
+\doxysubsubsection{\texorpdfstring{test}{test}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{structCatch_1_1ITestInvoker}{I\+Test\+Invoker}}$>$ Catch\+::\+Test\+Case\+::test\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 4814 of file catch.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Source\+Files/headers/\mbox{\hyperlink{catch_8hpp}{catch.\+hpp}}\end{DoxyCompactItemize}

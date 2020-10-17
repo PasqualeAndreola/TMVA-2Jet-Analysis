@@ -1,0 +1,115 @@
+\hypertarget{classCatch_1_1Capturer}{}\doxysection{Catch\+::Capturer Class Reference}
+\label{classCatch_1_1Capturer}\index{Catch::Capturer@{Catch::Capturer}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCatch_1_1Capturer_a86b0b27acc803a4e1310c10820f3038f}{Capturer}} (\mbox{\hyperlink{classCatch_1_1StringRef}{String\+Ref}} macro\+Name, \mbox{\hyperlink{structCatch_1_1SourceLineInfo}{Source\+Line\+Info}} const \&line\+Info, \mbox{\hyperlink{structCatch_1_1ResultWas_a624e1ee3661fcf6094ceef1f654601ef}{Result\+Was\+::\+Of\+Type}} result\+Type, \mbox{\hyperlink{classCatch_1_1StringRef}{String\+Ref}} names)
+\item 
+\mbox{\hyperlink{classCatch_1_1Capturer_aecde85cf69e65565cec91e325a657b82}{$\sim$\+Capturer}} ()
+\item 
+void \mbox{\hyperlink{classCatch_1_1Capturer_a0695ebf77f7cdcb344c73bcb3d9131e4}{capture\+Value}} (size\+\_\+t index, std\+::string const \&value)
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classCatch_1_1Capturer_a60d08e6db2e54740bb2298bbbec3bc0b}{capture\+Values}} (size\+\_\+t index, T const \&value)
+\item 
+{\footnotesize template$<$typename T , typename... Ts$>$ }\\void \mbox{\hyperlink{classCatch_1_1Capturer_a76f2a097cfeb3042688300b81eb9bcbc}{capture\+Values}} (size\+\_\+t index, T const \&value, Ts const \&... values)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structCatch_1_1MessageInfo}{Message\+Info}} $>$ \mbox{\hyperlink{classCatch_1_1Capturer_aefa14693d28906e5e7b06975af38aaed}{m\+\_\+messages}}
+\item 
+\mbox{\hyperlink{structCatch_1_1IResultCapture}{I\+Result\+Capture}} \& \mbox{\hyperlink{classCatch_1_1Capturer_a29edecce81d56837945ba2585c0ff941}{m\+\_\+result\+Capture}} = \mbox{\hyperlink{namespaceCatch_aff60c1de6ac6cea30175d70e33d83c8e}{get\+Result\+Capture}}()
+\item 
+size\+\_\+t \mbox{\hyperlink{classCatch_1_1Capturer_a1c3bea0fde97a7663ece4b81187fa9ed}{m\+\_\+captured}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 2656 of file catch.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCatch_1_1Capturer_a86b0b27acc803a4e1310c10820f3038f}\label{classCatch_1_1Capturer_a86b0b27acc803a4e1310c10820f3038f}} 
+\index{Catch::Capturer@{Catch::Capturer}!Capturer@{Capturer}}
+\index{Capturer@{Capturer}!Catch::Capturer@{Catch::Capturer}}
+\doxysubsubsection{\texorpdfstring{Capturer()}{Capturer()}}
+{\footnotesize\ttfamily Catch\+::\+Capturer\+::\+Capturer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCatch_1_1StringRef}{String\+Ref}}}]{macro\+Name,  }\item[{\mbox{\hyperlink{structCatch_1_1SourceLineInfo}{Source\+Line\+Info}} const \&}]{line\+Info,  }\item[{\mbox{\hyperlink{structCatch_1_1ResultWas_a624e1ee3661fcf6094ceef1f654601ef}{Result\+Was\+::\+Of\+Type}}}]{result\+Type,  }\item[{\mbox{\hyperlink{classCatch_1_1StringRef}{String\+Ref}}}]{names }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCatch_1_1Capturer_aecde85cf69e65565cec91e325a657b82}\label{classCatch_1_1Capturer_aecde85cf69e65565cec91e325a657b82}} 
+\index{Catch::Capturer@{Catch::Capturer}!````~Capturer@{$\sim$Capturer}}
+\index{````~Capturer@{$\sim$Capturer}!Catch::Capturer@{Catch::Capturer}}
+\doxysubsubsection{\texorpdfstring{$\sim$Capturer()}{~Capturer()}}
+{\footnotesize\ttfamily Catch\+::\+Capturer\+::$\sim$\+Capturer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCatch_1_1Capturer_a0695ebf77f7cdcb344c73bcb3d9131e4}\label{classCatch_1_1Capturer_a0695ebf77f7cdcb344c73bcb3d9131e4}} 
+\index{Catch::Capturer@{Catch::Capturer}!captureValue@{captureValue}}
+\index{captureValue@{captureValue}!Catch::Capturer@{Catch::Capturer}}
+\doxysubsubsection{\texorpdfstring{captureValue()}{captureValue()}}
+{\footnotesize\ttfamily void Catch\+::\+Capturer\+::capture\+Value (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index,  }\item[{std\+::string const \&}]{value }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCatch_1_1Capturer_a60d08e6db2e54740bb2298bbbec3bc0b}\label{classCatch_1_1Capturer_a60d08e6db2e54740bb2298bbbec3bc0b}} 
+\index{Catch::Capturer@{Catch::Capturer}!captureValues@{captureValues}}
+\index{captureValues@{captureValues}!Catch::Capturer@{Catch::Capturer}}
+\doxysubsubsection{\texorpdfstring{captureValues()}{captureValues()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Catch\+::\+Capturer\+::capture\+Values (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index,  }\item[{T const \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 2667 of file catch.\+hpp.
+
+\mbox{\Hypertarget{classCatch_1_1Capturer_a76f2a097cfeb3042688300b81eb9bcbc}\label{classCatch_1_1Capturer_a76f2a097cfeb3042688300b81eb9bcbc}} 
+\index{Catch::Capturer@{Catch::Capturer}!captureValues@{captureValues}}
+\index{captureValues@{captureValues}!Catch::Capturer@{Catch::Capturer}}
+\doxysubsubsection{\texorpdfstring{captureValues()}{captureValues()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename... Ts$>$ \\
+void Catch\+::\+Capturer\+::capture\+Values (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index,  }\item[{T const \&}]{value,  }\item[{Ts const \&...}]{values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 2672 of file catch.\+hpp.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classCatch_1_1Capturer_a1c3bea0fde97a7663ece4b81187fa9ed}\label{classCatch_1_1Capturer_a1c3bea0fde97a7663ece4b81187fa9ed}} 
+\index{Catch::Capturer@{Catch::Capturer}!m\_captured@{m\_captured}}
+\index{m\_captured@{m\_captured}!Catch::Capturer@{Catch::Capturer}}
+\doxysubsubsection{\texorpdfstring{m\_captured}{m\_captured}}
+{\footnotesize\ttfamily size\+\_\+t Catch\+::\+Capturer\+::m\+\_\+captured = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 2659 of file catch.\+hpp.
+
+\mbox{\Hypertarget{classCatch_1_1Capturer_aefa14693d28906e5e7b06975af38aaed}\label{classCatch_1_1Capturer_aefa14693d28906e5e7b06975af38aaed}} 
+\index{Catch::Capturer@{Catch::Capturer}!m\_messages@{m\_messages}}
+\index{m\_messages@{m\_messages}!Catch::Capturer@{Catch::Capturer}}
+\doxysubsubsection{\texorpdfstring{m\_messages}{m\_messages}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{structCatch_1_1MessageInfo}{Message\+Info}}$>$ Catch\+::\+Capturer\+::m\+\_\+messages\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 2657 of file catch.\+hpp.
+
+\mbox{\Hypertarget{classCatch_1_1Capturer_a29edecce81d56837945ba2585c0ff941}\label{classCatch_1_1Capturer_a29edecce81d56837945ba2585c0ff941}} 
+\index{Catch::Capturer@{Catch::Capturer}!m\_resultCapture@{m\_resultCapture}}
+\index{m\_resultCapture@{m\_resultCapture}!Catch::Capturer@{Catch::Capturer}}
+\doxysubsubsection{\texorpdfstring{m\_resultCapture}{m\_resultCapture}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structCatch_1_1IResultCapture}{I\+Result\+Capture}}\& Catch\+::\+Capturer\+::m\+\_\+result\+Capture = \mbox{\hyperlink{namespaceCatch_aff60c1de6ac6cea30175d70e33d83c8e}{get\+Result\+Capture}}()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 2658 of file catch.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Source\+Files/headers/\mbox{\hyperlink{catch_8hpp}{catch.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,121 @@
+\hypertarget{classCatch_1_1Generators_1_1RandomIntegerGenerator}{}\doxysection{Catch\+::Generators\+::Random\+Integer\+Generator$<$ Integer $>$ Class Template Reference}
+\label{classCatch_1_1Generators_1_1RandomIntegerGenerator}\index{Catch::Generators::RandomIntegerGenerator$<$ Integer $>$@{Catch::Generators::RandomIntegerGenerator$<$ Integer $>$}}
+Inheritance diagram for Catch\+::Generators\+::Random\+Integer\+Generator$<$ Integer $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classCatch_1_1Generators_1_1RandomIntegerGenerator}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCatch_1_1Generators_1_1RandomIntegerGenerator_a886d16c899ad70781b83a0e8f9d2cf96}{Random\+Integer\+Generator}} (Integer a, Integer b)
+\item 
+Integer const  \& \mbox{\hyperlink{classCatch_1_1Generators_1_1RandomIntegerGenerator_aafbdf9028762f5e8f8ca9c317d686fca}{get}} () const override
+\item 
+bool \mbox{\hyperlink{classCatch_1_1Generators_1_1RandomIntegerGenerator_aaa3db70fbdfa3e8dcb61fb5592eba81f}{next}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCatch_1_1SimplePcg32}{Catch\+::\+Simple\+Pcg32}} \& \mbox{\hyperlink{classCatch_1_1Generators_1_1RandomIntegerGenerator_af561ef07b93877d15a9af5e5fe19ea13}{m\+\_\+rng}}
+\item 
+std\+::uniform\+\_\+int\+\_\+distribution$<$ Integer $>$ \mbox{\hyperlink{classCatch_1_1Generators_1_1RandomIntegerGenerator_a0f9a8e409e291c332ebba1667cdc90fe}{m\+\_\+dist}}
+\item 
+Integer \mbox{\hyperlink{classCatch_1_1Generators_1_1RandomIntegerGenerator_a1b811ebf04416b6b822ce153b040f020}{m\+\_\+current\+\_\+number}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Integer$>$\newline
+class Catch\+::\+Generators\+::\+Random\+Integer\+Generator$<$ Integer $>$}
+
+
+
+Definition at line 4617 of file catch.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCatch_1_1Generators_1_1RandomIntegerGenerator_a886d16c899ad70781b83a0e8f9d2cf96}\label{classCatch_1_1Generators_1_1RandomIntegerGenerator_a886d16c899ad70781b83a0e8f9d2cf96}} 
+\index{Catch::Generators::RandomIntegerGenerator$<$ Integer $>$@{Catch::Generators::RandomIntegerGenerator$<$ Integer $>$}!RandomIntegerGenerator@{RandomIntegerGenerator}}
+\index{RandomIntegerGenerator@{RandomIntegerGenerator}!Catch::Generators::RandomIntegerGenerator$<$ Integer $>$@{Catch::Generators::RandomIntegerGenerator$<$ Integer $>$}}
+\doxysubsubsection{\texorpdfstring{RandomIntegerGenerator()}{RandomIntegerGenerator()}}
+{\footnotesize\ttfamily template$<$typename Integer $>$ \\
+\mbox{\hyperlink{classCatch_1_1Generators_1_1RandomIntegerGenerator}{Catch\+::\+Generators\+::\+Random\+Integer\+Generator}}$<$ Integer $>$\+::\mbox{\hyperlink{classCatch_1_1Generators_1_1RandomIntegerGenerator}{Random\+Integer\+Generator}} (\begin{DoxyParamCaption}\item[{Integer}]{a,  }\item[{Integer}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 4623 of file catch.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCatch_1_1Generators_1_1RandomIntegerGenerator_aafbdf9028762f5e8f8ca9c317d686fca}\label{classCatch_1_1Generators_1_1RandomIntegerGenerator_aafbdf9028762f5e8f8ca9c317d686fca}} 
+\index{Catch::Generators::RandomIntegerGenerator$<$ Integer $>$@{Catch::Generators::RandomIntegerGenerator$<$ Integer $>$}!get@{get}}
+\index{get@{get}!Catch::Generators::RandomIntegerGenerator$<$ Integer $>$@{Catch::Generators::RandomIntegerGenerator$<$ Integer $>$}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily template$<$typename Integer $>$ \\
+Integer const\& \mbox{\hyperlink{classCatch_1_1Generators_1_1RandomIntegerGenerator}{Catch\+::\+Generators\+::\+Random\+Integer\+Generator}}$<$ Integer $>$\+::get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}}
+
+
+
+Definition at line 4629 of file catch.\+hpp.
+
+\mbox{\Hypertarget{classCatch_1_1Generators_1_1RandomIntegerGenerator_aaa3db70fbdfa3e8dcb61fb5592eba81f}\label{classCatch_1_1Generators_1_1RandomIntegerGenerator_aaa3db70fbdfa3e8dcb61fb5592eba81f}} 
+\index{Catch::Generators::RandomIntegerGenerator$<$ Integer $>$@{Catch::Generators::RandomIntegerGenerator$<$ Integer $>$}!next@{next}}
+\index{next@{next}!Catch::Generators::RandomIntegerGenerator$<$ Integer $>$@{Catch::Generators::RandomIntegerGenerator$<$ Integer $>$}}
+\doxysubsubsection{\texorpdfstring{next()}{next()}}
+{\footnotesize\ttfamily template$<$typename Integer $>$ \\
+bool \mbox{\hyperlink{classCatch_1_1Generators_1_1RandomIntegerGenerator}{Catch\+::\+Generators\+::\+Random\+Integer\+Generator}}$<$ Integer $>$\+::next (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classCatch_1_1Generators_1_1GeneratorUntypedBase_aeed3c0cd6233c5f553549e453b8d6638}{Catch\+::\+Generators\+::\+Generator\+Untyped\+Base}}.
+
+
+
+Definition at line 4632 of file catch.\+hpp.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classCatch_1_1Generators_1_1RandomIntegerGenerator_a1b811ebf04416b6b822ce153b040f020}\label{classCatch_1_1Generators_1_1RandomIntegerGenerator_a1b811ebf04416b6b822ce153b040f020}} 
+\index{Catch::Generators::RandomIntegerGenerator$<$ Integer $>$@{Catch::Generators::RandomIntegerGenerator$<$ Integer $>$}!m\_current\_number@{m\_current\_number}}
+\index{m\_current\_number@{m\_current\_number}!Catch::Generators::RandomIntegerGenerator$<$ Integer $>$@{Catch::Generators::RandomIntegerGenerator$<$ Integer $>$}}
+\doxysubsubsection{\texorpdfstring{m\_current\_number}{m\_current\_number}}
+{\footnotesize\ttfamily template$<$typename Integer $>$ \\
+Integer \mbox{\hyperlink{classCatch_1_1Generators_1_1RandomIntegerGenerator}{Catch\+::\+Generators\+::\+Random\+Integer\+Generator}}$<$ Integer $>$\+::m\+\_\+current\+\_\+number\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 4620 of file catch.\+hpp.
+
+\mbox{\Hypertarget{classCatch_1_1Generators_1_1RandomIntegerGenerator_a0f9a8e409e291c332ebba1667cdc90fe}\label{classCatch_1_1Generators_1_1RandomIntegerGenerator_a0f9a8e409e291c332ebba1667cdc90fe}} 
+\index{Catch::Generators::RandomIntegerGenerator$<$ Integer $>$@{Catch::Generators::RandomIntegerGenerator$<$ Integer $>$}!m\_dist@{m\_dist}}
+\index{m\_dist@{m\_dist}!Catch::Generators::RandomIntegerGenerator$<$ Integer $>$@{Catch::Generators::RandomIntegerGenerator$<$ Integer $>$}}
+\doxysubsubsection{\texorpdfstring{m\_dist}{m\_dist}}
+{\footnotesize\ttfamily template$<$typename Integer $>$ \\
+std\+::uniform\+\_\+int\+\_\+distribution$<$Integer$>$ \mbox{\hyperlink{classCatch_1_1Generators_1_1RandomIntegerGenerator}{Catch\+::\+Generators\+::\+Random\+Integer\+Generator}}$<$ Integer $>$\+::m\+\_\+dist\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 4619 of file catch.\+hpp.
+
+\mbox{\Hypertarget{classCatch_1_1Generators_1_1RandomIntegerGenerator_af561ef07b93877d15a9af5e5fe19ea13}\label{classCatch_1_1Generators_1_1RandomIntegerGenerator_af561ef07b93877d15a9af5e5fe19ea13}} 
+\index{Catch::Generators::RandomIntegerGenerator$<$ Integer $>$@{Catch::Generators::RandomIntegerGenerator$<$ Integer $>$}!m\_rng@{m\_rng}}
+\index{m\_rng@{m\_rng}!Catch::Generators::RandomIntegerGenerator$<$ Integer $>$@{Catch::Generators::RandomIntegerGenerator$<$ Integer $>$}}
+\doxysubsubsection{\texorpdfstring{m\_rng}{m\_rng}}
+{\footnotesize\ttfamily template$<$typename Integer $>$ \\
+\mbox{\hyperlink{classCatch_1_1SimplePcg32}{Catch\+::\+Simple\+Pcg32}}\& \mbox{\hyperlink{classCatch_1_1Generators_1_1RandomIntegerGenerator}{Catch\+::\+Generators\+::\+Random\+Integer\+Generator}}$<$ Integer $>$\+::m\+\_\+rng\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 4618 of file catch.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Source\+Files/headers/\mbox{\hyperlink{catch_8hpp}{catch.\+hpp}}\end{DoxyCompactItemize}

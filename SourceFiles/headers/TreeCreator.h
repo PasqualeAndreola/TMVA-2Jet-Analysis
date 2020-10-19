@@ -10,7 +10,8 @@
 #include "OpenH5.h"
 #include "Opfunc.h"
 #include "Dataset_2Dread.h"
+#include "PrintFuncInfo.h"
 
-int TreeCreator(const char *filename, const int bufferdimension);
+int TreeCreator(const char *filename);
 
 #endif

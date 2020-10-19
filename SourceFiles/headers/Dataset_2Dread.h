@@ -1,26 +1,25 @@
 /*! \file Dataset_2Dread.h
  *
  *  \brief Header file for \link Dataset_2Dread \endlink body, because templates are instantiated at compile time.
- * 
- *  This function is used to read a dataset of dimension 1 or 2 from a *.h5 file.\n
- *  \link Dataset_2Dread \endlink reads the dataset given by the \p dataset_id scanning it
- *  with memory slab whose dimensions are designed to be located inside dataset limit.\n
- *  This is done because \c H5DRead  is designed to crash if the user tries to read 
- *  out of the dataset dimensions.
- * 
- *  Memory slab read from the dataset is stored in a buffer \p bufferdimension 
- *  *\p bufferdimension (for 2D dataset or \p bufferdimension*1 for 1D dataset) of type \p buftype.
- * 
- *  Buffer is then written in the "output".root file 
  */
 
 /*!
  *  \fn void Dataset_2Dread(hid_t dataset_id, int bufferdimension, int datasetnumber, const char *outfile) Dataset_2Dread.h "Dataset_2Dread.h"
  *  \brief This function is used to read a dataset of dimension 1 or 2 from a *.h5 file.
+ * 
+ *  This function is used to read a dataset of dimension 1 or 2 from a *.h5 file.\n
+ *  \link Dataset_2Dread \endlink reads the dataset given by the \p dataset_id scanning it
+ *  with memory slab whose dimensions are designed to be located inside dataset limit.\n
+ *  This is done because \c H5DRead  is designed to crash if the user tries to read 
+ *  out of the dataset dimensions.\n
+ *  \p bufferdimension Determines the dimension of the buffer used to collect data from the *.h5 file.\n
+ *  It has to be chosen considering the datatype and the amount of RAM installed.\n
+ *  Memory slab read from the dataset is stored in a buffer \p bufferdimension 
+ *  \p bufferdimension (for 2D dataset or \p bufferdimension*1 for 1D dataset) of type \p buftype. \n
+ *  Buffer is then written in the "output".root file 
+ * 
  *  \tparam buftype Type of the buffer that is created to store data collected from the dataset
  *  \param dataset_id Unique dataset identifier, returned when the dataset is opened in \link TreeCreator \endlink
- *  \param bufferdimension Determines the dimension of the buffer used to collect data from the *.h5 file.\n
- *  It has to be chosen considering the datatype and the amount of RAM installed
  *  \param datasetnumber Number assigned to the dataset when it is found from the \link openh5 \endlink.\n It is used to manage
  *  dataset information stored in the \link DatasetInfo \endlink structure
  *  \param *outfile Represents the name of the "output".root file
@@ -41,9 +40,15 @@
 //It can be useful to use these namespaces
 using namespace std;
 
+/*Defining global variables*/
+const int bufferdimension = 2101;
+
 template <typename buftype>
-void Dataset_2Dread(hid_t dataset_id, int bufferdimension, int datasetnumber, const char *outfile)
+void Dataset_2Dread(hid_t dataset_id, int datasetnumber, const char *outfile)
 {
+    /*Defining a generic counter*/
+    unsigned long long int counter = 0;
+
     /*Define some string used to name output file and trees*/
     string filename, treename;
     filename.append("OutputFiles/");
@@ -123,6 +128,11 @@ void Dataset_2Dread(hid_t dataset_id, int bufferdimension, int datasetnumber, co
             /*Buffer is read*/
             for (int i = 0; i < count[0]; i++)
             {
+                if (counter % 100000000 == 0 && counter > 0)
+                {
+                    cout << counter / 100000000 << " hundreds of millions data have been processed" << endl;
+                }
+                counter++;
                 branchbuf = buf[i];
                 roottree.Fill();
             }
@@ -147,6 +157,11 @@ void Dataset_2Dread(hid_t dataset_id, int bufferdimension, int datasetnumber, co
         /*Buffer is read*/
         for (int i = 0; i < count[0]; i++)
         {
+            if (counter % 100000000 == 0 && counter > 0)
+            {
+                cout << counter / 100000000 << " hundreds of millions data have been processed" << endl;
+            }
+            counter++;
             branchbuf = buf[i * count[0]];
             roottree.Fill();
         }
@@ -188,6 +203,11 @@ void Dataset_2Dread(hid_t dataset_id, int bufferdimension, int datasetnumber, co
                     {
                         for (int j = 0; j < count[0]; j++)
                         {
+                            if (counter % 100000000 == 0 && counter > 0)
+                            {
+                                cout << counter / 100000000 << " hundreds of millions data have been processed" << endl;
+                            }
+                            counter++;
                             branchbuf = buf[i * count[0] + j];
                             roottree.Fill();
                         }
@@ -216,6 +236,11 @@ void Dataset_2Dread(hid_t dataset_id, int bufferdimension, int datasetnumber, co
             {
                 for (int j = 0; j < count[0]; j++)
                 {
+                    if (counter % 100000000 == 0 && counter > 0)
+                    {
+                        cout << counter / 100000000 << " hundreds of millions data have been processed" << endl;
+                    }
+                    counter++;
                     branchbuf = buf[i * count[0] + j];
                     roottree.Fill();
                 }
@@ -247,6 +272,11 @@ void Dataset_2Dread(hid_t dataset_id, int bufferdimension, int datasetnumber, co
             {
                 for (int j = 0; j < count[0]; j++)
                 {
+                    if (counter % 100000000 == 0 && counter > 0)
+                    {
+                        cout << counter / 100000000 << " hundreds of millions data have been processed" << endl;
+                    }
+                    counter++;
                     branchbuf = buf[i * count[0] + j];
                     roottree.Fill();
                 }
@@ -273,6 +303,11 @@ void Dataset_2Dread(hid_t dataset_id, int bufferdimension, int datasetnumber, co
         {
             for (int j = 0; j < count_rest[0]; j++)
             {
+                if (counter % 100000000 == 0 && counter > 0)
+                {
+                    cout << counter / 100000000 << " hundreds of millions data have been processed" << endl;
+                }
+                counter++;
                 branchbuf = buf[i * count_rest[0] + j];
                 roottree.Fill();
             }

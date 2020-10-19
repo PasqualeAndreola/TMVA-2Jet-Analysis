@@ -15,7 +15,9 @@
 #include <ClusterSequence.hh>
 #include <SharedPtr.hh>
 #include <PseudoJetStructureBase.hh>
+#include "JetCreator.h"
+#include "PrintFuncInfo.h"
 
-int SBTreeJetKinematicsCreator(const char *filename, int numberoffiles, unsigned long int sbjetnumber, unsigned long int eventjetnumber, double_t R, double_t pT_min);
+int SBTreeJetKinematicsCreator(const char *filename, const char *jetfilename, int numberoffiles, unsigned long int sbjetnumber, unsigned long int eventjetnumber, double_t R, double_t pT_min);
 
 #endif

@@ -15,18 +15,16 @@
 #include "headers/TreeJetCreator.h"
 #include "headers/SBTreeCreator.h"
 #include "headers/SBTreeJetKinematicsCreator.h"
-#include "headers/JetCreator.h"
 
-//Può essere comodo usare questi namespace, visto che si vedono tanti jet
+/*It can be useful to use these namespaces*/
 using namespace std;
 using namespace fastjet;
 
 int main(int argc, char *argv[])
 {
-  /*Definisco variabili utili e i nomi dei file da analizzare */
+  /* Input files and relative flags (1 for event file, 0 for unknown, -1 for background)*/
   vector<TString> filenames;
   vector<int> sbflags;
-  TString SBOutputfile = "SBoutput";
   /*filenames.push_back("events_anomalydetection_Z_XY_qqq");
   sbflags.push_back(1);
   filenames.push_back("events_anomalydetection");
@@ -37,158 +35,116 @@ int main(int argc, char *argv[])
   sbflags.push_back(0);*/
   filenames.push_back("lhc_anomalydetection_small");
   sbflags.push_back(0);
-  char str[256];
 
-  /*Definisco variabili utili e i vettori che conterrano le quantità importanti dei jet*/
+  /* Name of output file*/
+  TString SBOutputfile = "SBOutput";
+  TString SBJetOutputfile = "SBJetOutput";
+  TString TMVAFactoryoutputname = "TMVAFactory";
+
+  /* Number of jets that has to be clustered from event data*/
+  unsigned long sbjetnumber = 10, eventjetnumber = 10;
+  double_t R = 1.0, pT_min = 20;
+
+  /*Defining number of jet that has to be put in the TMVA factory*/
+  unsigned long ntrainsign = 10;
+  unsigned long ntrainback = 10;
+  unsigned long ntestsign = 10;
+  unsigned long ntestback = 10;
+
+  /*Useful Variables*/
   int i = 0;
-  /*TFile SBOutputroot(TString::Format("%s.root", SBOutputfile.Data()),"recreate");
-  SBOutputroot.Close();*/
+  vector<TString> question;
+  string answer;
 
-  for (vector<TString>::iterator stringit = filenames.begin(); stringit != filenames.end(); ++stringit, i++)
+  question.push_back("Do you wish to analyze these files? (YES/NO)");
+  PrintFuncInfo(question);
+  question.clear();
+  for (vector<TString>::iterator stringit = filenames.begin(); stringit != filenames.end(); ++stringit)
   {
-    /*Leggo il file .h5 e creo un file contenente un albero per ciascun dataset*/
-    /*
-    cout << "Si sta analizzando il file: " << *stringit << ".h5." <<endl;
-    cout << "Esso è costituito da:" << endl;
-    strcpy(str,*stringit);
-    strcat(str,".h5");
-    openh5(str);
-    strcpy(str,*stringit);
-    cout << "Would you create the tree " << *stringit << " containing kinematic quantities? [Y/N]" << endl;
-    cin.get(str,256);
-    if(strcmp(str,"Y") == 0) TreeCreator(*stringit);
-    cin.ignore();
-    cout << "Would you add to the file " << *stringit << " a tree containing the jet? [Y/N]" << endl;
-    cin.get(str,256);
-    if(strcmp(str,"Y") == 0) TreeJetCreator(*stringit, 1.0, 20);
-    cin.ignore();
-    cout << "Would you analize the jets stored in " << *stringit << " ? [Y/N]" << endl;
-    cin.get(str,256);
-    if(strcmp(str,"N") == 0) return 0;
-    cin.ignore();
-    */
-    
-    cout << "Analyzing file: " << *stringit << ".h5." << endl;
-    cout << "It is made up of:" << endl;
-    openh5(TString::Format("InputFiles/%s.h5", stringit->Data()));
-    TreeCreator(*stringit, 2101);
-    SBTreeCreator(TString::Format("%s.root", stringit->Data()), TString::Format("%s.root", SBOutputfile.Data()), sbflags[i], i);
-    dataset_info_list.clear();
-
-    //TApplication *Analysisroot_app = new TApplication("Analysis", &argc, argv);
-
-    //Istogrammi per l'impulso dei leading jet e per la massa
-    /*TH1F *hpTsignal = new TH1F("Sign", "Sign[GeV]", 50, 1.1e3, 2.6 * 1e3);
-    TH1F *hmjjsignal = new TH1F("M_Sign", "M_Sign[GeV]", 50, 2e3, 7e3);
-    TH1F *hpTbackground = new TH1F("Back", "Back[GeV]", 50, 1.1e3, 2.6 * 1e3);
-    TH1F *hmjjbackground = new TH1F("M_Back", "M_Back[GeV]", 50, 2e3, 7e3);*/
-    /*
-      //Creo il vettore di jet per l'evento rappresentato dalla riga i-sima
-      jets = JetCreator(kinematics_per_event, R, pT_min);
-
-      if (flag_segnale == 0 && (dataset_info_list[3].get_column() % 3 != 0))
-      {
-        //Viene riempito l'istogramma del background
-        hpTbackground->Fill(jets[0].pt());
-        E = jets[0].e() + jets[1].e();
-        px = jets[0].px() + jets[1].px();
-        py = jets[0].py() + jets[1].py();
-        pz = jets[0].pz() + jets[1].pz();
-        hmjjbackground->Fill(sqrt(pow(E, 2) - pow(px, 2) - pow(py, 2) - pow(pz, 2)));
-      }
-      else
-      {
-        //Viene riempito l'istogramma del segnale
-        hpTsignal->Fill(jets[0].pt());
-        E = jets[0].e() + jets[1].e();
-        px = jets[0].px() + jets[1].px();
-        py = jets[0].py() + jets[1].py();
-        pz = jets[0].pz() + jets[1].pz();
-        hmjjsignal->Fill(sqrt(pow(E, 2) - pow(px, 2) - pow(py, 2) - pow(pz, 2)));
-      }
-    
-
-    // we fill a 3-d scatter plot with the particle step coordinates
-    TCanvas *c1 = new TCanvas("c1", "c1", 1366, 768);
-*/
-    /*Se l'utente vuole visionare i risultati subito si avvia un applicativo root*/
-    /*std::cout << "\nWould you see the results now? [Y/N]" << std::endl;
-    std::cin.get(str,256);
-    if(strcmp(str,"Y") == 0)
-    {
-      hdestep->Draw();
-      c1->Update();
-      c1->SaveAs("c1.png");
-      Analysisroot_app->Run();
-    }*/
-    /*
-    //Inserisco gli istogrammi del pt in una collezione e li rappresento
-    THStack *hpTstack = new THStack("hs", "");
-    hpTbackground->SetLineColor(kRed);
-    hpTbackground->SetFillColor(kRed);
-    hpTbackground->SetStats(kFALSE);
-    hpTsignal->SetLineColor(kBlue);
-    hpTsignal->SetFillColorAlpha(kBlue, 0.3);
-    hpTsignal->SetStats(kFALSE);
-    hpTstack->Add(hpTbackground);
-    hpTstack->Add(hpTsignal);
-    hpTstack->Draw();
-    hpTstack->SetTitle("Leading jet transverse momentum: p_{T}[GeV]");
-    hpTstack->GetXaxis()->SetTitle("Leading jet p_{T}[GeV]");
-    hpTstack->GetYaxis()->SetTitle("Number of events");
-
-    //Disegno la legenda
-    auto legend = new TLegend(0.65, 0.8, 0.9, 0.9);
-    //legend->SetHeader("Leading jet p_{T}","C"); // option "C" allows to center the header
-    legend->AddEntry(hpTbackground, "Background", "f");
-    legend->AddEntry(hpTsignal, "Signal", "f");
-    legend->Draw("same");
-
-    //Carico i disegni nel canvas
-    c1->SetTitle("Leading jet transvers momentum: p_{T}[GeV]");
-    c1->Update();
-    c1->SaveAs("leadingpt.png");
-
-    //Inserisco gli istogrammi della massa in una collezione e li rappresento
-    TCanvas *c2 = new TCanvas("c2", "c2", 1366, 768);
-    c2->cd();
-    THStack *hmjjstack = new THStack("hmjj", "");
-    hmjjbackground->SetLineColor(kRed);
-    hmjjbackground->SetFillColor(kRed);
-    hmjjbackground->SetStats(kFALSE);
-    hmjjsignal->SetLineColor(kBlue);
-    hmjjsignal->SetFillColorAlpha(kBlue, 0.3);
-    hmjjsignal->SetStats(kFALSE);
-    hmjjstack->Add(hmjjbackground);
-    hmjjstack->Add(hmjjsignal);
-    hmjjstack->Draw();
-    hmjjstack->SetTitle("Particle reconstructed mass m_{jj}[GeV]");
-    hmjjstack->GetXaxis()->SetTitle("m_{jj}[GeV]");
-    hmjjstack->GetYaxis()->SetTitle("Number of events");
-
-    //Disegno la legenda
-    auto legendmjj = new TLegend(0.65, 0.8, 0.9, 0.9);
-    //legend->SetHeader("Leading jet p_{T}","C"); // option "C" allows to center the header
-    legendmjj->AddEntry(hmjjbackground, "Background", "f");
-    legendmjj->AddEntry(hmjjsignal, "Signal", "f");
-    legendmjj->Draw("same");
-
-    //Carico i disegni nel canvas
-    c2->SetTitle("Leading jet transvers momentum: p_{T}[GeV]");
-    c2->Update();
-    c2->SaveAs("massjj.png");
-*/
+    cout << "\t" << stringit->Data() << endl;
   }
-  SBTreeJetKinematicsCreator(SBOutputfile, 5, 10, 10, 1, 20);
-  /*
-  TString outfilename("TMVA.root");
-  TFile *inputfile = TFile::Open("SBoutput.root", "read");
+  cout << endl;
+  cin >> answer;
+
+  /*The user wants to analyze the files*/
+  if (answer.compare("YES") == 0 || answer.compare("yes") == 0 || answer.compare("Yes") == 0 || answer.compare("y") == 0 || answer.compare("Y") == 0)
+  {
+    question.push_back("Do you wish to transform these *.h5 files in *.root files? (YES/NO)");
+    question.push_back("(Answer no if these root files exist already)");
+    PrintFuncInfo(question);
+    question.clear();
+    cin >> answer;
+    if (answer.compare("YES") == 0 || answer.compare("yes") == 0 || answer.compare("Yes") == 0 || answer.compare("y") == 0 || answer.compare("Y") == 0)
+    {
+      for (vector<TString>::iterator stringit = filenames.begin(); stringit != filenames.end(); ++stringit)
+      {
+        /*Converting *.h5 files to *.root files*/
+        openh5(TString::Format("%s.h5", stringit->Data()));
+        TreeCreator(*stringit);
+        dataset_info_list.clear();
+      }
+      question.push_back("Do you wish to analyze these *.root files and distinguish signal/background/event? (YES/NO)");
+      question.push_back("(Answer no if these root files have already been distinguished in a SBOutput.root file)");
+      PrintFuncInfo(question);
+      question.clear();
+      cin >> answer;
+      if (answer.compare("YES") == 0 || answer.compare("yes") == 0 || answer.compare("Yes") == 0 || answer.compare("y") == 0 || answer.compare("Y") == 0)
+      {
+        for (vector<TString>::iterator stringit = filenames.begin(); stringit != filenames.end(); ++stringit, i++)
+        {
+          /*Distinguishing signal from background and event and vice versa*/
+          openh5(TString::Format("%s.h5", stringit->Data()));
+          SBTreeCreator(TString::Format("OutputFiles/%s.root", stringit->Data()), TString::Format("OutputFiles/%s.root", SBOutputfile.Data()), sbflags[i], i);
+          dataset_info_list.clear();
+        }
+      }
+    }
+    else
+    {
+      question.push_back("Do you wish to analyze these already existing *.root files and distinguish signal/background/event? (YES/NO)");
+      question.push_back("(Answer no if these root files have already been distinguished in a SBOutput.root file)");
+      PrintFuncInfo(question);
+      question.clear();
+      cin >> answer;
+      if (answer.compare("YES") == 0 || answer.compare("yes") == 0 || answer.compare("Yes") == 0 || answer.compare("y") == 0 || answer.compare("Y") == 0)
+      {
+        for (vector<TString>::iterator stringit = filenames.begin(); stringit != filenames.end(); ++stringit)
+        {
+          /*Distinguishing signal from background and event and vice versa*/
+          openh5(TString::Format("%s.h5", stringit->Data()));
+          SBTreeCreator(TString::Format("OutputFiles/%s.root", stringit->Data()), TString::Format("OutputFiles/%s.root", SBOutputfile.Data()), sbflags[i], i);
+          dataset_info_list.clear();
+        }
+      }
+    }
+    question.push_back("Do you wish to create SBJetOutput.root file to store jet kinematic quantities? (YES/NO)");
+    question.push_back(TString::Format("You will cluster %lu signal/background jet and %lu event jet. Are you ok? (YES/NO)", sbjetnumber, eventjetnumber));
+    question.push_back("Answer no if jets have already been clustered and stored in a SBJetOutput.root file)");
+    PrintFuncInfo(question);
+    question.clear();
+    cin >> answer;
+    if (answer.compare("YES") == 0 || answer.compare("yes") == 0 || answer.compare("Yes") == 0 || answer.compare("y") == 0 || answer.compare("Y") == 0)
+    {
+      SBTreeJetKinematicsCreator(TString::Format("OutputFiles/%s.root", SBOutputfile.Data()), TString::Format("OutputFiles/%s.root", SBJetOutputfile.Data()), filenames.size(), sbjetnumber, eventjetnumber, R, pT_min);
+    }
+  }
+  else
+  {
+    question.push_back("The user doesn't want to analyze those files");
+    PrintFuncInfo(question);
+    question.clear();
+    return 0;
+  }
+/*  
+  TString outfilename(TString::Format("TMVA/%s.root", TMVAFactoryoutputname.Data()));
+  TFile *inputfile = TFile::Open(TString::Format("OutputFiles/%s.root", SBOutputfile.Data()), "read");
   TFile *outputfile = TFile::Open(outfilename, "recreate");
+
   TMVA::DataLoader *loader = new TMVA::DataLoader("Wprimo");
   TMVA::Factory *factory = new TMVA::Factory("TMVAClassification", outputfile, "AnalysisType=Classification");
   loader->AddVariable("MVAjet1_pT := sqrt(pow(jet1_px,2) + pow(jet1_py,2))", 'F');
   loader->AddVariable("MVAjet2_pT := sqrt(pow(jet2_px,2) + pow(jet2_py,2))", 'F');
-  loader->AddVariable("MVAjet1_m := sqrt( abs(pow(jet1_E,2) - pow(jet1_px,2) - pow(jet1_py,2) - pow(jet1_pz,2)))",'F');
+  loader->AddVariable("MVAjet1_m := sqrt( abs(pow(jet1_E,2) - pow(jet1_px,2) - pow(jet1_py,2) - pow(jet1_pz,2)))", 'F');
   loader->AddVariable("MVAjet2_m := sqrt( abs(pow(jet2_E,2) - pow(jet2_px,2) - pow(jet2_py,2) - pow(jet2_pz,2)))", 'F');
   loader->AddVariable("MVAjet_mjj := sqrt( abs(pow(jet1_E+jet2_E,2) - pow(jet1_px+jet2_px,2) - pow(jet1_py+jet2_py,2) - pow(jet1_pz+jet2_pz,2)))", 'F');
   loader->AddVariable("MVAjet1_px := jet1_px", 'F');
@@ -199,7 +155,12 @@ int main(int argc, char *argv[])
   loader->AddSignalTree(signal, signalweight);
   loader->AddBackgroundTree(background, backgroundweight);
 
-  TString dataString = "nTrain_Signal=10000:nTrain_Background=10000:nTest_Signal=10000:nTest_Background=10000:SplitMode=Random:NormMode=NumEvents:!V";
+  TString dataString = TString::Format("nTrain_Signal=%d", ntrainsign);
+  dataString.Append(TString::Format(":nTrain_Background=%d", ntrainback));
+  dataString.Append(TString::Format(":nTest_Signal=%d", ntestsign));
+  dataString.Append(TString::Format(":nTest_Background=%d", ntestback));
+  dataString.Append(":SplitMode=Random:NormMode=NumEvents:!V");
+
   loader->PrepareTrainingAndTestTree("", "", dataString);
   TString configString = "!H:V";
   configString += ":VarTransform=N";
@@ -208,11 +169,14 @@ int main(int argc, char *argv[])
 
   TString layoutString = "Layout=TANH|100, TANH|50, TANH|10, LINEAR";
 
-  TString trainingString1 = "TrainingStrategy=LearningRate=1e-1,Momentum=0.5, Repetitions=1,ConvergenceSteps=1000,BatchSize=20,DropConfig=0.0+0.5+0.5+0.0,WeightDecay=0.001,Regularization=L2,TestRepetitions=15,Multithreading=True";
+  TString trainingString1 = "TrainingStrategy=LearningRate=1e-1,Momentum=0.5, Repetitions=1,ConvergenceSteps=1000,BatchSize=20,DropConfig=0.0+0.5+0.5+0.0";
+  trainingString1.Append(",WeightDecay=0.001,Regularization=L2,TestRepetitions=15,Multithreading=True");
 
-  TString trainingString2 = " | LearningRate=1e-2,Momentum=0.1, Repetitions=1,ConvergenceSteps=1000,BatchSize=20,DropConfig=0.0+0.1+0.1+0.0,WeightDecay=0.001,Regularization=L2,TestRepetitions=15,Multithreading=True";
+  TString trainingString2 = " | LearningRate=1e-2,Momentum=0.1, Repetitions=1,ConvergenceSteps=1000,BatchSize=20,DropConfig=0.0+0.1+0.1+0.0";
+  trainingString2.Append(",WeightDecay=0.001,Regularization=L2,TestRepetitions=15,Multithreading=True");
 
-  TString trainingString3 = " | LearningRate=1e-3,Momentum=0.0, Repetitions=10,ConvergenceSteps=1000,BatchSize=50,DropConfig=0.0+0.1+0.1+0.0,WeightDecay=0.001,Regularization=L2,TestRepetitions=15,Multithreading=True";
+  TString trainingString3 = " | LearningRate=1e-3,Momentum=0.0, Repetitions=10,ConvergenceSteps=1000,BatchSize=50,DropConfig=0.0+0.1+0.1+0.0";
+  trainingString3.Append(",WeightDecay=0.001,Regularization=L2,TestRepetitions=15,Multithreading=True");
 
   //Eventuali fasi aggiuntive
 
@@ -230,9 +194,9 @@ int main(int argc, char *argv[])
   factory->EvaluateAllMethods();
 
   inputfile->Close();
-  outputfile->Close();  
+  outputfile->Close();
 */
-/*
+  /*
   TFile *eventinputfile = TFile::Open("SBoutput.root", "read");
   TFile *eventoutputfile = TFile::Open("Outclassevent.root", "recreate");
   TTree *EventJet = (TTree *)eventinputfile->Get("EventJet");
@@ -286,9 +250,11 @@ int main(int argc, char *argv[])
       hmjjsignal->Fill(mjj);
   }
   //Stampo il numero di eventi di segnale trovato
-  cout << "Ci sono " << hmjjsignal->GetEntries() << " eventi riconducibili a W' " << endl;
+  cout << "There are " << hmjjsignal->GetEntries() << " events containing a W' " << endl;
 
   //Inserisco gli istogrammi del pt e della massa in una collezione e li rappresento
+  TCanvas *c1 = new TCanvas("c1", "c1", 1366, 768);
+  c1->cd();
   THStack *hpTstack = new THStack("hs", "");
   hpTbackground->SetLineColor(kRed);
   hpTbackground->SetFillColor(kRed);
@@ -299,11 +265,28 @@ int main(int argc, char *argv[])
   hpTstack->Add(hpTbackground);
   hpTstack->Add(hpTsignal);
   hpTstack->SetTitle("Leading jet transverse momentum: p_{T}[GeV]");
-  TCanvas *c1 = new TCanvas("c1", "c1", 1366, 768);
+  hpTstack->GetXaxis()->SetTitle("Leading jet p_{T}[GeV]");
+  hpTstack->GetYaxis()->SetTitle("Number of events");
   hpTstack->Draw();
+
+  //Adjusting the legend
+  auto legend = new TLegend(0.65, 0.8, 0.9, 0.9);
+  legend->SetHeader("Leading jet p_{T}","C"); // option "C" allows to center the header
+  legend->AddEntry(hpTbackground, "Background", "f");
+  legend->AddEntry(hpTsignal, "Signal", "f");
+  legend->Draw("same");
+
   c1->Update();
   c1->SaveAs("hpTtotal.png");
 
+  TCanvas *c2 = new TCanvas("c2", "c2", 1366, 768);
+  c2->cd();
+  hpTsignal->Draw("");
+  c2->Update();
+  c2->SaveAs("hpTsignal.png");
+  
+  TCanvas *c3 = new TCanvas("c3", "c3", 1366, 768);
+  c3->cd();
   THStack *hmjjstack = new THStack("hsm", "");
   hmjjbackground->SetLineColor(kRed);
   hmjjbackground->SetFillColor(kRed);
@@ -314,15 +297,16 @@ int main(int argc, char *argv[])
   hmjjstack->Add(hmjjbackground);
   hmjjstack->Add(hmjjsignal);
   hmjjstack->SetTitle("Combined jet mass: m_{jj}[GeV]");
-  TCanvas *c2 = new TCanvas("c2", "c2", 1366, 768);
+  hmjjstack->GetXaxis()->SetTitle("m_{jj}[GeV]");
+  hmjjstack->GetYaxis()->SetTitle("Number of events");
   hmjjstack->Draw("");
-  c2->Update();
-  c2->SaveAs("hmjjtotal.png");
-
-  TCanvas *c3 = new TCanvas("c3", "c3", 1366, 768);
-  hmjjsignal->Draw("");
   c3->Update();
-  c3->SaveAs("hmjjsignal.png");
+  c3->SaveAs("hmjjtotal.png");
+
+  TCanvas *c4 = new TCanvas("c4", "c4", 1366, 768);
+  hmjjsignal->Draw("");
+  c4->Update();
+  c4->SaveAs("hmjjsignal.png");
 
   histkDL->Write();
   hpTbackground->Write();
@@ -335,3 +319,15 @@ int main(int argc, char *argv[])
 */
   return 0;
 }
+
+    //TApplication *Analysisroot_app = new TApplication("Analysis", &argc, argv);
+    /*Se l'utente vuole visionare i risultati subito si avvia un applicativo root*/
+    /*std::cout << "\nWould you see the results now? [Y/N]" << std::endl;
+    std::cin.get(str,256);
+    if(strcmp(str,"Y") == 0)
+    {
+      hdestep->Draw();
+      c1->Update();
+      c1->SaveAs("c1.png");
+      Analysisroot_app->Run();
+    }*/

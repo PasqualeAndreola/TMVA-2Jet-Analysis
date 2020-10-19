@@ -2,34 +2,52 @@
  *  \brief Source file for \ref SBTreeJetKinematicsCreator function implementation.
  */
 
-/*! \fn SBTreeJetKinematicsCreator(const char *filename, int numberoffiles, unsigned long int sbjetnumber, unsigned long int eventjetnumber, double_t R, double_t pT_min) "";
- *  \brief Function that create a *.root file containing signal/background/event kinematic quantities of the two most massive jets
- *  
+/*! \fn SBTreeJetKinematicsCreator(const char *filename, const char *jetfilename, int numberoffiles, unsigned long int sbjetnumber, unsigned long int eventjetnumber, double_t R, double_t pT_min) "";
+
+ *  \brief Function that creates a *.root file containing signal/background/event kinematic quantities of the two most massive jets
+ *  \author Pasquale Andreola
+ * 
  *  This function is designed to create as much trees as initial files.\n
  *  These trees will store the kinematic quantities (px, py, pz, E) of the two most massive jets.\n
  *  These jets are clustered using \c R as jet radius. The \c pT_min is the minimum transverse momentum accepted by user analysis.\n
  *  Jets are created by the \ref JetCreator function, so please refer to its documentation to find the characteristics of the algorithm.\n
  *  Returns 0 if there is no error during execution.
  * 
- *  \param *filename        Name of the *.root file that include trees to be updated with signal/background/event jet kinematics
+ *  \param *filename        Name of the *.root file that include trees with signal/background/event kinematics
+ *  \param *jetfilename     Name of the *.root file that will store signal/background/event jet kinematics 
  *  \param numberoffiles    Number of files that user has analyzed in this session
  *  \param sbjetnumber      Number of signal/background jet that the users wants to cluster
  *  \param eventjetnumber   Number of real event jet that the users wants to cluster
  *  \param R                Jet radius, usually related to the angular reach of the jet. Can be found in the anti-kT algorithm formula
  *  \param pT_min           Minimum transverse jet momentum that is accepted for user's analysis
-*/
+ */
 
-#include "headers/JetCreator.h"
 #include "headers/SBTreeJetKinematicsCreator.h"
 
 /*These namespaces can be useful*/
 using namespace std;
 using namespace fastjet;
 
-int SBTreeJetKinematicsCreator(const char *filename, int numberoffiles, unsigned long int sbjetnumber, unsigned long int eventjetnumber, double_t R, double_t pT_min)
+int SBTreeJetKinematicsCreator(const char *filename, const char *jetfilename, int numberoffiles, unsigned long int sbjetnumber, unsigned long int eventjetnumber, double_t R, double_t pT_min)
 {
+    /*Printing fastjet banner*/
+    ClusterSequence::print_banner();
+
+    /*Variables to adjust the print formatting and banner print*/
+    int ncolumns2beprinted = 100;
+    vector<TString> str2beprinted;
+    TString author = "P. Andreola";
+    TString license = "This function is provided without warranty under the GNU GPL v3 or higher";
+    str2beprinted.push_back("SBTreeJetKinematicsCreator");
+    str2beprinted.push_back(TString::Format("Opens the SBOutputfile and clusters jet, saving its kinematics to SBJetOutput"));
+    str2beprinted.push_back(author);
+    str2beprinted.push_back(license);
+    PrintFuncInfo(str2beprinted);
+    str2beprinted.clear();
+
     /*Opening the *.root file containing the signal/background/event quantities*/
-    TFile SBJetOutputroot(filename, "update");
+    TFile SBOutputroot(filename, "read");
+    TFile SBJetOutputroot(jetfilename, "update");
 
     /*Defining some useful variables and the structure of output trees*/
     vector<TString> Tree_names;
@@ -76,8 +94,9 @@ int SBTreeJetKinematicsCreator(const char *filename, int numberoffiles, unsigned
         for (int treenumber = 0; treenumber < numberoffiles; treenumber++)
         {
             /*Getting particles' kinematic quantities*/
-            TTree *Kinematics = (TTree *)SBJetOutputroot.Get(TString::Format("%s%d", stringit->Data(), treenumber));
-            cout << TString::Format("%s%d", stringit->Data(), treenumber) << endl;
+            SBOutputroot.cd();
+            TTree *Kinematics = (TTree *)SBOutputroot.Get(TString::Format("%s%d", stringit->Data(), treenumber));
+            cout << endl << TString::Format("Now working on %s%d tree", stringit->Data(), treenumber) << endl;
             TBranch *pT_branch = Kinematics->GetBranch("pT");
             pT_branch->SetAddress(&pT);
             TBranch *eta_branch = Kinematics->GetBranch("eta");
@@ -119,22 +138,25 @@ int SBTreeJetKinematicsCreator(const char *filename, int numberoffiles, unsigned
                     if (stringit->CompareTo("BackTrainingKinematics") == 0)
                     {
                         BackgroundJet.Fill();
+                        SBJetOutputroot.cd();
                         BackgroundJet.Write("", TObject::kOverwrite);
                     }
                     else if (stringit->CompareTo("SignalTrainingKinematics") == 0)
                     {
                         SignalJet.Fill();
+                        SBJetOutputroot.cd();
                         SignalJet.Write("", TObject::kOverwrite);
                     }
                     else if (stringit->CompareTo("EventKinematics") == 0)
                     {
                         EventJet.Fill();
+                        SBJetOutputroot.cd();
                         EventJet.Write("", TObject::kOverwrite);
                     }
                     else
                         break;
                     jets.clear();
-                    if (i % 700000 == 0)
+                    if (i % 700000 == 0 && i>0)
                     {
                         cout << "Working on jet number: " << i / 700 << endl;
                     }
@@ -142,6 +164,7 @@ int SBTreeJetKinematicsCreator(const char *filename, int numberoffiles, unsigned
             }
         }
     }
+    SBOutputroot.Close();
     SBJetOutputroot.Close();
     return 0;
 }

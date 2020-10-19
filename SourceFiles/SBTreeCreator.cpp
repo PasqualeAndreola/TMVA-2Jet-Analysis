@@ -21,6 +21,18 @@ using namespace std;
 
 int SBTreeCreator(const char *filename, const char *outputname, int sbflag, int number)
 {
+  /*Variables to adjust the print formatting and banner print*/
+  int ncolumns2beprinted = 100;
+  vector<TString> str2beprinted;
+  TString author = "P. Andreola";
+  TString license = "This function is provided without warranty under the GNU GPL v3 or higher";
+  str2beprinted.push_back("SBTreeCreator");
+  str2beprinted.push_back(TString::Format("Opens the input root file and recognize signal/background/event data"));
+  str2beprinted.push_back(author);
+  str2beprinted.push_back(license);
+  PrintFuncInfo(str2beprinted);
+  str2beprinted.clear();
+
   /* Defining useful variables */
   Double_t pT, eta, phi, mass, R = 1.0, pT_min = 20;
   Double_t E, px, py, pz;
@@ -28,7 +40,7 @@ int SBTreeCreator(const char *filename, const char *outputname, int sbflag, int 
   vector<Double_t> Kinematics_per_event;
 
   /*Reading the tree of the kinematic quantities, distinguishing signal and background*/
-  TFile rootfile(TString::Format("OutputFiles/%s",filename), "read");
+  TFile rootfile(filename, "read");
   TTree *alberello = (TTree *)rootfile.Get(dataset_info_list[3].get_name().data());
   TBranch *block0values = alberello->GetBranch(dataset_info_list[3].get_name().data());
   block0values->SetAddress(&value);
@@ -49,6 +61,7 @@ int SBTreeCreator(const char *filename, const char *outputname, int sbflag, int 
   TBranch *b_phi_branch = BackTrainingKinematics.Branch("phi", &phi);
 
   //Reading data from the input root file
+  cout << "Now distinguishing event type in the file: " << filename << endl << endl;
   unsigned long int i = 0, j = 0, flag_segnale = 1;
   for (i = 0; i < alberello->GetEntries(); i += dataset_info_list[3].get_column())
   {
@@ -95,12 +108,16 @@ int SBTreeCreator(const char *filename, const char *outputname, int sbflag, int 
         EventKinematics.Fill();
       }
     }
+    if (i % (100000*dataset_info_list[3].get_column()) == 0 && i>0)
+    {
+      cout << i/(100000*dataset_info_list[3].get_column()) << " hundreds of thousands events have been analyzed" << endl;
+    }
   }
 
   /*Distinguished trees are written in the output file*/
-  EventKinematics.Write("");
-  SignalTrainingKinematics.Write("");
-  BackTrainingKinematics.Write("");
+  EventKinematics.Write("", TObject::kOverwrite);
+  SignalTrainingKinematics.Write("", TObject::kOverwrite);
+  BackTrainingKinematics.Write("", TObject::kOverwrite);
   sbrootfile.Close();
   rootfile.Close();
 

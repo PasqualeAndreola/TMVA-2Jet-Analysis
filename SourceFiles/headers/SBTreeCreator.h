@@ -10,6 +10,7 @@
 #include "OpenH5.h"
 #include "Opfunc.h"
 #include "Dataset_2Dread.h"
+#include "PrintFuncInfo.h"
 
 int SBTreeCreator(const char *filename, const char *outputname, int sbflag, int number);
 

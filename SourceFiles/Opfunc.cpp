@@ -24,6 +24,7 @@
 //It can be useful to use these namespaces
 using namespace std;
 
+//Importing the dataset info list variable
 vector<DatasetInfo> dataset_info_list;
 
 /*This function is designed to get all the useful information about every dataset in the *.h5 file */

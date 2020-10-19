@@ -8,6 +8,8 @@ TARGET 	 :=	Analysis
 SRCDIR    := SourceFiles
 BUILDDIR  := BuildFiles
 TARGETDIR := BinFiles
+INPUTDIR  := InputFiles
+OUTPUTDIR := OutputFiles
 
 #Source and build file extension
 SRCEXT := cpp
@@ -45,12 +47,13 @@ remake: cleaner all
 directories:
 	@mkdir -p $(TARGETDIR)
 	@mkdir -p $(BUILDDIR)
-
+	@mkdir -p $(INPUTDIR)
+	@mkdir -p $(OUTPUTDIR)
+	
 #Making of the root dictionaries
 rootdictionaries:
 	@rm --force $(TARGETDIR)/JetDictionary.cpp
-	#@export 	ROOT_INCLUDE_PATH=/home/pasquale/fastjet/lib
-	@rootcling  $(INCLUDES) $(TARGETDIR)/JetDictionary.cpp $(SRCDIR)/headers/jetdict.h 
+	@rootcling  $(INCLUDES) $(TARGETDIR)/JetDictionary.cpp $(SRCDIR)/headers/jetdict.h
 
 #Clean Build
 clean:

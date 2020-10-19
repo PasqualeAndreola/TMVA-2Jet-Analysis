@@ -119,7 +119,7 @@ int main(int argc, char *argv[])
     }
     question.push_back("Do you wish to create SBJetOutput.root file to store jet kinematic quantities? (YES/NO)");
     question.push_back(TString::Format("You will cluster %lu signal/background jet and %lu event jet. Are you ok? (YES/NO)", sbjetnumber, eventjetnumber));
-    question.push_back("Answer no if jets have already been clustered and stored in a SBJetOutput.root file)");
+    question.push_back("(Answer no if jets have already been clustered and stored in a SBJetOutput.root file)");
     PrintFuncInfo(question);
     question.clear();
     cin >> answer;

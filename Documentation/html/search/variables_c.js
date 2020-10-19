@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['tags_1481',['tags',['../structCatch_1_1NameAndTags.html#a74062ed1138834a348424eb7ed900c57',1,'Catch::NameAndTags::tags()'],['../structCatch_1_1TestCaseInfo.html#a150a7cbca1dd0c91799ccb14ff822eb0',1,'Catch::TestCaseInfo::tags()']]],
-  ['test_1482',['test',['../classCatch_1_1TestCase.html#a7aaa375d6f2bda735095eaa43395b54b',1,'Catch::TestCase']]],
-  ['testcases_1483',['testCases',['../structCatch_1_1Totals.html#adb195fe477aedee2ecea88c888f16506',1,'Catch::Totals']]],
-  ['token_1484',['token',['../structopdata.html#a893b16dbb6d5ba4c5da52b46e48666bd',1,'opdata']]],
-  ['type_1485',['type',['../structCatch_1_1MessageInfo.html#ae928b9117465c696e45951d9d0284e78',1,'Catch::MessageInfo']]]
+  ['s_5fempty_1484',['s_empty',['../classCatch_1_1StringRef.html#a38d077e89f7f2ce666507ab28dd28653',1,'Catch::StringRef']]],
+  ['s_5finc_1485',['s_inc',['../classCatch_1_1SimplePcg32.html#a34f89a8ee054db204c8cf17632ac4c03',1,'Catch::SimplePcg32']]],
+  ['sectioninfo_1486',['sectionInfo',['../structCatch_1_1SectionEndInfo.html#a2d44793392cb83735d086d726822abe9',1,'Catch::SectionEndInfo']]],
+  ['sequence_1487',['sequence',['../structCatch_1_1MessageInfo.html#a7f4f57ea21e50160adefce7b68a781d6',1,'Catch::MessageInfo']]],
+  ['shoulddebugbreak_1488',['shouldDebugBreak',['../structCatch_1_1AssertionReaction.html#adcf30fb90ff20d9789df78d424652497',1,'Catch::AssertionReaction']]],
+  ['shouldthrow_1489',['shouldThrow',['../structCatch_1_1AssertionReaction.html#a82c8d95a2c1b6a331bde66982a8e090f',1,'Catch::AssertionReaction']]],
+  ['storage_1490',['storage',['../classCatch_1_1Option.html#acdebca1b18bb8542c3f676b8dd805f23',1,'Catch::Option']]]
 ];

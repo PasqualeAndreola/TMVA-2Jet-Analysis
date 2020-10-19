@@ -79,24 +79,24 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Header file for <a class="el" href="SBTreeJetKinematicsCreator_8cpp.html#ab82137830be055907fcf02493eb56dda">SBTreeJetKinematicsCreator</a> function.  
+<p>Header file for <a class="el" href="SBTreeJetKinematicsCreator_8cpp.html#a427d768358beddfd8bdf39cef8f60cac">SBTreeJetKinematicsCreator</a> function.  
 <a href="#details">More...</a></p>
 
 <p><a href="SBTreeJetKinematicsCreator_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:accb2c8c74ec6a05be0ae460f5e1e4f57"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SBTreeJetKinematicsCreator_8h.html#accb2c8c74ec6a05be0ae460f5e1e4f57">SBTreeJetKinematicsCreator</a> (const char *filename, int numberoffiles, unsigned long int sbjetnumber, unsigned long int eventjetnumber, double_t R, double_t pT_min)</td></tr>
-<tr class="memdesc:accb2c8c74ec6a05be0ae460f5e1e4f57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that create a *.root file containing signal/background/event kinematic quantities of the two most massive jets.  <a href="SBTreeJetKinematicsCreator_8h.html#accb2c8c74ec6a05be0ae460f5e1e4f57">More...</a><br /></td></tr>
-<tr class="separator:accb2c8c74ec6a05be0ae460f5e1e4f57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacd6c6f9180c658a683294bd63525166"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SBTreeJetKinematicsCreator_8h.html#aacd6c6f9180c658a683294bd63525166">SBTreeJetKinematicsCreator</a> (const char *filename, const char *jetfilename, int numberoffiles, unsigned long int sbjetnumber, unsigned long int eventjetnumber, double_t R, double_t pT_min)</td></tr>
+<tr class="memdesc:aacd6c6f9180c658a683294bd63525166"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that creates a *.root file containing signal/background/event kinematic quantities of the two most massive jets.  <a href="SBTreeJetKinematicsCreator_8h.html#aacd6c6f9180c658a683294bd63525166">More...</a><br /></td></tr>
+<tr class="separator:aacd6c6f9180c658a683294bd63525166"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Header file for <a class="el" href="SBTreeJetKinematicsCreator_8cpp.html#ab82137830be055907fcf02493eb56dda">SBTreeJetKinematicsCreator</a> function. </p>
+<div class="textblock"><p>Header file for <a class="el" href="SBTreeJetKinematicsCreator_8cpp.html#a427d768358beddfd8bdf39cef8f60cac">SBTreeJetKinematicsCreator</a> function. </p>
 
 <p class="definition">Definition in file <a class="el" href="SBTreeJetKinematicsCreator_8h_source.html">SBTreeJetKinematicsCreator.h</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="accb2c8c74ec6a05be0ae460f5e1e4f57"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#accb2c8c74ec6a05be0ae460f5e1e4f57">&#9670;&nbsp;</a></span>SBTreeJetKinematicsCreator()</h2>
+<a id="aacd6c6f9180c658a683294bd63525166"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacd6c6f9180c658a683294bd63525166">&#9670;&nbsp;</a></span>SBTreeJetKinematicsCreator()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -106,6 +106,12 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>jetfilename</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -145,7 +151,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Function that create a *.root file containing signal/background/event kinematic quantities of the two most massive jets. </p>
+<p>Function that creates a *.root file containing signal/background/event kinematic quantities of the two most massive jets. </p>
+<dl class="section author"><dt>Author</dt><dd>Pasquale Andreola</dd></dl>
 <p>This function is designed to create as much trees as initial files.<br  />
 These trees will store the kinematic quantities (px, py, pz, E) of the two most massive jets.<br  />
 These jets are clustered using <code>R</code> as jet radius. The <code>pT_min</code> is the minimum transverse momentum accepted by user analysis.<br  />
@@ -153,7 +160,8 @@ Jets are created by the <a class="el" href="JetCreator_8cpp.html#afc25fe7a7dda2f
 Returns 0 if there is no error during execution.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">*filename</td><td>Name of the *.root file that include trees to be updated with signal/background/event jet kinematics </td></tr>
+    <tr><td class="paramname">*filename</td><td>Name of the *.root file that include trees with signal/background/event kinematics </td></tr>
+    <tr><td class="paramname">*jetfilename</td><td>Name of the *.root file that will store signal/background/event jet kinematics </td></tr>
     <tr><td class="paramname">numberoffiles</td><td>Number of files that user has analyzed in this session </td></tr>
     <tr><td class="paramname">sbjetnumber</td><td>Number of signal/background jet that the users wants to cluster </td></tr>
     <tr><td class="paramname">eventjetnumber</td><td>Number of real event jet that the users wants to cluster </td></tr>
@@ -163,7 +171,7 @@ Returns 0 if there is no error during execution.</p>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="SBTreeJetKinematicsCreator_8cpp_source.html#l00029">29</a> of file <a class="el" href="SBTreeJetKinematicsCreator_8cpp_source.html">SBTreeJetKinematicsCreator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SBTreeJetKinematicsCreator_8cpp_source.html#l00031">31</a> of file <a class="el" href="SBTreeJetKinematicsCreator_8cpp_source.html">SBTreeJetKinematicsCreator.cpp</a>.</p>
 
 </div>
 </div>

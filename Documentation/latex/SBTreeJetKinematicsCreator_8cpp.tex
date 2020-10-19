@@ -2,32 +2,35 @@
 \label{SBTreeJetKinematicsCreator_8cpp}\index{SourceFiles/SBTreeJetKinematicsCreator.cpp@{SourceFiles/SBTreeJetKinematicsCreator.cpp}}
 
 
-Source file for \mbox{\hyperlink{SBTreeJetKinematicsCreator_8cpp_ab82137830be055907fcf02493eb56dda}{S\+B\+Tree\+Jet\+Kinematics\+Creator}} function implementation.  
+Source file for \mbox{\hyperlink{SBTreeJetKinematicsCreator_8cpp_a427d768358beddfd8bdf39cef8f60cac}{S\+B\+Tree\+Jet\+Kinematics\+Creator}} function implementation.  
 
 
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{SBTreeJetKinematicsCreator_8cpp_ab82137830be055907fcf02493eb56dda}{S\+B\+Tree\+Jet\+Kinematics\+Creator}} (const char $\ast$filename, int numberoffiles, unsigned long int sbjetnumber, unsigned long int eventjetnumber, double\+\_\+t R, double\+\_\+t p\+T\+\_\+min)
-\begin{DoxyCompactList}\small\item\em Function that create a $\ast$.root file containing signal/background/event kinematic quantities of the two most massive jets. \end{DoxyCompactList}\end{DoxyCompactItemize}
+int \mbox{\hyperlink{SBTreeJetKinematicsCreator_8cpp_a427d768358beddfd8bdf39cef8f60cac}{S\+B\+Tree\+Jet\+Kinematics\+Creator}} (const char $\ast$filename, const char $\ast$jetfilename, int numberoffiles, unsigned long int sbjetnumber, unsigned long int eventjetnumber, double\+\_\+t R, double\+\_\+t p\+T\+\_\+min)
+\begin{DoxyCompactList}\small\item\em Function that creates a $\ast$.root file containing signal/background/event kinematic quantities of the two most massive jets. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Source file for \mbox{\hyperlink{SBTreeJetKinematicsCreator_8cpp_ab82137830be055907fcf02493eb56dda}{S\+B\+Tree\+Jet\+Kinematics\+Creator}} function implementation. 
+Source file for \mbox{\hyperlink{SBTreeJetKinematicsCreator_8cpp_a427d768358beddfd8bdf39cef8f60cac}{S\+B\+Tree\+Jet\+Kinematics\+Creator}} function implementation. 
 
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{SBTreeJetKinematicsCreator_8cpp_ab82137830be055907fcf02493eb56dda}\label{SBTreeJetKinematicsCreator_8cpp_ab82137830be055907fcf02493eb56dda}} 
+\mbox{\Hypertarget{SBTreeJetKinematicsCreator_8cpp_a427d768358beddfd8bdf39cef8f60cac}\label{SBTreeJetKinematicsCreator_8cpp_a427d768358beddfd8bdf39cef8f60cac}} 
 \index{SBTreeJetKinematicsCreator.cpp@{SBTreeJetKinematicsCreator.cpp}!SBTreeJetKinematicsCreator@{SBTreeJetKinematicsCreator}}
 \index{SBTreeJetKinematicsCreator@{SBTreeJetKinematicsCreator}!SBTreeJetKinematicsCreator.cpp@{SBTreeJetKinematicsCreator.cpp}}
 \doxysubsubsection{\texorpdfstring{SBTreeJetKinematicsCreator()}{SBTreeJetKinematicsCreator()}}
-{\footnotesize\ttfamily int S\+B\+Tree\+Jet\+Kinematics\+Creator (\begin{DoxyParamCaption}\item[{const char $\ast$}]{filename,  }\item[{int}]{numberoffiles,  }\item[{unsigned long int}]{sbjetnumber,  }\item[{unsigned long int}]{eventjetnumber,  }\item[{double\+\_\+t}]{R,  }\item[{double\+\_\+t}]{p\+T\+\_\+min }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int S\+B\+Tree\+Jet\+Kinematics\+Creator (\begin{DoxyParamCaption}\item[{const char $\ast$}]{filename,  }\item[{const char $\ast$}]{jetfilename,  }\item[{int}]{numberoffiles,  }\item[{unsigned long int}]{sbjetnumber,  }\item[{unsigned long int}]{eventjetnumber,  }\item[{double\+\_\+t}]{R,  }\item[{double\+\_\+t}]{p\+T\+\_\+min }\end{DoxyParamCaption})}
 
 
 
-Function that create a $\ast$.root file containing signal/background/event kinematic quantities of the two most massive jets. 
+Function that creates a $\ast$.root file containing signal/background/event kinematic quantities of the two most massive jets. 
 
+\begin{DoxyAuthor}{Author}
+Pasquale Andreola
+\end{DoxyAuthor}
 This function is designed to create as much trees as initial files.~\newline
 These trees will store the kinematic quantities (px, py, pz, E) of the two most massive jets.~\newline
 These jets are clustered using {\ttfamily R} as jet radius. The {\ttfamily p\+T\+\_\+min} is the minimum transverse momentum accepted by user analysis.~\newline
@@ -36,7 +39,9 @@ Returns 0 if there is no error during execution.
 
 
 \begin{DoxyParams}{Parameters}
-{\em $\ast$filename} & Name of the $\ast$.root file that include trees to be updated with signal/background/event jet kinematics \\
+{\em $\ast$filename} & Name of the $\ast$.root file that include trees with signal/background/event kinematics \\
+\hline
+{\em $\ast$jetfilename} & Name of the $\ast$.root file that will store signal/background/event jet kinematics \\
 \hline
 {\em numberoffiles} & Number of files that user has analyzed in this session \\
 \hline
@@ -51,5 +56,5 @@ Returns 0 if there is no error during execution.
 \end{DoxyParams}
 
 
-Definition at line 29 of file S\+B\+Tree\+Jet\+Kinematics\+Creator.\+cpp.
+Definition at line 31 of file S\+B\+Tree\+Jet\+Kinematics\+Creator.\+cpp.
 

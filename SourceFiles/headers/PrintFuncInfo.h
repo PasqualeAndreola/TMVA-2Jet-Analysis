@@ -8,6 +8,8 @@
 
 #include <iostream>
 #include <vector>
+#include <numeric>
+#include <algorithm>
 #include <TString.h>
 
 /*These namespaces can be useful*/

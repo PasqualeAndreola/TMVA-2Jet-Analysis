@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['passed_1466',['passed',['../structCatch_1_1Counts.html#ad28daaf3de28006400208b6dd0c631e6',1,'Catch::Counts']]],
-  ['precision_1467',['precision',['../structCatch_1_1StringMaker_3_01float_01_4.html#a54ebebe76a755dbe2dd8ad409c329378',1,'Catch::StringMaker&lt; float &gt;::precision()'],['../structCatch_1_1StringMaker_3_01double_01_4.html#a15fa2b093c532ece7f1d0c713ebaee67',1,'Catch::StringMaker&lt; double &gt;::precision()']]],
-  ['prev_1468',['prev',['../structopdata.html#aca5c8fc54f3ee06a51eb3f9e40ce4b7f',1,'opdata']]],
-  ['prevassertions_1469',['prevAssertions',['../structCatch_1_1SectionEndInfo.html#ae70b154cbc05b5dd2901d97f89303d8c',1,'Catch::SectionEndInfo']]],
-  ['properties_1470',['properties',['../structCatch_1_1TestCaseInfo.html#afc1e84bd7a2e180895a06d9131302af0',1,'Catch::TestCaseInfo']]]
+  ['name_1473',['name',['../structCatch_1_1NameAndTags.html#a7cbea60e0cebfa622c667008eb011420',1,'Catch::NameAndTags::name()'],['../structCatch_1_1SectionInfo.html#a704c8fc662d309137e0d4f199cb7df58',1,'Catch::SectionInfo::name()'],['../structCatch_1_1TestCaseInfo.html#a463794e2f5cfead307c93efd134ade36',1,'Catch::TestCaseInfo::name()']]],
+  ['ncolumns_1474',['ncolumns',['../PrintFuncInfo_8cpp.html#a6bf021aaf5106c13824f3d8f61ecd5c1',1,'PrintFuncInfo.cpp']]],
+  ['nullablevalue_1475',['nullableValue',['../classCatch_1_1Option.html#aa6643e8dc409f4fc86cc8c80f9c3266b',1,'Catch::Option']]]
 ];

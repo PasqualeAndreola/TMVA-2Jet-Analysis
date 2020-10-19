@@ -10,5 +10,6 @@ var searchData=
   ['benchmarkresamples_31',['benchmarkResamples',['../structCatch_1_1IConfig.html#a3b8e5581be01f4773593f8b85eb7db98',1,'Catch::IConfig']]],
   ['benchmarksamples_32',['benchmarkSamples',['../structCatch_1_1IConfig.html#a583734a61796b495b80779a6540eb6cc',1,'Catch::IConfig']]],
   ['benchmarkwarmuptime_33',['benchmarkWarmupTime',['../structCatch_1_1IConfig.html#a516879e39f2e46f69bb4ef1f1fe7023c',1,'Catch::IConfig']]],
-  ['binaryexpr_34',['BinaryExpr',['../classCatch_1_1BinaryExpr.html',1,'Catch::BinaryExpr&lt; LhsT, RhsT &gt;'],['../classCatch_1_1BinaryExpr.html#a657d66346aef97a760c22776fe6008b6',1,'Catch::BinaryExpr::BinaryExpr()']]]
+  ['binaryexpr_34',['BinaryExpr',['../classCatch_1_1BinaryExpr.html',1,'Catch::BinaryExpr&lt; LhsT, RhsT &gt;'],['../classCatch_1_1BinaryExpr.html#a657d66346aef97a760c22776fe6008b6',1,'Catch::BinaryExpr::BinaryExpr()']]],
+  ['bufferdimension_35',['bufferdimension',['../Dataset__2Dread_8h.html#a4c32abe2848a73b8254c1e734394834b',1,'Dataset_2Dread.h']]]
 ];

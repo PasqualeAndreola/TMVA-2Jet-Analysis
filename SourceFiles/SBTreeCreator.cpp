@@ -22,7 +22,6 @@ using namespace std;
 int SBTreeCreator(const char *filename, const char *outputname, int sbflag, int number)
 {
   /*Variables to adjust the print formatting and banner print*/
-  int ncolumns2beprinted = 100;
   vector<TString> str2beprinted;
   TString author = "P. Andreola";
   TString license = "This function is provided without warranty under the GNU GPL v3 or higher";
@@ -34,8 +33,7 @@ int SBTreeCreator(const char *filename, const char *outputname, int sbflag, int 
   str2beprinted.clear();
 
   /* Defining useful variables */
-  Double_t pT, eta, phi, mass, R = 1.0, pT_min = 20;
-  Double_t E, px, py, pz;
+  Double_t pT, eta, phi;
   Double_t value;
   vector<Double_t> Kinematics_per_event;
 
@@ -48,30 +46,32 @@ int SBTreeCreator(const char *filename, const char *outputname, int sbflag, int 
   /*Defining trees that will store our kinematic quantities*/
   TFile sbrootfile(outputname, "update");
   TTree EventKinematics(TString::Format("EventKinematics%d", number), "EventKinematics");
-  TBranch *pT_branch = EventKinematics.Branch("pT", &pT);
-  TBranch *eta_branch = EventKinematics.Branch("eta", &eta);
-  TBranch *phi_branch = EventKinematics.Branch("phi", &phi);
+  EventKinematics.Branch("pT", &pT);
+  EventKinematics.Branch("eta", &eta);
+  EventKinematics.Branch("phi", &phi);
   TTree SignalTrainingKinematics(TString::Format("SignalTrainingKinematics%d", number), "SignalTrainingKinematics");
-  TBranch *s_pT_branch = SignalTrainingKinematics.Branch("pT", &pT);
-  TBranch *s_eta_branch = SignalTrainingKinematics.Branch("eta", &eta);
-  TBranch *s_phi_branch = SignalTrainingKinematics.Branch("phi", &phi);
+  SignalTrainingKinematics.Branch("pT", &pT);
+  SignalTrainingKinematics.Branch("eta", &eta);
+  SignalTrainingKinematics.Branch("phi", &phi);
   TTree BackTrainingKinematics(TString::Format("BackTrainingKinematics%d", number), "BackTrainingKinematics");
-  TBranch *b_pT_branch = BackTrainingKinematics.Branch("pT", &pT);
-  TBranch *b_eta_branch = BackTrainingKinematics.Branch("eta", &eta);
-  TBranch *b_phi_branch = BackTrainingKinematics.Branch("phi", &phi);
+  BackTrainingKinematics.Branch("pT", &pT);
+  BackTrainingKinematics.Branch("eta", &eta);
+  BackTrainingKinematics.Branch("phi", &phi);
 
   //Reading data from the input root file
   cout << "Now distinguishing event type in the file: " << filename << endl << endl;
   unsigned long int i = 0, j = 0, flag_segnale = 1;
-  for (i = 0; i < alberello->GetEntries(); i += dataset_info_list[3].get_column())
+  unsigned long int nentries = (unsigned long int) alberello->GetEntries();
+  unsigned long int threenparticles = (unsigned long int) dataset_info_list[3].get_column();
+  for (i = 0; i < nentries; i += threenparticles)
   {
     Kinematics_per_event.clear();
-    block0values->GetEntry(i + dataset_info_list[3].get_column() - 1);
+    block0values->GetEntry(i + threenparticles - 1);
     flag_segnale = value;
-    for (j = 0; j <= dataset_info_list[3].get_column() - 3; j += 3)
+    for (j = 0; j <= threenparticles - 3; j += 3)
     {
       block0values->GetEntry(i + j);
-      if ((flag_segnale == 0 && (dataset_info_list[3].get_column() % 3 != 0)) || sbflag == -1)
+      if ((flag_segnale == 0 && (threenparticles % 3 != 0)) || sbflag == -1)
       {
         pT = value;
         Kinematics_per_event.push_back(value);
@@ -83,7 +83,7 @@ int SBTreeCreator(const char *filename, const char *outputname, int sbflag, int 
         Kinematics_per_event.push_back(value);
         BackTrainingKinematics.Fill();
       }
-      else if ((flag_segnale != 0 && (dataset_info_list[3].get_column() % 3 != 0)) || sbflag == 1)
+      else if ((flag_segnale != 0 && (threenparticles % 3 != 0)) || sbflag == 1)
       {
         pT = value;
         Kinematics_per_event.push_back(value);
@@ -108,9 +108,9 @@ int SBTreeCreator(const char *filename, const char *outputname, int sbflag, int 
         EventKinematics.Fill();
       }
     }
-    if (i % (100000*dataset_info_list[3].get_column()) == 0 && i>0)
+    if (i % (100000*threenparticles) == 0 && i>0)
     {
-      cout << i/(100000*dataset_info_list[3].get_column()) << " hundreds of thousands events have been analyzed" << endl;
+      cout << i/(100000*threenparticles) << " hundreds of thousands events have been analyzed" << endl;
     }
   }
 

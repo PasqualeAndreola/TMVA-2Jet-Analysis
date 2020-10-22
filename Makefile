@@ -17,7 +17,7 @@ OBJEXT := o
 DEPEXT := d
 
 #Flags
-CXXFLAGS 	 := -O3 -g
+CXXFLAGS 	 := -O3 -g -Wall
 
 #Includes
 INCROOT 	 := -I/home/pasquale/root/include/root
@@ -67,6 +67,12 @@ cleaner: clean
 doxy:
 	doxygen Documentation/doxy_config
 
+#Testing
+test:
+	@echo 
+	@echo To make tests, open the TestFiles directory and run the command "make"\n
+	@echo
+	
 #Getting the dipendencies
 -include $(OBJECTS:.$(OBJEXT)=.$(DEPEXT))
 

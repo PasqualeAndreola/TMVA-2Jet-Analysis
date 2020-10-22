@@ -1,3 +1,21 @@
+/*! \mainpage TMVA-2Jet-Analysis
+ *
+ * \section intro_sec Introduction
+ *
+ * This project has been developed as an assignment for the Computing (in HEP) exam.\n
+ * The work is divided in three parts:
+ * 1. Data reading
+ * 2. Data manipulation
+ * 3. TMVA algorithm implementation
+ *
+ * \section dataread_sec Data reading
+ * 
+ *
+ * \subsection step1 Step 1: Opening the box
+ *
+ * etc...
+ */
+
 #include <TROOT.h>
 #include <TApplication.h>
 #include <TString.h>

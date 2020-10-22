@@ -16,5 +16,6 @@
 using namespace std;
 
 void PrintFuncInfo(vector<TString> string2print);
+void PrintFuncInfo(std::ostream& stream, vector<TString> string2print);
 
 #endif

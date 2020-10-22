@@ -22,7 +22,6 @@ void openh5(const char *FILE_NAME)
 {
 
   /*Variables to adjust the print formatting and banner print*/
-  int ncolumns2beprinted = 100;
   vector<TString> str2beprinted;
   TString author = "P. Andreola";
   TString license = "This function is provided without warranty under the GNU GPL v3 or higher";

@@ -38,7 +38,7 @@ public:
  *
  */
 
-    DatasetInfo(string dataname, H5O_token_t datatoken, int rownumber, int columnnumber);
+    DatasetInfo(std::string dname, H5O_token_t dtoken, int nrows, int ncolumns);
 
     string get_name(); /*!< Function that returns the string \link dataname \endlink which is stored as a private member */
 

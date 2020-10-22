@@ -8,7 +8,8 @@
 int groupcheck(hid_t loc_id, struct opdata *od, H5O_token_t target_token)
 {
     int comparison;
-    if (H5Otoken_cmp(loc_id, &od->token, &target_token, &comparison) < 0)
+    H5Otoken_cmp(loc_id, &od->token, &target_token, &comparison);
+    if (comparison == 0)
         return 1; /*There is a loop in the data reading, because same token is opened two or more times*/
     else if (!od->recurs)
         return 0; /*There is no loop, the analysis can go on*/

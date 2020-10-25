@@ -20,7 +20,6 @@ using namespace std;
 int TreeCreator(const char *filename)
 {
   /*Variables to adjust the print formatting and banner print*/
-  int ncolumns2beprinted = 100;
   vector<TString> str2beprinted;
   TString author = "P. Andreola";
   TString license = "This function is provided without warranty under the GNU GPL v3 or higher";
@@ -43,7 +42,7 @@ int TreeCreator(const char *filename)
   nome.append(filename);
 
   /*Beginning the loop over all the dataset in the file*/
-  for (int numerodataset = 0; numerodataset < dataset_info_list.size(); numerodataset++)
+  for (int numerodataset = 0; numerodataset < (int)dataset_info_list.size(); numerodataset++)
   {
     /*Opening the dataset using the token to extract infos*/
     hid_t dataset_id = H5Oopen_by_token(file, dataset_info_list[numerodataset].get_token());

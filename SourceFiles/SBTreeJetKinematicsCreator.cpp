@@ -33,8 +33,11 @@ int SBTreeJetKinematicsCreator(const char *filename, const char *jetfilename, in
     /*Printing fastjet banner*/
     ClusterSequence::print_banner();
 
+    /*Defining a generic counter*/
+    double counter = 0;
+    int progress = 0;
+
     /*Variables to adjust the print formatting and banner print*/
-    int ncolumns2beprinted = 100;
     vector<TString> str2beprinted;
     TString author = "P. Andreola";
     TString license = "This function is provided without warranty under the GNU GPL v3 or higher";
@@ -54,35 +57,35 @@ int SBTreeJetKinematicsCreator(const char *filename, const char *jetfilename, in
     Tree_names.push_back("BackTrainingKinematics");
     Tree_names.push_back("SignalTrainingKinematics");
     Tree_names.push_back("EventKinematics");
-    Double_t jet1_pT, jet1_E, jet1_px, jet1_py, jet1_pz;
-    Double_t jet2_pT, jet2_E, jet2_px, jet2_py, jet2_pz;
+    Double_t jet1_E, jet1_px, jet1_py, jet1_pz;
+    Double_t jet2_E, jet2_px, jet2_py, jet2_pz;
     TTree EventJet("EventJet", "EventJet");
-    TBranch *jet1_E_branch = EventJet.Branch("jet1_E", &jet1_E);
-    TBranch *jet1_px_branch = EventJet.Branch("jet1_px", &jet1_px);
-    TBranch *jet1_py_branch = EventJet.Branch("jet1_py", &jet1_py);
-    TBranch *jet1_pz_branch = EventJet.Branch("jet1_pz", &jet1_pz);
-    TBranch *jet2_E_branch = EventJet.Branch("jet2_E", &jet2_E);
-    TBranch *jet2_px_branch = EventJet.Branch("jet2_px", &jet2_px);
-    TBranch *jet2_py_branch = EventJet.Branch("jet2_py", &jet2_py);
-    TBranch *jet2_pz_branch = EventJet.Branch("jet2_pz", &jet2_pz);
+    EventJet.Branch("jet1_E", &jet1_E);
+    EventJet.Branch("jet1_px", &jet1_px);
+    EventJet.Branch("jet1_py", &jet1_py);
+    EventJet.Branch("jet1_pz", &jet1_pz);
+    EventJet.Branch("jet2_E", &jet2_E);
+    EventJet.Branch("jet2_px", &jet2_px);
+    EventJet.Branch("jet2_py", &jet2_py);
+    EventJet.Branch("jet2_pz", &jet2_pz);
     TTree SignalJet("SignalJet", "SignalJet");
-    TBranch *s_jet1_E_branch = SignalJet.Branch("jet1_E", &jet1_E);
-    TBranch *s_jet1_px_branch = SignalJet.Branch("jet1_px", &jet1_px);
-    TBranch *s_jet1_py_branch = SignalJet.Branch("jet1_py", &jet1_py);
-    TBranch *s_jet1_pz_branch = SignalJet.Branch("jet1_pz", &jet1_pz);
-    TBranch *s_jet2_E_branch = SignalJet.Branch("jet2_E", &jet2_E);
-    TBranch *s_jet2_px_branch = SignalJet.Branch("jet2_px", &jet2_px);
-    TBranch *s_jet2_py_branch = SignalJet.Branch("jet2_py", &jet2_py);
-    TBranch *s_jet2_pz_branch = SignalJet.Branch("jet2_pz", &jet2_pz);
+    SignalJet.Branch("jet1_E", &jet1_E);
+    SignalJet.Branch("jet1_px", &jet1_px);
+    SignalJet.Branch("jet1_py", &jet1_py);
+    SignalJet.Branch("jet1_pz", &jet1_pz);
+    SignalJet.Branch("jet2_E", &jet2_E);
+    SignalJet.Branch("jet2_px", &jet2_px);
+    SignalJet.Branch("jet2_py", &jet2_py);
+    SignalJet.Branch("jet2_pz", &jet2_pz);
     TTree BackgroundJet("BackgroundJet", "BackgroundJet");
-    TBranch *b_jet1_E_branch = BackgroundJet.Branch("jet1_E", &jet1_E);
-    TBranch *b_jet1_px_branch = BackgroundJet.Branch("jet1_px", &jet1_px);
-    TBranch *b_jet1_py_branch = BackgroundJet.Branch("jet1_py", &jet1_py);
-    TBranch *b_jet1_pz_branch = BackgroundJet.Branch("jet1_pz", &jet1_pz);
-    TBranch *b_jet2_E_branch = BackgroundJet.Branch("jet2_E", &jet2_E);
-    TBranch *b_jet2_px_branch = BackgroundJet.Branch("jet2_px", &jet2_px);
-    TBranch *b_jet2_py_branch = BackgroundJet.Branch("jet2_py", &jet2_py);
-    TBranch *b_jet2_pz_branch = BackgroundJet.Branch("jet2_pz", &jet2_pz);
+    BackgroundJet.Branch("jet1_E", &jet1_E);
+    BackgroundJet.Branch("jet1_px", &jet1_px);
+    BackgroundJet.Branch("jet1_py", &jet1_py);
+    BackgroundJet.Branch("jet1_pz", &jet1_pz);
+    BackgroundJet.Branch("jet2_E", &jet2_E);
+    BackgroundJet.Branch("jet2_px", &jet2_px);
+    BackgroundJet.Branch("jet2_py", &jet2_py);
+    BackgroundJet.Branch("jet2_pz", &jet2_pz);
 
     Double_t pT, eta, phi;
     vector<PseudoJet> particles;
@@ -137,18 +140,36 @@ int SBTreeJetKinematicsCreator(const char *filename, const char *jetfilename, in
                     /*If there is any previous tree, it is going to be overwritten!*/
                     if (stringit->CompareTo("BackTrainingKinematics") == 0)
                     {
+                        if (counter/(min(jetnumber, nentries)-700)*100 >= progress)
+                        {
+                            StatusPrinter(progress);
+                            progress = progress + min(jetnumber, nentries)/700;
+                        }
+                        counter = counter + 700;
                         BackgroundJet.Fill();
                         SBJetOutputroot.cd();
                         BackgroundJet.Write("", TObject::kOverwrite);
                     }
                     else if (stringit->CompareTo("SignalTrainingKinematics") == 0)
                     {
+                        if (counter/(min(jetnumber, nentries)-700)*100 >= progress)
+                        {
+                            StatusPrinter(progress);
+                            progress = progress + min(jetnumber, nentries)/700;
+                        }
+                        counter = counter + 700;                        
                         SignalJet.Fill();
                         SBJetOutputroot.cd();
                         SignalJet.Write("", TObject::kOverwrite);
                     }
                     else if (stringit->CompareTo("EventKinematics") == 0)
                     {
+                        if (counter/(min(jetnumber, nentries)-700)*100 >= progress)
+                        {
+                            StatusPrinter(progress);
+                            progress = progress + min(jetnumber, nentries)/700;
+                        }
+                        counter = counter + 700;                        
                         EventJet.Fill();
                         SBJetOutputroot.cd();
                         EventJet.Write("", TObject::kOverwrite);
@@ -156,10 +177,11 @@ int SBTreeJetKinematicsCreator(const char *filename, const char *jetfilename, in
                     else
                         break;
                     jets.clear();
-                    if (i % 700000 == 0 && i>0)
-                    {
-                        cout << "Working on jet number: " << i / 700 << endl;
-                    }
+                }
+                if (progress == 100)
+                {
+                    StatusPrinter(100);
+                    progress = 0;
                 }
             }
         }

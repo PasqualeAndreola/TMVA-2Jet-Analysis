@@ -21,6 +21,10 @@ using namespace std;
 
 int SBTreeCreator(const char *filename, const char *outputname, int sbflag, int number)
 {
+  /*Defining a generic counter*/
+  double counter = 0;
+  int progress = 0;
+
   /*Variables to adjust the print formatting and banner print*/
   vector<TString> str2beprinted;
   TString author = "P. Andreola";
@@ -108,10 +112,12 @@ int SBTreeCreator(const char *filename, const char *outputname, int sbflag, int 
         EventKinematics.Fill();
       }
     }
-    if (i % (100000*threenparticles) == 0 && i>0)
+    if ( (counter/(nentries-threenparticles))*100 >= progress )
     {
-      cout << i/(100000*threenparticles) << " hundreds of thousands events have been analyzed" << endl;
+      StatusPrinter(progress);
+      progress++;
     }
+    counter= counter+threenparticles;
   }
 
   /*Distinguished trees are written in the output file*/

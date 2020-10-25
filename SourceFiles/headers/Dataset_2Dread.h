@@ -36,6 +36,7 @@
 #include <math.h>
 #include <TFile.h>
 #include <TTree.h>
+#include "StatusPrinter.h"
 
 //It can be useful to use these namespaces
 using namespace std;
@@ -47,7 +48,8 @@ template <typename buftype>
 void Dataset_2Dread(hid_t dataset_id, int datasetnumber, const char *outfile)
 {
     /*Defining a generic counter*/
-    unsigned long long int counter = 0;
+    double counter = 0;
+    int progress = 0;
 
     /*Define some string used to name output file and trees*/
     string filename, treename;
@@ -126,11 +128,12 @@ void Dataset_2Dread(hid_t dataset_id, int datasetnumber, const char *outfile)
             }
 
             /*Buffer is read*/
-            for (int i = 0; i < count[0]; i++)
+            for (int i = 0; i < (int)count[0]; i++)
             {
-                if (counter % 100000000 == 0 && counter > 0)
+                if ( (counter/(dims_out[0]-1))*100 >= progress )
                 {
-                    cout << counter / 100000000 << " hundreds of millions data have been processed" << endl;
+                    StatusPrinter(progress);
+                    progress++;
                 }
                 counter++;
                 branchbuf = buf[i];
@@ -155,11 +158,12 @@ void Dataset_2Dread(hid_t dataset_id, int datasetnumber, const char *outfile)
         }
 
         /*Buffer is read*/
-        for (int i = 0; i < count[0]; i++)
+        for (int i = 0; i < (int)count[0]; i++)
         {
-            if (counter % 100000000 == 0 && counter > 0)
+            if ( (counter/(dims_out[0]-1))*100 >= progress)
             {
-                cout << counter / 100000000 << " hundreds of millions data have been processed" << endl;
+                StatusPrinter(progress) ;
+                progress++;
             }
             counter++;
             branchbuf = buf[i * count[0]];
@@ -198,14 +202,15 @@ void Dataset_2Dread(hid_t dataset_id, int datasetnumber, const char *outfile)
                 }
 
                 /*Buffer is read*/
-                for (int i = 0; i < count[1]; i++)
+                for (int i = 0; i < (int)count[1]; i++)
                 {
                     {
-                        for (int j = 0; j < count[0]; j++)
+                        for (int j = 0; j < (int)count[0]; j++)
                         {
-                            if (counter % 100000000 == 0 && counter > 0)
+                            if ( (counter/(dims_out[0]*dims_out[1]-1))*100 >= progress )
                             {
-                                cout << counter / 100000000 << " hundreds of millions data have been processed" << endl;
+                                StatusPrinter(progress) ;
+                                progress++;
                             }
                             counter++;
                             branchbuf = buf[i * count[0] + j];
@@ -232,13 +237,14 @@ void Dataset_2Dread(hid_t dataset_id, int datasetnumber, const char *outfile)
             }
 
             /*Buffer is read*/
-            for (int i = 0; i < count[1]; i++)
+            for (int i = 0; i < (int)count[1]; i++)
             {
-                for (int j = 0; j < count[0]; j++)
+                for (int j = 0; j < (int)count[0]; j++)
                 {
-                    if (counter % 100000000 == 0 && counter > 0)
+                    if ( (counter/(dims_out[0]*dims_out[1]-1))*100 >= progress )
                     {
-                        cout << counter / 100000000 << " hundreds of millions data have been processed" << endl;
+                        StatusPrinter(progress) ;
+                        progress++;
                     }
                     counter++;
                     branchbuf = buf[i * count[0] + j];
@@ -268,13 +274,14 @@ void Dataset_2Dread(hid_t dataset_id, int datasetnumber, const char *outfile)
             }
 
             /*Buffer is read*/
-            for (int i = 0; i < count[1]; i++)
+            for (int i = 0; i < (int)count[1]; i++)
             {
-                for (int j = 0; j < count[0]; j++)
+                for (int j = 0; j < (int)count[0]; j++)
                 {
-                    if (counter % 100000000 == 0 && counter > 0)
+                    if ( (counter/(dims_out[0]*dims_out[1]-1))*100 >= progress )
                     {
-                        cout << counter / 100000000 << " hundreds of millions data have been processed" << endl;
+                        StatusPrinter(progress) ;
+                        progress++;
                     }
                     counter++;
                     branchbuf = buf[i * count[0] + j];
@@ -299,13 +306,14 @@ void Dataset_2Dread(hid_t dataset_id, int datasetnumber, const char *outfile)
         }
 
         /*Buffer is read*/
-        for (int i = 0; i < count_rest[1]; i++)
+        for (int i = 0; i < (int)count_rest[1]; i++)
         {
-            for (int j = 0; j < count_rest[0]; j++)
+            for (int j = 0; j < (int)count_rest[0]; j++)
             {
-                if (counter % 100000000 == 0 && counter > 0)
+                if ( (counter/(dims_out[0]*dims_out[1]-1))*100 >= progress )
                 {
-                    cout << counter / 100000000 << " hundreds of millions data have been processed" << endl;
+                    StatusPrinter(progress) ;
+                    progress++;
                 }
                 counter++;
                 branchbuf = buf[i * count_rest[0] + j];

@@ -26,8 +26,7 @@ int TreeJetCreator(const char *filename, double R, double pT_min)
   char nomefile[256];
   strcpy(nomefile, filename);
   strcat(nomefile, ".root");
-  Double_t pT, eta, phi, mass;
-  Double_t E, px, py, pz;
+  Double_t pT, eta, phi;
 
   /*
       Here jet clustering algorithm properties are chosen:
@@ -52,7 +51,7 @@ int TreeJetCreator(const char *filename, double R, double pT_min)
 
   //read only the destep branch for all entries
   Int_t nentries = (Int_t)alberello->GetEntries();
-  Int_t i = 0, j = 0, flag_segnale = 0;
+  Int_t i = 0, j = 0;
   for (i = 0; i < nentries; i += dataset_info_list[3].get_column())
   {
     particelle.clear();
@@ -60,7 +59,6 @@ int TreeJetCreator(const char *filename, double R, double pT_min)
     for (j = 0; j <= dataset_info_list[3].get_column() - 3; j += 3)
     {
       block0values->GetEntry(i + dataset_info_list[3].get_column() - 1);
-      flag_segnale = value;
       block0values->GetEntry(i + j);
       if (value > 0)
       {

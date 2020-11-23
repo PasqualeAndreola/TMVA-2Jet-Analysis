@@ -19,28 +19,20 @@
 #include <TROOT.h>
 #include <TApplication.h>
 #include <TString.h>
-#include <TH1F.h>
-#include <TCanvas.h>
-#include <TGraph.h>
-#include <THStack.h>
-#include <TLegend.h>
-#include <TMVA/Factory.h>
-#include <TMVA/Reader.h>
-#include <TMVA/TMVAGui.h>
-#include <TMVA/DataLoader.h>
-#include <TMVA/Tools.h>
 #include "headers/TreeCreator.h"
 #include "headers/TreeJetCreator.h"
 #include "headers/SBTreeCreator.h"
 #include "headers/SBTreeJetKinematicsCreator.h"
+#include "headers/TMVAFactoryAnalysis.h"
+#include "headers/TMVAReaderAnalysis.h"
 
-/*It can be useful to use these namespaces*/
+//It can be useful to use these namespaces
 using namespace std;
 using namespace fastjet;
 
 int main(int argc, char *argv[])
 {
-  /* Input files and relative flags (1 for event file, 0 for unknown, -1 for background)*/
+  // Input files and relative flags (1 for event file, 0 for unknown, -1 for background)
   vector<TString> filenames;
   vector<int> sbflags;
   filenames.push_back("events_anomalydetection_Z_XY_qqq");
@@ -54,22 +46,31 @@ int main(int argc, char *argv[])
   filenames.push_back("lhc_anomalydetection_small");
   sbflags.push_back(0);
 
-  /* Name of output file*/
-  TString SBOutputfile = "SBOutput";
-  TString SBJetOutputfile = "SBJetOutput";
-  TString TMVAFactoryoutputname = "TMVAFactory";
+  // Methods that the user wants to use to do the MVA (search TMVA::Types to find the names)
+  vector<TString> tmvamethods;
+  tmvamethods.push_back("kDL");
+  tmvamethods.push_back("kBDT");
+  tmvamethods.push_back("kMLP");
+  tmvamethods.push_back("kPDEFoam");
 
-  /* Number of jets that has to be clustered from event data*/
+  // Name of output file
+  string SBOutputfile = "SBOutput";
+  string SBJetOutputfile = "SBJetOutput";
+  string TMVAFactoryoutputname = "TMVAFactory";
+  string TMVAReaderoutputname  = "WprimoEventClassification";
+
+  // Number of jets that has to be clustered from event data
   unsigned long sbjetnumber = 100000, eventjetnumber = 100000;
   double_t R = 1.0, pT_min = 20;
 
-  /*Defining number of jet that has to be put in the TMVA factory*/
-  unsigned long ntrainsign = 10000;
-  unsigned long ntrainback = 10000;
-  unsigned long ntestsign = 10000;
-  unsigned long ntestback = 10000;
+  // Defining number of jets that has to be put in the TMVA factory
+  vector<unsigned long int> tmvaevents;
+  tmvaevents.push_back((unsigned long int)10000);
+  tmvaevents.push_back((unsigned long int)10000);
+  tmvaevents.push_back((unsigned long int)10000);
+  tmvaevents.push_back((unsigned long int)10000);
 
-  /*Useful Variables*/
+  // Useful Variables
   int i = 0;
   vector<TString> question;
   string answer;
@@ -112,7 +113,7 @@ int main(int argc, char *argv[])
         {
           //Distinguishing signal from background and event and vice versa
           openh5(TString::Format("%s.h5", stringit->Data()));
-          SBTreeCreator(TString::Format("OutputFiles/%s.root", stringit->Data()), TString::Format("OutputFiles/%s.root", SBOutputfile.Data()), sbflags[i], i);
+          SBTreeCreator(TString::Format("OutputFiles/%s.root", stringit->Data()), TString::Format("OutputFiles/%s.root", SBOutputfile.data()), sbflags[i], i);
           dataset_info_list.clear();
         }
       }
@@ -130,7 +131,7 @@ int main(int argc, char *argv[])
         {
           //Distinguishing signal from background and event and vice versa*
           openh5(TString::Format("%s.h5", stringit->Data()));
-          SBTreeCreator(TString::Format("OutputFiles/%s.root", stringit->Data()), TString::Format("OutputFiles/%s.root", SBOutputfile.Data()), sbflags[i], i);
+          SBTreeCreator(TString::Format("OutputFiles/%s.root", stringit->Data()), TString::Format("OutputFiles/%s.root", SBOutputfile.data()), sbflags[i], i);
           dataset_info_list.clear();
         }
       }
@@ -143,97 +144,43 @@ int main(int argc, char *argv[])
     cin >> answer;
     if (answer.compare("YES") == 0 || answer.compare("yes") == 0 || answer.compare("Yes") == 0 || answer.compare("y") == 0 || answer.compare("Y") == 0)
     {
-      SBTreeJetKinematicsCreator(TString::Format("OutputFiles/%s.root", SBOutputfile.Data()), TString::Format("OutputFiles/%s.root", SBJetOutputfile.Data()), filenames.size(), sbjetnumber, eventjetnumber, R, pT_min);
+      SBTreeJetKinematicsCreator(TString::Format("OutputFiles/%s.root", SBOutputfile.data()), TString::Format("OutputFiles/%s.root", SBJetOutputfile.data()), filenames.size(), sbjetnumber, eventjetnumber, R, pT_min);
     }
-  
-   /*
-    TString outfilename(TString::Format("TMVAResults/%s.root", TMVAFactoryoutputname.Data()));
-    TFile *inputfile = TFile::Open(TString::Format("OutputFiles/%s.root", SBJetOutputfile.Data()), "read");
-    TFile *outputfile = TFile::Open(outfilename, "recreate");
-
-    TMVA::DataLoader *loader = new TMVA::DataLoader("TMVAResults/Wprimo");
-    TMVA::Factory *factory = new TMVA::Factory("TMVAClassification", outputfile, "AnalysisType=Classification");
-    loader->AddVariable("MVAjet1_pT := sqrt(pow(jet1_px,2) + pow(jet1_py,2))", 'F');
-    loader->AddVariable("MVAjet2_pT := sqrt(pow(jet2_px,2) + pow(jet2_py,2))", 'F');
-    loader->AddVariable("MVAjet1_m := sqrt( abs(pow(jet1_E,2) - pow(jet1_px,2) - pow(jet1_py,2) - pow(jet1_pz,2)))", 'F');
-    loader->AddVariable("MVAjet2_m := sqrt( abs(pow(jet2_E,2) - pow(jet2_px,2) - pow(jet2_py,2) - pow(jet2_pz,2)))", 'F');
-    loader->AddVariable("MVAjet_mjj := sqrt( abs(pow(jet1_E+jet2_E,2) - pow(jet1_px+jet2_px,2) - pow(jet1_py+jet2_py,2) - pow(jet1_pz+jet2_pz,2)))", 'F');
-    loader->AddVariable("MVAjet1_px := jet1_px", 'F');
-    loader->AddVariable("MVAjet2_px := jet2_px", 'F');
-    TTree *signal = (TTree *)inputfile->Get("SignalJet");
-    TTree *background = (TTree *)inputfile->Get("BackgroundJet");
-    Double_t signalweight = 1.0, backgroundweight = 1.0;
-    loader->AddSignalTree(signal, signalweight);
-    loader->AddBackgroundTree(background, backgroundweight);
-
-    TString dataString = TString::Format("nTrain_Signal=%lu", ntrainsign);
-    dataString.Append(TString::Format(":nTrain_Background=%lu", ntrainback));
-    dataString.Append(TString::Format(":nTest_Signal=%lu", ntestsign));
-    dataString.Append(TString::Format(":nTest_Background=%lu", ntestback));
-    dataString.Append(":SplitMode=Random:NormMode=NumEvents:!V");
-
-    loader->PrepareTrainingAndTestTree("", "", dataString);
-    TString configString = "!H:V";
-    configString += ":VarTransform=N";
-    configString += ":ErrorStrategy=CROSSENTROPY";
-    configString += ":WeightInitialization=XAVIERUNIFORM";
-
-    TString layoutString = "Layout=TANH|100, TANH|50, TANH|10, LINEAR";
-
-    // Training strategies for PDE-Foam
-    TString trainingPDEF1 = "!H:!V:SigBgSeparate=F:TailCut=0.001:VolFrac=0.0666:nActiveCells=500:nSampl=100000:nBin=5:Nmin=100:Kernel=None:Compress=T";
-
-    // Training strategies for deep learning
-    TString trainingString1 = "TrainingStrategy=LearningRate=1e-2,Momentum=0.5, Repetitions=1,ConvergenceSteps=100,BatchSize=100,DropConfig=0.0+0.5+0.5+0.0";
-    trainingString1.Append(",WeightDecay=0.001,Regularization=L2,TestRepetitions=15,Multithreading=True");
-
-    TString trainingString2 = " | LearningRate=1e-3,Momentum=0.1, Repetitions=1,ConvergenceSteps=100,BatchSize=50,DropConfig=0.0+0.1+0.1+0.0";
-    trainingString2.Append(",WeightDecay=0.001,Regularization=L2,TestRepetitions=15,Multithreading=True");
-
-    TString trainingString3 = " | LearningRate=1e-4,Momentum=0.0, Repetitions=10,ConvergenceSteps=100,BatchSize=25,DropConfig=0.0+0.1+0.1+0.0";
-    trainingString3.Append(",WeightDecay=0.001,Regularization=L2,TestRepetitions=15,Multithreading=True");
-
-    // Training strategies for MultiLayerOerceptron
-    TString trainingMLP1 = "VarTransform=N, NCycles=1000, HiddenLayers=N+5, NeuronType=tanh, EstimatorType=CE, TrainingMethod=BP, LearningRate=0.2, DecayRate=0.1";
-    
-    TString trainingMLP2 = "VarTransform=N, NCycles=500, HiddenLayers=N, NeuronType=Sigmoid, EstimatorType=MSE, TrainingMethod=BFGS, LearningRate=0.2, DecayRate=0.1";
-
-    TString trainingMLP3 = "VarTransform=N, NCycles=1000, HiddenLayers=N-5, NeuronType=tanh, EstimatorType=CE, TrainingMethod=BP, LearningRate=0.1, DecayRate=0.05";
-
-
-    // Training strategies for BDT
-    TString trainingBDT1 = "Ntrees=800, MaxDepth=7, MinNodeSize=5%, nCuts=35, BoostType=RealAdaBoost, UseRandomisedTrees=Treue, UseNvars=3, UsePoissonNvars=True";
-
-    TString trainingBDT2 = "Ntrees=1000, MaxDepth=5, MinNodeSize=15%, nCuts=-1, BoostType=RealAdaBoost, UseRandomisedTrees=Treue, UseNvars=3, UsePoissonNvars=True";
-
-    TString trainingBDT3 = "Ntrees=1200, MaxDepth=7, MinNodeSize=5%, nCuts=-1, BoostType=AdaBoost, UseRandomisedTrees=Treue, SeparationType=CrossEntropy";
-
-    factory->BookMethod(loader, TMVA::Types::kPDEFoam, "PDEFoam1", trainingPDEF1);
-
-    configString += ":" + layoutString + ":" + trainingString1;
-    //factory->BookMethod(loader, TMVA::Types::kDL, "DL1", configString);
-
-    configString += trainingString2;
-    //factory->BookMethod(loader, TMVA::Types::kDL, "DL2", configString);
-
-    configString += trainingString3;
-    //factory->BookMethod(loader, TMVA::Types::kDL, "DL3", configString);
-
-    //factory->BookMethod(loader, TMVA::Types::kMLP, "MLP1", trainingMLP1);
-    //factory->BookMethod(loader, TMVA::Types::kMLP, "MLP2", trainingMLP2);
-    //factory->BookMethod(loader, TMVA::Types::kMLP, "MLP3", trainingMLP3);
-
-    //factory->BookMethod(loader, TMVA::Types::kBDT, "BDT1", trainingBDT1);
-    //factory->BookMethod(loader, TMVA::Types::kBDT, "BDT2", trainingBDT2);
-    //factory->BookMethod(loader, TMVA::Types::kBDT, "BDT3", trainingBDT3);
-
-    factory->TrainAllMethods();
-    factory->TestAllMethods();
-    factory->EvaluateAllMethods();
-
-    inputfile->Close();
-    outputfile->Close();*/
-  }/*
+    question.push_back("Do you wish to use these methods to set up the TMVA Factory? (YES/NO)");
+    question.push_back("(Answer no if you already have trained the algorithm using the sample jets)");
+    PrintFuncInfo(question);
+    question.clear();
+    for (vector<TString>::iterator stringit = tmvamethods.begin(); stringit != tmvamethods.end(); ++stringit)
+    {
+      cout << "\t" << stringit->Data() << endl;
+    }
+    cout << endl;
+    cin >> answer;
+    if (answer.compare("YES") == 0 || answer.compare("yes") == 0 || answer.compare("Yes") == 0 || answer.compare("y") == 0 || answer.compare("Y") == 0)
+    {
+      TMVAFactoryAnalysis(tmvamethods, tmvaevents, SBJetOutputfile, TMVAFactoryoutputname);
+    }
+    question.push_back("Do you wish to use these methods to set up the TMVA Reader? (YES/NO)");
+    question.push_back("(Answer no if you don't want to do the multivariate analysis of the jets)");
+    PrintFuncInfo(question);
+    question.clear();
+    for (vector<TString>::iterator stringit = tmvamethods.begin(); stringit != tmvamethods.end(); ++stringit)
+    {
+      cout << "\t" << stringit->Data() << endl;
+    }
+    cout << endl;
+    cin >> answer;
+    if (answer.compare("YES") == 0 || answer.compare("yes") == 0 || answer.compare("Yes") == 0 || answer.compare("y") == 0 || answer.compare("Y") == 0)
+    {
+      TMVAReaderAnalysis(tmvamethods, SBJetOutputfile, TMVAReaderoutputname);
+    }
+    else
+    {
+      question.push_back("The user doesn't want to analyze those jets");
+      PrintFuncInfo(question);
+      question.clear();
+    }
+  }
   else
   {
     question.push_back("The user doesn't want to analyze those files");
@@ -241,7 +188,7 @@ int main(int argc, char *argv[])
     question.clear();
     return 0;
   }
-  
+  /*
   TFile *eventinputfile = TFile::Open("OutputFiles/SBJetOutput.root", "read");
   TFile *eventoutputfile = TFile::Open("TMVAResults/Outclassevent.root", "recreate");
   TTree *EventJet = (TTree *)eventinputfile->Get("EventJet");

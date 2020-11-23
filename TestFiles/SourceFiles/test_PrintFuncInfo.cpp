@@ -17,6 +17,6 @@ TEST_CASE("Checking the output of the function: PrintFuncInfo", "[PrintFuncInfo]
     /* We require that the output stream is not equivalent to the input string */
     REQUIRE(output_buffer.str().compare("Esempio di test") != 0);
 
-    /* */
+    /* Works if there are 55 columns, has to be adapted to ncolumns */
     REQUIRE(output_buffer.str().compare("\n*******************************************************\n*                                                     *\n*                   Esempio di test                   *\n*                                                     *\n*******************************************************\n\n") == 0);
 }

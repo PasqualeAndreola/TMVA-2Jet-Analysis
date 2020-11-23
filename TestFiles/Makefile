@@ -17,17 +17,17 @@ OBJEXT := o
 DEPEXT := d
 
 #Flags
-CXXFLAGS 	 := -O3 -g
+CXXFLAGS 	 := -O3 -g --std=c++17 -lstdc++fs
 
 #Includes
-INCROOT 	 := -I/home/pasquale/root/include/root
+INCROOT 	 := -I/home/pasquale/root/include
 INCJET  	 := -I/home/pasquale/fastjet/include -I/home/pasquale/fastjet/include/fastjet
 INCHDF5 	 := -I/home/pasquale/hdf5/include
 INCLUDES     :=  $(INCROOT) $(INCJET) $(INCHDF5)
 
 #Libraries that has to be linked
-LIBSROOT 	 := -L/home/pasquale/root/lib/root -lTMVA -lCore -lImt -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lROOTVecOps
-LIBSROOT 	 += -L/home/pasquale/root/lib/root -lTree -lTreePlayer -lRint -lPostscript -lMatrix -lPhysics -lMathCore
+LIBSROOT 	 := -L/home/pasquale/root/lib -lTMVA -lCore -lImt -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lROOTVecOps
+LIBSROOT 	 += -L/home/pasquale/root/lib -lTree -lTreePlayer -lRint -lPostscript -lMatrix -lPhysics -lMathCore
 LIBSJET	     := -Wl,-rpath,/home/pasquale/fastjet/lib -L/home/pasquale/fastjet/lib -lfastjettools -lfastjet -lm
 LIBSHDF5     := -Wl,-rpath,/home/pasquale/hdf5/lib -L/home/pasquale/hdf5/lib /home/pasquale/hdf5/lib/libhdf5_hl_cpp.a /home/pasquale/hdf5/lib/libhdf5_cpp.a 
 LIBSHDF5     += /home/pasquale/hdf5/lib/libhdf5_hl.a /home/pasquale/hdf5/lib/libhdf5.a -lz -ldl -lm -Wl,-rpath -Wl,/home/pasquale/hdf5/lib

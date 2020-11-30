@@ -1,5 +1,4 @@
-/*! \file Dataset_2Dread.h
- *
+/*! \file StatusPrinter.h
  *  \brief Header file for \link StatusPrinter \endlink function.
  */
 

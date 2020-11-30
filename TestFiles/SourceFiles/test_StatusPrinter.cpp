@@ -1,6 +1,6 @@
 /*!
- *  \file test_PrintFuncInfo.cpp
- *  \brief Unit test for \ref StatusPrinter function
+ *  \file test_StatusPrinter.cpp
+ *  \brief Unit test for \ref StatusPrinter(int progress) function
  */
 
 #include "headers/catch.hpp"

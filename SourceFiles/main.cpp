@@ -10,10 +10,60 @@
  *
  * \section dataread_sec Data reading
  * 
- *
- * \subsection step1 Step 1: Opening the box
- *
- * etc...
+ * LHC Olympics give sample files with extension ".h5". It means that the user has to install
+ * HDF5 library and use a script to interact with sample files. This project gives some function,
+ * written in C++, useful to handle with *.h5 files.
+ * 
+ * \subsection read1 Step 1: Opening the box
+ * 
+ * Files formatted in ".h5" usually have three main sub-structures: groups, datasets and datatypes.\n
+ * \ref openh5 let the user see the structure of the input file and store the information about
+ * the dataset in a vector of class \ref DatasetInfo, which holds the name of the dataset, the token
+ * that identifies it and its dimensions (dataset is supposed to be 2D).\n
+ * \ref openh5 goes through the file iteratively, using the \ref opfunc operator , which get the type and
+ * the info about the sub-structure stored in the input file.
+ * 
+ * \subsection read2 Step 2: Reading the dataset
+ * Reading the dataset is the most critical part of the project. HDF5 library memory management at the core level
+ * is "old fashioned": the user must provide a buffer of the same type of the dataset that has to read and buffer's
+ * dimensions have to be in the "boundaries" of the dataset. To solve this problem and maximize the reading
+ * efficiency, the user can use the function template \ref Dataset_2Dread.\n 
+ * \ref Dataset_2Dread uses the template and the global variable "bufferdimension" to create an appropriate buffer to hold read data.
+ * Setting "bufferdimension" as high as user RAM can store means higher reading speed.\n
+ * 
+ * \section datamanipulation_sec Data manipulation
+ * 
+ * \subsection mani1 Writing the buffer to a root file
+ * This project uses ROOT framework, so it's useful to write read data to a *.root file. To write the buffer to a root file, user 
+ * can call \ref TreeCreator, which set up the correct template for \ref Dataset_2Dread which writes read buffer to the chosen root file.\n
+ * 
+ * From now on, HDF5 is not needed.\n
+ * 
+ * \subsection mani2 Distinguishing signal, background and real event
+ * Data written in the root files are parsed as suggested by LHC Olympics (700 hadrons described by their \f$ p_{T} \f$, \f$ \eta \f$, \f$ \Phi \f$).
+ * To distinguish background and signal events dataset contain an extra column. When this column is not present, the user can set up an optional value 
+ * "sbflag" in the \ref main, if the user knows additional information about dataset stored in the file. \ref SBTreeCreator creates
+ * an output file storing signal/background/event kinematics of the hadrons in the various dataset.
+ * 
+ * \subsection mani3 Jet clustering
+ * In the end, \ref SBTreeJetKinematicsCreator clusters the hadrons with transverse momentum greater than \f$ p_{T, min} \f$ with a jet radius set by the user.
+ * Kinematics of the two most massive jets are stored in a root file.\n
+ * 
+ * \section tmvafactory TMVA analysis
+ * 
+ * These functions have to be customized by the user because mva methods have different parameters that have to be tuned.
+ * 
+ * \subsection The TMVA::Factory
+ * \ref TMVAFactoryAnalysis set up a factory holding results of the user-defined algorithm analysis of the data sample.\n
+ * 
+ * \subsection The TMVA::Reader
+ * \ref TMVAReaderAnalysis analyzes a data sample using user-defined algorithms and their relative weights stored in the TMVA::Factory set up by the \ref TMVAFactoryAnalysis
+ * function. This reader generates pdf and root files, storing the result of the analysis.\n
+ */
+
+/*! 
+ * \file main.cpp
+ * \brief Main file
  */
 
 #include <TROOT.h>
@@ -57,7 +107,7 @@ int main(int argc, char *argv[])
   string SBOutputfile = "SBOutput";
   string SBJetOutputfile = "SBJetOutput";
   string TMVAFactoryoutputname = "TMVAFactory";
-  string TMVAReaderoutputname  = "WprimoEventClassification";
+  string TMVAReaderoutputname = "WprimoEventClassification";
 
   // Number of jets that has to be clustered from event data
   unsigned long sbjetnumber = 100000, eventjetnumber = 100000;
@@ -188,193 +238,6 @@ int main(int argc, char *argv[])
     question.clear();
     return 0;
   }
-  /*
-  TFile *eventinputfile = TFile::Open("OutputFiles/SBJetOutput.root", "read");
-  TFile *eventoutputfile = TFile::Open("TMVAResults/Outclassevent.root", "recreate");
-  TTree *EventJet = (TTree *)eventinputfile->Get("EventJet");
-  int event_entries = EventJet->GetEntries();
-  Float_t MVAjet1_pT, MVAjet2_pT, MVAjet1_m, MVAjet2_m, MVAjet1_px, MVAjet2_px, MVAjet2_mjj;
-  Double_t d_jet1_px, d_jet1_py, d_jet1_pz, d_jet1_E, d_jet2_px, d_jet2_py, d_jet2_pz, d_jet2_E;
-  Double_t mjj;
-  EventJet->SetBranchAddress("jet1_E", &d_jet1_E);
-  EventJet->SetBranchAddress("jet1_px", &d_jet1_px);
-  EventJet->SetBranchAddress("jet1_py", &d_jet1_py);
-  EventJet->SetBranchAddress("jet1_pz", &d_jet1_pz);
-  EventJet->SetBranchAddress("jet2_E", &d_jet2_E);
-  EventJet->SetBranchAddress("jet2_px", &d_jet2_px);
-  EventJet->SetBranchAddress("jet2_py", &d_jet2_py);
-  EventJet->SetBranchAddress("jet2_pz", &d_jet2_pz);
-
-  TMVA::Reader *reader = new TMVA::Reader("Color");
-  Float_t jet1_px = (Float_t) d_jet1_px;
-  Float_t jet1_py = (Float_t) d_jet1_py;
-  Float_t jet1_pz = (Float_t) d_jet1_pz;
-  Float_t jet1_E = (Float_t) d_jet1_E;
-  Float_t jet2_px = (Float_t) d_jet2_px;
-  Float_t jet2_py = (Float_t) d_jet2_py;
-  Float_t jet2_pz = (Float_t) d_jet2_pz;
-  Float_t jet2_E = (Float_t) d_jet2_E;
-  reader->AddVariable("MVAjet1_pT := sqrt(pow(jet1_px,2) + pow(jet1_py,2))", &MVAjet1_pT);
-  reader->AddVariable("MVAjet2_pT := sqrt(pow(jet2_px,2) + pow(jet2_py,2))", &MVAjet2_pT);
-  reader->AddVariable("MVAjet1_m := sqrt( abs(pow(jet1_E,2) - pow(jet1_px,2) - pow(jet1_py,2) - pow(jet1_pz,2)))", &MVAjet1_m);
-  reader->AddVariable("MVAjet2_m := sqrt( abs(pow(jet2_E,2) - pow(jet2_px,2) - pow(jet2_py,2) - pow(jet2_pz,2)))", &MVAjet2_m);
-  reader->AddVariable("MVAjet_mjj := sqrt( abs(pow(jet1_E+jet2_E,2) - pow(jet1_px+jet2_px,2) - pow(jet1_py+jet2_py,2) - pow(jet1_pz+jet2_pz,2)))", &MVAjet2_mjj);
-  reader->AddVariable("MVAjet1_px := jet1_px", &MVAjet1_px);
-  reader->AddVariable("MVAjet2_px := jet2_px", &MVAjet2_px);
-  reader->BookMVA("kPDEFoam", "TMVAResults/Wprimo/weights/TMVAClassification_PDEFoam1.weights.xml");
-
-  TH1F *histMVA = new TH1F("MVA", "MVA", 100, -1, 1);
-  TH1F *histMVAErr = new TH1F("MVAErr", "MVAErr", 100, -1, 1);
-  TH1F *histMVASig = new TH1F("MVASig", "MVASig", 1000, 10000000000, 1000000000000);
-  TH1F *hpTbackground = new TH1F("pTbackground", "pTbackground", 50, 1.1e3, 2.6 * 1e3);
-  TH1F *hpTsignal = new TH1F("pTsignal", "pTsignal", 50, 1.1e3, 2.6 * 1e3);
-  TH1F *hmjjbackground = new TH1F("mjj_total", "mjj_total", 50, 1e3, 7e3);
-  TH1F *hmjjsignal = new TH1F("mjj_signal", "mjj_signal", 50, 1e3, 7e3);
-
-  for (int readerindex = 0; readerindex < event_entries; readerindex++)
-  {
-    jet1_px = (Float_t) d_jet1_px;
-    jet1_py = (Float_t) d_jet1_py;
-    jet1_pz = (Float_t) d_jet1_pz;
-    jet1_E = (Float_t) d_jet1_E;
-    jet2_px = (Float_t) d_jet2_px;
-    jet2_py = (Float_t) d_jet2_py;
-    jet2_pz = (Float_t) d_jet2_pz;
-    jet2_E = (Float_t) d_jet2_E;
-    EventJet->GetEntry(readerindex);
-    MVAjet1_pT = sqrt(pow(jet1_px, 2) + pow(jet1_py, 2));
-    MVAjet2_pT = sqrt(pow(jet2_px, 2) + pow(jet2_py, 2));
-    MVAjet1_m = sqrt( abs(pow(jet1_E,2) - pow(jet1_px,2) - pow(jet1_py,2) - pow(jet1_pz,2)));
-    MVAjet2_m = sqrt( abs(pow(jet2_E,2) - pow(jet2_px,2) - pow(jet2_py,2) - pow(jet2_pz,2)));
-    MVAjet1_px = jet1_px;
-    MVAjet2_px = jet2_px;
-    histMVA->Fill(reader->EvaluateMVA("kPDEFoam"));
-    histMVAErr->Fill(reader->GetMVAError());
-    histMVASig->Fill( (reader->EvaluateMVA("kPDEFoam")/(reader->GetMVAError() ) ) );
-    mjj = (Double_t)sqrt(pow((jet1_E + jet2_E), 2) - pow((jet1_px + jet2_px), 2) - pow((jet1_py + jet2_py), 2) - pow((jet1_pz + jet2_pz), 2));
-    if (reader->EvaluateMVA("kPDEFoam") > 0.3)
-    {
-      hpTsignal->Fill(MVAjet1_pT);
-      hmjjsignal->Fill(mjj);
-    }
-    else
-    {
-      hpTbackground->Fill(MVAjet1_pT);
-      hmjjbackground->Fill(mjj);
-    }
-  }
-  //Stampo il numero di eventi di segnale trovato
-  cout << "There are " << hmjjsignal->GetEntries() << " events containing a W' " << endl;
-
-  //Drawing TMVAEvaluation histogram
-  TCanvas *c0 = new TCanvas("c0", "c0", 1366, 768);
-  c0->cd();
-  histMVA->SetLineColor(kBlue);
-  histMVA->SetFillColorAlpha(kBlue, 0.04);
-  histMVA->SetTitle("MVAEvaluation");
-  histMVA->GetXaxis()->SetTitle("EvaluateMVA \"kPDEFoam\"");
-  histMVA->GetYaxis()->SetTitle("Occurences");
-  histMVA->Draw();
-  c0->Update();
-  c0->SaveAs("MVAEvaluation.png");
-
-  TCanvas *c0err = new TCanvas("c0err", "c0err", 1366, 768);
-  c0err->cd();
-  histMVAErr->SetLineColor(kBlue);
-  histMVAErr->SetFillColorAlpha(kBlue, 0.04);
-  histMVAErr->SetTitle("MVAEvaluation Error");
-  histMVAErr->GetXaxis()->SetTitle("EvaluateMVA Error \"kPDEFoam\"");
-  histMVAErr->GetYaxis()->SetTitle("Occurences");
-  histMVAErr->Draw();
-  c0err->Update();
-  c0err->SaveAs("MVAEvaluationError.png");
-  
-  TCanvas *c0sig = new TCanvas("c0sig", "c0sig", 1366, 768);
-  c0sig->cd();
-  histMVASig->SetLineColor(kBlue);
-  histMVASig->SetFillColorAlpha(kBlue, 0.04);
-  histMVASig->SetTitle("MVAEvaluation Significance");
-  histMVASig->GetXaxis()->SetTitle("EvaluateMVA Significance \"kPDEFoam\"");
-  histMVASig->GetYaxis()->SetTitle("Occurences");
-  histMVASig->Draw();
-  c0sig->Update();
-  c0sig->SaveAs("MVAEvaluationSignificance.png");
-
-  //Inserisco gli istogrammi del pt e della massa in una collezione e li rappresento
-  TCanvas *c1 = new TCanvas("c1", "c1", 1366, 768);
-  c1->cd();
-  THStack *hpTstack = new THStack("hs", "");
-  hpTbackground->SetLineColor(kRed);
-  hpTbackground->SetFillColor(kRed);
-  hpTbackground->SetStats(kFALSE);
-  hpTsignal->SetLineColor(kBlue);
-  hpTsignal->SetFillColorAlpha(kBlue, 0.3);
-  hpTsignal->SetStats(kFALSE);
-  hpTstack->Add(hpTbackground);
-  hpTstack->Add(hpTsignal);
-  hpTstack->SetTitle("Leading jet transverse momentum: p_{T}[GeV]");
-  hpTstack->Draw();
-
-  //Adjusting the legend
-  auto legend = new TLegend(0.65, 0.8, 0.9, 0.9);
-  legend->SetHeader("Leading jet p_{T}","C"); // option "C" allows to center the header
-  legend->AddEntry(hpTbackground, "Background", "f");
-  legend->AddEntry(hpTsignal, "Signal", "f");
-  legend->Draw("same");
-
-  c1->Update();
-  c1->SaveAs("hpTtotal.png");
-
-  TCanvas *c2 = new TCanvas("c2", "c2", 1366, 768);
-  c2->cd();
-  hpTsignal->Draw("");
-  c2->Update();
-  c2->SaveAs("hpTsignal.png");
-  
-  TCanvas *c3 = new TCanvas("c3", "c3", 1366, 768);
-  c3->cd();
-  THStack *hmjjstack = new THStack("hsm", "");
-  hmjjbackground->SetLineColor(kRed);
-  hmjjbackground->SetFillColor(kRed);
-  hmjjbackground->SetStats(kFALSE);
-  hmjjsignal->SetLineColor(kBlue);
-  hmjjsignal->SetFillColorAlpha(kBlue, 0.3);
-  hmjjsignal->SetStats(kFALSE);
-  hmjjstack->Add(hmjjbackground);
-  hmjjstack->Add(hmjjsignal);
-  hmjjstack->SetTitle("Combined jet mass: m_{jj}[GeV]");
-  hmjjstack->Draw("");
-  c3->Update();
-  c3->SaveAs("hmjjtotal.png");
-
-  TCanvas *c4 = new TCanvas("c4", "c4", 1366, 768);
-  hmjjsignal->Draw("");
-  c4->Update();
-  c4->SaveAs("hmjjsignal.png");
-
-  eventoutputfile->cd();
-  histMVA->Write();
-  histMVASig->Write();
-  histMVAErr->Write();
-  hpTbackground->Write();
-  hpTsignal->Write();
-  hmjjbackground->Write();
-  hmjjsignal->Write();
-  eventinputfile->Close();
-  eventoutputfile->Close();
-  delete reader;*/
 
   return 0;
 }
-
-    //TApplication *Analysisroot_app = new TApplication("Analysis", &argc, argv);
-    /*Se l'utente vuole visionare i risultati subito si avvia un applicativo root*/
-    /*std::cout << "\nWould you see the results now? [Y/N]" << std::endl;
-    std::cin.get(str,256);
-    if(strcmp(str,"Y") == 0)
-    {
-      hdestep->Draw();
-      c1->Update();
-      c1->SaveAs("c1.png");
-      Analysisroot_app->Run();
-    }*/

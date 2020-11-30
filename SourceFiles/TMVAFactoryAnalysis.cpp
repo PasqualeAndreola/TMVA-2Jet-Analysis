@@ -1,9 +1,19 @@
-/*!
- *
+/*! \file TMVAFactoryAnalysis.cpp
+ *  \brief Source file for \ref TMVAFactoryAnalysis function implementation.
  */
 
-/*!
- *
+/*! \fn TMVAFactoryAnalysis(vector<TString> tmvamethods, vector<long unsigned int> nevents, string SBJetOutputFilename, string TMVAOutputFilename) "";
+ *  
+ *  \brief  Function that uses tmva methods to generate weight files for the relative algorithm
+ *  \author Pasquale Andreola
+ * 
+ *  Some variables are added to a loader that will be passed to the factory. The user set up some tmva algorithms and the factory
+ *  applies them to the sample dataset. Results are stored in some weight files.
+ * 
+ *  \param tmvamethods          Vector of method names that user would use to analyze the sample
+ *  \param nevents              Number of training (signal/background) and test (signal/background) events that algorithms have to use
+ *  \param SBJetOutputFilename  Name of the file which stores dijet kinematics
+ *  \param TMVAOutputFilename   Name of the output file which will store factory results 
  */
 
 #include "headers/TMVAFactoryAnalysis.h"

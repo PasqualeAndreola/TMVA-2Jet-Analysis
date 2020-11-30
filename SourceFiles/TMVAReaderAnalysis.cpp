@@ -1,9 +1,17 @@
-/*!
- *
+/*! \file TMVAReaderAnalysis.cpp
+ *  \brief Source file for \ref TMVAReaderAnalysis function implementation.
  */
 
-/*!
- *
+/*! \fn TMVAReaderAnalysis(vector<TString> tmvamethods, string SBJetOutputFilename, string TMVAOutputFilename) "";
+ *  
+ *  \brief  Function that uses tmva methods to analyze unknown dataset composition
+ *  \author Pasquale Andreola
+ * 
+ *  A reader is set up, using same kinematic variables stored in the factory. Results of the analysis are printed in pdf and in root files.
+ * 
+ *  \param tmvamethods          Vector of method names that user would use to analyze the sample
+ *  \param SBJetOutputFilename  Name of the file which stores dijet kinematics
+ *  \param TMVAOutputFilename   Name of the output file which stores factory information
  */
 
 #include "headers/TMVAReaderAnalysis.h"

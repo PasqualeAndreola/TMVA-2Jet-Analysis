@@ -93,5 +93,7 @@ herr_t opfunc(hid_t loc_id, const char *name, const H5L_info_t *info,
     default:
         printf("Unknown: %s\n", name);
     }
+
+    if (status < 0) return status;
     return return_val;
 }

@@ -3,7 +3,7 @@
  * \brief Source file for \ref openh5 function implementation
  */
 
-/*! \fn int openh5(const char *file_name, std::vector<std::string> names)
+/*! \fn void openh5(const char *FILE_NAME)
  *  \brief Function that finds every group of dataset, get their information and store them in a structure.
  *   
  *  It opens the \ref file_name .h5 file and analyzes it iteratively by using \ref opfunc function.\n
@@ -61,6 +61,7 @@ void openh5(const char *FILE_NAME)
   /*Closing the file*/
   status = H5Fclose(file);
   
+  if (status < 0) return;
 }
 
  

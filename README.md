@@ -1,6 +1,12 @@
 # TMVA-2Jet-Analysis
 
-Readme with information about MVA-2Jet-Analysis program
+Readme with information about MVA-2Jet-Analysis project
+
+# Prerequisites
+
+- HDF5-1.12.0 (Needed if the user wants to convert "".h5 files to "".root)
+- Root, built with support to C++17 and TMVA
+- Fastjet
 
 # Install instruction
 1) Open the makefile

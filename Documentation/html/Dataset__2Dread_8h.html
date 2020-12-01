@@ -80,17 +80,17 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Header file for <a class="el" href="Dataset__2Dread_8h.html#a086bc35171cb6bc572e4ddaa4ff3e042">Dataset_2Dread</a> body, because templates are instantiated at compile time.  
+<p>Header file for <a class="el" href="Dataset__2Dread_8h.html#a2dc8bccd62c373531d819d9900038ebc">Dataset_2Dread</a> body, because templates are instantiated at compile time.  
 <a href="#details">More...</a></p>
 
 <p><a href="Dataset__2Dread_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a086bc35171cb6bc572e4ddaa4ff3e042"><td class="memTemplParams" colspan="2">template&lt;typename buftype &gt; </td></tr>
-<tr class="memitem:a086bc35171cb6bc572e4ddaa4ff3e042"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="Dataset__2Dread_8h.html#a086bc35171cb6bc572e4ddaa4ff3e042">Dataset_2Dread</a> (hid_t dataset_id, int datasetnumber, const char *outfile)</td></tr>
-<tr class="memdesc:a086bc35171cb6bc572e4ddaa4ff3e042"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to read a dataset of dimension 1 or 2 from a *.h5 file.  <a href="Dataset__2Dread_8h.html#a086bc35171cb6bc572e4ddaa4ff3e042">More...</a><br /></td></tr>
-<tr class="separator:a086bc35171cb6bc572e4ddaa4ff3e042"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dc8bccd62c373531d819d9900038ebc"><td class="memTemplParams" colspan="2">template&lt;typename buftype &gt; </td></tr>
+<tr class="memitem:a2dc8bccd62c373531d819d9900038ebc"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="Dataset__2Dread_8h.html#a2dc8bccd62c373531d819d9900038ebc">Dataset_2Dread</a> (hid_t dataset_id, int datasetnumber, const char *outfile)</td></tr>
+<tr class="memdesc:a2dc8bccd62c373531d819d9900038ebc"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is used to read a dataset of dimension 1 or 2 from a *.h5 file.  <a href="Dataset__2Dread_8h.html#a2dc8bccd62c373531d819d9900038ebc">More...</a><br /></td></tr>
+<tr class="separator:a2dc8bccd62c373531d819d9900038ebc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -98,12 +98,12 @@ Variables</h2></td></tr>
 <tr class="separator:a4c32abe2848a73b8254c1e734394834b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Header file for <a class="el" href="Dataset__2Dread_8h.html#a086bc35171cb6bc572e4ddaa4ff3e042">Dataset_2Dread</a> body, because templates are instantiated at compile time. </p>
+<div class="textblock"><p>Header file for <a class="el" href="Dataset__2Dread_8h.html#a2dc8bccd62c373531d819d9900038ebc">Dataset_2Dread</a> body, because templates are instantiated at compile time. </p>
 
 <p class="definition">Definition in file <a class="el" href="Dataset__2Dread_8h_source.html">Dataset_2Dread.h</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a086bc35171cb6bc572e4ddaa4ff3e042"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a086bc35171cb6bc572e4ddaa4ff3e042">&#9670;&nbsp;</a></span>Dataset_2Dread()</h2>
+<a id="a2dc8bccd62c373531d819d9900038ebc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dc8bccd62c373531d819d9900038ebc">&#9670;&nbsp;</a></span>Dataset_2Dread()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -111,7 +111,7 @@ Variables</h2></td></tr>
 template&lt;typename buftype &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">Dataset_2Dread </td>
+          <td class="memname">void Dataset_2Dread </td>
           <td>(</td>
           <td class="paramtype">hid_t&#160;</td>
           <td class="paramname"><em>dataset_id</em>, </td>
@@ -138,7 +138,7 @@ template&lt;typename buftype &gt; </div>
 
 <p>This function is used to read a dataset of dimension 1 or 2 from a *.h5 file. </p>
 <p>This function is used to read a dataset of dimension 1 or 2 from a *.h5 file.<br  />
-<a class="el" href="Dataset__2Dread_8h.html#a086bc35171cb6bc572e4ddaa4ff3e042">Dataset_2Dread</a> reads the dataset given by the <code>dataset_id</code> scanning it with memory slab whose dimensions are designed to be located inside dataset limit.<br  />
+<a class="el" href="Dataset__2Dread_8h.html#a2dc8bccd62c373531d819d9900038ebc">Dataset_2Dread</a> reads the dataset given by the <code>dataset_id</code> scanning it with memory slab whose dimensions are designed to be located inside dataset limit.<br  />
 This is done because <code>H5DRead</code> is designed to crash if the user tries to read out of the dataset dimensions.<br  />
 <code>bufferdimension</code> Determines the dimension of the buffer used to collect data from the *.h5 file.<br  />
 It has to be chosen considering the datatype and the amount of RAM installed.<br  />

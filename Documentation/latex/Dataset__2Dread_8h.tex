@@ -2,13 +2,13 @@
 \label{Dataset__2Dread_8h}\index{SourceFiles/headers/Dataset\_2Dread.h@{SourceFiles/headers/Dataset\_2Dread.h}}
 
 
-Header file for \mbox{\hyperlink{Dataset__2Dread_8h_a086bc35171cb6bc572e4ddaa4ff3e042}{Dataset\+\_\+2\+Dread}} body, because templates are instantiated at compile time.  
+Header file for \mbox{\hyperlink{Dataset__2Dread_8h_a2dc8bccd62c373531d819d9900038ebc}{Dataset\+\_\+2\+Dread}} body, because templates are instantiated at compile time.  
 
 
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$typename buftype $>$ }\\void \mbox{\hyperlink{Dataset__2Dread_8h_a086bc35171cb6bc572e4ddaa4ff3e042}{Dataset\+\_\+2\+Dread}} (hid\+\_\+t dataset\+\_\+id, int datasetnumber, const char $\ast$outfile)
+{\footnotesize template$<$typename buftype $>$ }\\void \mbox{\hyperlink{Dataset__2Dread_8h_a2dc8bccd62c373531d819d9900038ebc}{Dataset\+\_\+2\+Dread}} (hid\+\_\+t dataset\+\_\+id, int datasetnumber, const char $\ast$outfile)
 \begin{DoxyCompactList}\small\item\em This function is used to read a dataset of dimension 1 or 2 from a $\ast$.h5 file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -18,24 +18,24 @@ const int \mbox{\hyperlink{Dataset__2Dread_8h_a4c32abe2848a73b8254c1e734394834b}
 
 
 \doxysubsection{Detailed Description}
-Header file for \mbox{\hyperlink{Dataset__2Dread_8h_a086bc35171cb6bc572e4ddaa4ff3e042}{Dataset\+\_\+2\+Dread}} body, because templates are instantiated at compile time. 
+Header file for \mbox{\hyperlink{Dataset__2Dread_8h_a2dc8bccd62c373531d819d9900038ebc}{Dataset\+\_\+2\+Dread}} body, because templates are instantiated at compile time. 
 
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{Dataset__2Dread_8h_a086bc35171cb6bc572e4ddaa4ff3e042}\label{Dataset__2Dread_8h_a086bc35171cb6bc572e4ddaa4ff3e042}} 
+\mbox{\Hypertarget{Dataset__2Dread_8h_a2dc8bccd62c373531d819d9900038ebc}\label{Dataset__2Dread_8h_a2dc8bccd62c373531d819d9900038ebc}} 
 \index{Dataset\_2Dread.h@{Dataset\_2Dread.h}!Dataset\_2Dread@{Dataset\_2Dread}}
 \index{Dataset\_2Dread@{Dataset\_2Dread}!Dataset\_2Dread.h@{Dataset\_2Dread.h}}
 \doxysubsubsection{\texorpdfstring{Dataset\_2Dread()}{Dataset\_2Dread()}}
 {\footnotesize\ttfamily template$<$typename buftype $>$ \\
-Dataset\+\_\+2\+Dread (\begin{DoxyParamCaption}\item[{hid\+\_\+t}]{dataset\+\_\+id,  }\item[{int}]{datasetnumber,  }\item[{const char $\ast$}]{outfile }\end{DoxyParamCaption})}
+void Dataset\+\_\+2\+Dread (\begin{DoxyParamCaption}\item[{hid\+\_\+t}]{dataset\+\_\+id,  }\item[{int}]{datasetnumber,  }\item[{const char $\ast$}]{outfile }\end{DoxyParamCaption})}
 
 
 
 This function is used to read a dataset of dimension 1 or 2 from a $\ast$.h5 file. 
 
 This function is used to read a dataset of dimension 1 or 2 from a $\ast$.h5 file.~\newline
-\mbox{\hyperlink{Dataset__2Dread_8h_a086bc35171cb6bc572e4ddaa4ff3e042}{Dataset\+\_\+2\+Dread}} reads the dataset given by the {\ttfamily dataset\+\_\+id} scanning it with memory slab whose dimensions are designed to be located inside dataset limit.~\newline
+\mbox{\hyperlink{Dataset__2Dread_8h_a2dc8bccd62c373531d819d9900038ebc}{Dataset\+\_\+2\+Dread}} reads the dataset given by the {\ttfamily dataset\+\_\+id} scanning it with memory slab whose dimensions are designed to be located inside dataset limit.~\newline
 This is done because {\ttfamily H5\+D\+Read} is designed to crash if the user tries to read out of the dataset dimensions.~\newline
 {\ttfamily bufferdimension} Determines the dimension of the buffer used to collect data from the $\ast$.h5 file.~\newline
 It has to be chosen considering the datatype and the amount of R\+AM installed.~\newline

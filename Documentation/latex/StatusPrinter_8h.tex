@@ -1,0 +1,67 @@
+\hypertarget{StatusPrinter_8h}{}\doxysection{Source\+Files/headers/\+Status\+Printer.h File Reference}
+\label{StatusPrinter_8h}\index{SourceFiles/headers/StatusPrinter.h@{SourceFiles/headers/StatusPrinter.h}}
+
+
+Header file for \mbox{\hyperlink{StatusPrinter_8cpp_a023d70526dae5983da06500a9ac2435a}{Status\+Printer}} function.  
+
+
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{StatusPrinter_8h_aa2c9007d85848dc5b0e2bfc628d23b50}{Status\+Printer}} (int progress)
+\begin{DoxyCompactList}\small\item\em Function used to print a banner with a progression bar. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{StatusPrinter_8h_a4eb4b317a8b489fba7c9385dd91031b9}{Status\+Printer}} (std\+::ostream \&stream, int progress)
+\begin{DoxyCompactList}\small\item\em Function used to print a banner with a progression bar. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for \mbox{\hyperlink{StatusPrinter_8cpp_a023d70526dae5983da06500a9ac2435a}{Status\+Printer}} function. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{StatusPrinter_8h_aa2c9007d85848dc5b0e2bfc628d23b50}\label{StatusPrinter_8h_aa2c9007d85848dc5b0e2bfc628d23b50}} 
+\index{StatusPrinter.h@{StatusPrinter.h}!StatusPrinter@{StatusPrinter}}
+\index{StatusPrinter@{StatusPrinter}!StatusPrinter.h@{StatusPrinter.h}}
+\doxysubsubsection{\texorpdfstring{StatusPrinter()}{StatusPrinter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Status\+Printer (\begin{DoxyParamCaption}\item[{int}]{progress }\end{DoxyParamCaption})}
+
+
+
+Function used to print a banner with a progression bar. 
+
+This function is used to print a banner with some \char`\"{}\mbox{[}====$>$\mbox{]} x\%\char`\"{} characters.~\newline
+They contains information about the runtime and the progress of time consuming functions.~\newline
+Global variable {\ttfamily ncolumns} can be defined by the user\+: the function will appropriately cut the progress bar.~\newline
+
+\begin{DoxyParams}{Parameters}
+{\em progress} & Completion percentage of the function being executed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 43 of file Status\+Printer.\+cpp.
+
+\mbox{\Hypertarget{StatusPrinter_8h_a4eb4b317a8b489fba7c9385dd91031b9}\label{StatusPrinter_8h_a4eb4b317a8b489fba7c9385dd91031b9}} 
+\index{StatusPrinter.h@{StatusPrinter.h}!StatusPrinter@{StatusPrinter}}
+\index{StatusPrinter@{StatusPrinter}!StatusPrinter.h@{StatusPrinter.h}}
+\doxysubsubsection{\texorpdfstring{StatusPrinter()}{StatusPrinter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Status\+Printer (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{stream,  }\item[{int}]{progress }\end{DoxyParamCaption})}
+
+
+
+Function used to print a banner with a progression bar. 
+
+This function is the overloaded version of \mbox{\hyperlink{StatusPrinter_8cpp_aa2c9007d85848dc5b0e2bfc628d23b50}{.\textbackslash{}n}} The user can set an ofstream to write the output to whatever he/she likes.~\newline
+The developer used this to make unit test.~\newline
+ 
+\begin{DoxyParams}{Parameters}
+{\em stream} & Output where the starred banner has to be written \\
+\hline
+{\em progress} & Completion percentage of the function being executed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 120 of file Status\+Printer.\+cpp.
+

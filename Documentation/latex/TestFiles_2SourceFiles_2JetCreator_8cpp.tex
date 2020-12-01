@@ -1,0 +1,51 @@
+\hypertarget{TestFiles_2SourceFiles_2JetCreator_8cpp}{}\doxysection{Test\+Files/\+Source\+Files/\+Jet\+Creator.cpp File Reference}
+\label{TestFiles_2SourceFiles_2JetCreator_8cpp}\index{TestFiles/SourceFiles/JetCreator.cpp@{TestFiles/SourceFiles/JetCreator.cpp}}
+
+
+Source file for \mbox{\hyperlink{TestFiles_2SourceFiles_2JetCreator_8cpp_afc25fe7a7dda2fc0a6c65aa0eb0c5aac}{Jet\+Creator}} function implementation.  
+
+
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ Pseudo\+Jet $>$ \mbox{\hyperlink{TestFiles_2SourceFiles_2JetCreator_8cpp_afc25fe7a7dda2fc0a6c65aa0eb0c5aac}{Jet\+Creator}} (vector$<$ Pseudo\+Jet $>$ particles, double R, double p\+T\+\_\+min)
+\begin{DoxyCompactList}\small\item\em Function that clusters particles to jet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Source file for \mbox{\hyperlink{TestFiles_2SourceFiles_2JetCreator_8cpp_afc25fe7a7dda2fc0a6c65aa0eb0c5aac}{Jet\+Creator}} function implementation. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{TestFiles_2SourceFiles_2JetCreator_8cpp_afc25fe7a7dda2fc0a6c65aa0eb0c5aac}\label{TestFiles_2SourceFiles_2JetCreator_8cpp_afc25fe7a7dda2fc0a6c65aa0eb0c5aac}} 
+\index{JetCreator.cpp@{JetCreator.cpp}!JetCreator@{JetCreator}}
+\index{JetCreator@{JetCreator}!JetCreator.cpp@{JetCreator.cpp}}
+\doxysubsubsection{\texorpdfstring{JetCreator()}{JetCreator()}}
+{\footnotesize\ttfamily vector$<$Pseudo\+Jet$>$ Jet\+Creator (\begin{DoxyParamCaption}\item[{vector$<$ Pseudo\+Jet $>$}]{particles,  }\item[{double}]{R,  }\item[{double}]{p\+T\+\_\+min }\end{DoxyParamCaption})}
+
+
+
+Function that clusters particles to jet. 
+
+This function is quite useful for user purpose. \mbox{\hyperlink{TestFiles_2SourceFiles_2JetCreator_8cpp_afc25fe7a7dda2fc0a6c65aa0eb0c5aac}{Jet\+Creator}} is designed to work with these settings\+:
+\begin{DoxyItemize}
+\item \char`\"{}anti-\/kt\char`\"{} algorithm, because hard jets are exactly circular on the $y-\phi$ cylinder
+\item \char`\"{}\+E-\/scheme\char`\"{} it is the default option used by most experiment working with jets.~\newline
+ It is designed to simply add the four vectors given as input to the clustering algorithm
+\item \char`\"{}\+Best\char`\"{} strategy, which choose the optimal speed strategy for each multiplicity of jet
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em particles} & List of particles forming the jets. A particle is defined, in this case, as a 4-\/vector\\
+\hline
+{\em R} & Jet radius, usually related to the angular reach of the jet. Can be found in the anti-\/kT algorithm formula\\
+\hline
+{\em p\+T\+\_\+min} & Minimum transverse jet momentum that is accepted for user\textquotesingle{}s analysis \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 30 of file Jet\+Creator.\+cpp.
+

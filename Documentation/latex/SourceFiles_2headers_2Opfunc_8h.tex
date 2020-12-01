@@ -1,0 +1,66 @@
+\hypertarget{SourceFiles_2headers_2Opfunc_8h}{}\doxysection{Source\+Files/headers/\+Opfunc.h File Reference}
+\label{SourceFiles_2headers_2Opfunc_8h}\index{SourceFiles/headers/Opfunc.h@{SourceFiles/headers/Opfunc.h}}
+
+
+Header file for \mbox{\hyperlink{TestFiles_2SourceFiles_2Opfunc_8cpp_a8b60b0a325d8541b4f11e6f07158037c}{opfunc}} function.  
+
+
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+herr\+\_\+t \mbox{\hyperlink{SourceFiles_2headers_2Opfunc_8h_a8b60b0a325d8541b4f11e6f07158037c}{opfunc}} (hid\+\_\+t loc\+\_\+id, const char $\ast$name, const H5\+L\+\_\+info\+\_\+t $\ast$info, void $\ast$operator\+\_\+data)
+\begin{DoxyCompactList}\small\item\em This is the function used as an iterative operator called by \mbox{\hyperlink{TestFiles_2SourceFiles_2OpenH5_8cpp_a1555d7f2837b776ca1c1057724719d18}{openh5}} function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ \mbox{\hyperlink{classDatasetInfo}{Dataset\+Info}} $>$ \mbox{\hyperlink{SourceFiles_2headers_2Opfunc_8h_a2729a81111b2194e220fe279cce62386}{dataset\+\_\+info\+\_\+list}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for \mbox{\hyperlink{TestFiles_2SourceFiles_2Opfunc_8cpp_a8b60b0a325d8541b4f11e6f07158037c}{opfunc}} function. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{SourceFiles_2headers_2Opfunc_8h_a8b60b0a325d8541b4f11e6f07158037c}\label{SourceFiles_2headers_2Opfunc_8h_a8b60b0a325d8541b4f11e6f07158037c}} 
+\index{Opfunc.h@{Opfunc.h}!opfunc@{opfunc}}
+\index{opfunc@{opfunc}!Opfunc.h@{Opfunc.h}}
+\doxysubsubsection{\texorpdfstring{opfunc()}{opfunc()}}
+{\footnotesize\ttfamily herr\+\_\+t opfunc (\begin{DoxyParamCaption}\item[{hid\+\_\+t}]{loc\+\_\+id,  }\item[{const char $\ast$}]{name,  }\item[{const H5\+L\+\_\+info\+\_\+t $\ast$}]{info,  }\item[{void $\ast$}]{operator\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+This is the function used as an iterative operator called by \mbox{\hyperlink{TestFiles_2SourceFiles_2OpenH5_8cpp_a1555d7f2837b776ca1c1057724719d18}{openh5}} function. 
+
+While going through a $\ast$.h5 file, this function identifies info about every group/dataset/datatype, storing them in a list.~\newline
+Returns a structure holding the error stack\+: it can be read using some {\ttfamily H\+D\+F5} function. Refer to its documentation
+
+
+\begin{DoxyParams}{Parameters}
+{\em loc\+\_\+id} & $\ast$.h5 file location identifier, obtained from \mbox{\hyperlink{TestFiles_2SourceFiles_2OpenH5_8cpp_a1555d7f2837b776ca1c1057724719d18}{openh5}} function \\
+\hline
+{\em $\ast$name} & Pointer to the name of the $\ast$.h5 file \\
+\hline
+{\em $\ast$info} & Structure that holds info about the group/dataset/datatype read from the iteration \\
+\hline
+{\em $\ast$operator\+\_\+data} & Pointer to \mbox{\hyperlink{structopdata}{opdata}} structure, that will hold tokens of all the dataset in the file \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 31 of file Opfunc.\+cpp.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{SourceFiles_2headers_2Opfunc_8h_a2729a81111b2194e220fe279cce62386}\label{SourceFiles_2headers_2Opfunc_8h_a2729a81111b2194e220fe279cce62386}} 
+\index{Opfunc.h@{Opfunc.h}!dataset\_info\_list@{dataset\_info\_list}}
+\index{dataset\_info\_list@{dataset\_info\_list}!Opfunc.h@{Opfunc.h}}
+\doxysubsubsection{\texorpdfstring{dataset\_info\_list}{dataset\_info\_list}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classDatasetInfo}{Dataset\+Info}}$>$ dataset\+\_\+info\+\_\+list}
+
+
+
+Definition at line 28 of file Opfunc.\+cpp.
+

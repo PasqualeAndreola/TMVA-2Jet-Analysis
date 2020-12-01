@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TMVA Dijet Analysis: Main Page</title>
+<title>TMVA Dijet Analysis: TMVA-2Jet-Analysis</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -67,11 +67,58 @@ $(function() {
 </iframe>
 </div>
 
-<div class="header">
+<div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">TMVA Dijet Analysis Documentation</div>  </div>
+<div class="title">TMVA-2Jet-Analysis </div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><h1><a class="anchor" id="intro_sec"></a>
+Introduction</h1>
+<p>This project has been developed as an assignment for the Computing (in HEP) exam.<br  />
+The work is divided in three parts:</p><ol type="1">
+<li>Data reading</li>
+<li>Data manipulation</li>
+<li>TMVA algorithm implementation</li>
+</ol>
+<h1><a class="anchor" id="dataread_sec"></a>
+Data reading</h1>
+<p>LHC Olympics give sample files with extension ".h5". It means that the user has to install HDF5 library and use a script to interact with sample files. This project gives some function, written in C++, useful to handle with *.h5 files.</p>
+<h2><a class="anchor" id="read1"></a>
+Step 1: Opening the box</h2>
+<p>Files formatted in ".h5" usually have three main sub-structures: groups, datasets and datatypes.<br  />
+<a class="el" href="OpenH5_8cpp.html#a1555d7f2837b776ca1c1057724719d18">openh5</a> let the user see the structure of the input file and store the information about the dataset in a vector of class <a class="el" href="classDatasetInfo.html">DatasetInfo</a>, which holds the name of the dataset, the token that identifies it and its dimensions (dataset is supposed to be 2D).<br  />
+<a class="el" href="OpenH5_8cpp.html#a1555d7f2837b776ca1c1057724719d18">openh5</a> goes through the file iteratively, using the <a class="el" href="Opfunc_8cpp.html#a8b60b0a325d8541b4f11e6f07158037c">opfunc</a> operator , which get the type and the info about the sub-structure stored in the input file.</p>
+<h2><a class="anchor" id="read2"></a>
+Step 2: Reading the dataset</h2>
+<p>Reading the dataset is the most critical part of the project. HDF5 library memory management at the core level is "old fashioned": the user must provide a buffer of the same type of the dataset that has to read and buffer's dimensions have to be in the "boundaries" of the dataset. To solve this problem and maximize the reading efficiency, the user can use the function template Dataset_2Dread.<br  />
+ <a class="el" href="Dataset__2Dread_8h.html#a2dc8bccd62c373531d819d9900038ebc">Dataset_2Dread</a> uses the template and the global variable "bufferdimension" to create an appropriate buffer to hold read data. Setting "bufferdimension" as high as user RAM can store means higher reading speed.<br  />
+ </p>
+<h1><a class="anchor" id="datamanipulation_sec"></a>
+Data manipulation</h1>
+<h2><a class="anchor" id="mani1"></a>
+Writing the buffer to a root file</h2>
+<p>This project uses ROOT framework, so it's useful to write read data to a *.root file. To write the buffer to a root file, user can call <a class="el" href="TreeCreator_8cpp.html#a4adefe4feab254092e7affdb23612755">TreeCreator</a>, which set up the correct template for <a class="el" href="Dataset__2Dread_8h.html#a2dc8bccd62c373531d819d9900038ebc">Dataset_2Dread</a> which writes read buffer to the chosen root file.<br  />
+ From now on, HDF5 is not needed.<br  />
+ </p>
+<h2><a class="anchor" id="mani2"></a>
+Distinguishing signal, background and real event</h2>
+<p>Data written in the root files are parsed as suggested by LHC Olympics (700 hadrons described by their \( p_{T} \), \( \eta \), \( \Phi \)). To distinguish background and signal events dataset contain an extra column. When this column is not present, the user can set up an optional value "sbflag" in the <a class="el" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>, if the user knows additional information about dataset stored in the file. <a class="el" href="SBTreeCreator_8cpp.html#a05a336536b4319d31340617578e3d3f0">SBTreeCreator</a> creates an output file storing signal/background/event kinematics of the hadrons in the various dataset.</p>
+<h2><a class="anchor" id="mani3"></a>
+Jet clustering</h2>
+<p>In the end, <a class="el" href="SBTreeJetKinematicsCreator_8cpp.html#a427d768358beddfd8bdf39cef8f60cac">SBTreeJetKinematicsCreator</a> clusters the hadrons with transverse momentum greater than \( p_{T, min} \) with a jet radius set by the user. Kinematics of the two most massive jets are stored in a root file.<br  />
+ </p>
+<h1><a class="anchor" id="tmvafactory"></a>
+TMVA analysis</h1>
+<p>These functions have to be customized by the user because mva methods have different parameters that have to be tuned.</p>
+<h2><a class="anchor" id="The"></a>
+TMVA::Factory</h2>
+<p><a class="el" href="TMVAFactoryAnalysis_8cpp.html#a6166355dff2a50d1176f424e663a807a">TMVAFactoryAnalysis</a> set up a factory holding results of the user-defined algorithm analysis of the data sample.<br  />
+ </p>
+<h2><a class="anchor" id="The"></a>
+TMVA::Factory</h2>
+<p><a class="el" href="TMVAReaderAnalysis_8cpp.html#a7b3d253c269116bb57ac08c1adb226fc">TMVAReaderAnalysis</a> analyzes a data sample using user-defined algorithms and their relative weights stored in the TMVA::Factory set up by the <a class="el" href="TMVAFactoryAnalysis_8cpp.html#a6166355dff2a50d1176f424e663a807a">TMVAFactoryAnalysis</a> function. This reader generates pdf and root files, storing the result of the analysis.<br  />
+</p>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

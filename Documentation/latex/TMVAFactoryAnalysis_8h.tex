@@ -1,0 +1,56 @@
+\hypertarget{TMVAFactoryAnalysis_8h}{}\doxysection{Source\+Files/headers/\+T\+M\+V\+A\+Factory\+Analysis.h File Reference}
+\label{TMVAFactoryAnalysis_8h}\index{SourceFiles/headers/TMVAFactoryAnalysis.h@{SourceFiles/headers/TMVAFactoryAnalysis.h}}
+
+
+Header file for \mbox{\hyperlink{TMVAFactoryAnalysis_8cpp_a6166355dff2a50d1176f424e663a807a}{T\+M\+V\+A\+Factory\+Analysis}} function.  
+
+
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{TMVAFactoryAnalysis_8h_ad1278c27f998bd96e4f063518ecdfcbd}{T\+M\+V\+A\+Factory\+Analysis}} (vector$<$ T\+String $>$ tmvamethods, vector$<$ long unsigned int $>$ nevents, string S\+B\+Jet\+Output\+Filename, string T\+M\+V\+A\+Output\+Filename)
+\begin{DoxyCompactList}\small\item\em Function that uses tmva methods to generate weight files for the relative algorithm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for \mbox{\hyperlink{TMVAFactoryAnalysis_8cpp_a6166355dff2a50d1176f424e663a807a}{T\+M\+V\+A\+Factory\+Analysis}} function. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{TMVAFactoryAnalysis_8h_ad1278c27f998bd96e4f063518ecdfcbd}\label{TMVAFactoryAnalysis_8h_ad1278c27f998bd96e4f063518ecdfcbd}} 
+\index{TMVAFactoryAnalysis.h@{TMVAFactoryAnalysis.h}!TMVAFactoryAnalysis@{TMVAFactoryAnalysis}}
+\index{TMVAFactoryAnalysis@{TMVAFactoryAnalysis}!TMVAFactoryAnalysis.h@{TMVAFactoryAnalysis.h}}
+\doxysubsubsection{\texorpdfstring{TMVAFactoryAnalysis()}{TMVAFactoryAnalysis()}}
+{\footnotesize\ttfamily T\+M\+V\+A\+Factory\+Analysis (\begin{DoxyParamCaption}\item[{vector$<$ T\+String $>$}]{tmvamethods,  }\item[{vector$<$ long unsigned int $>$}]{nevents,  }\item[{string}]{S\+B\+Jet\+Output\+Filename,  }\item[{string}]{T\+M\+V\+A\+Output\+Filename }\end{DoxyParamCaption})}
+
+
+
+Function that uses tmva methods to generate weight files for the relative algorithm. 
+
+\begin{DoxyAuthor}{Author}
+Pasquale Andreola
+\end{DoxyAuthor}
+Some variables are added to a loader that will be passed to the factory. The user set up some tmva algorithms and the factory applies them to the sample dataset. Results are stored in some weight files.
+
+
+\begin{DoxyParams}{Parameters}
+{\em tmvamethods} & Vector of method names that user would use to analyze the sample \\
+\hline
+{\em nevents} & Number of training (signal/background) and test (signal/background) events that algorithms have to use \\
+\hline
+{\em S\+B\+Jet\+Output\+Filename} & Name of the file which stores dijet kinematics \\
+\hline
+{\em T\+M\+V\+A\+Output\+Filename} & Name of the output file which will store factory results \\
+\hline
+\end{DoxyParams}
+$<$ Number of events used to train signal identification in the sample
+
+$<$ Number of events used to train background identification in the sample
+
+$<$ Number of events used to test signal identification in the sample
+
+$<$ Number of events used to test background identification in the sample
+
+Definition at line 24 of file T\+M\+V\+A\+Factory\+Analysis.\+cpp.
+

@@ -79,7 +79,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Header file for <a class="el" href="PrintFuncInfo_8cpp.html#a1d90178ce27c0748f7e07319bb752dad">PrintFuncInfo</a> function.  
+<p>Header file for <a class="el" href="PrintFuncInfo_8cpp.html#a361d07be03130dc65230b48fa92c191d">PrintFuncInfo</a> function.  
 <a href="#details">More...</a></p>
 
 <p><a href="PrintFuncInfo_8h_source.html">Go to the source code of this file.</a></p>
@@ -87,15 +87,60 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a1d90178ce27c0748f7e07319bb752dad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="PrintFuncInfo_8h.html#a1d90178ce27c0748f7e07319bb752dad">PrintFuncInfo</a> (vector&lt; TString &gt; string2print)</td></tr>
+<tr class="memdesc:a1d90178ce27c0748f7e07319bb752dad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function used to print a banner with function info.  <a href="PrintFuncInfo_8h.html#a1d90178ce27c0748f7e07319bb752dad">More...</a><br /></td></tr>
 <tr class="separator:a1d90178ce27c0748f7e07319bb752dad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44f3a8faac3e492f6403e652470b7db4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="PrintFuncInfo_8h.html#a44f3a8faac3e492f6403e652470b7db4">PrintFuncInfo</a> (std::ostream &amp;stream, vector&lt; TString &gt; string2print)</td></tr>
+<tr class="memdesc:a44f3a8faac3e492f6403e652470b7db4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function used to print a banner with function info.  <a href="PrintFuncInfo_8h.html#a44f3a8faac3e492f6403e652470b7db4">More...</a><br /></td></tr>
+<tr class="separator:a44f3a8faac3e492f6403e652470b7db4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Header file for <a class="el" href="PrintFuncInfo_8cpp.html#a1d90178ce27c0748f7e07319bb752dad">PrintFuncInfo</a> function. </p>
+<div class="textblock"><p>Header file for <a class="el" href="PrintFuncInfo_8cpp.html#a361d07be03130dc65230b48fa92c191d">PrintFuncInfo</a> function. </p>
 
 <p class="definition">Definition in file <a class="el" href="PrintFuncInfo_8h_source.html">PrintFuncInfo.h</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a44f3a8faac3e492f6403e652470b7db4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44f3a8faac3e492f6403e652470b7db4">&#9670;&nbsp;</a></span>PrintFuncInfo() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PrintFuncInfo </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>stream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; TString &gt;&#160;</td>
+          <td class="paramname"><em>string2print</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function used to print a banner with function info. </p>
+<p>This function is the overloaded version of <a class="el" href="PrintFuncInfo_8cpp.html#a1d90178ce27c0748f7e07319bb752dad">\n</a> The user can set an ofstream to write the output to whatever he/she likes.<br  />
+The developer used this to make unit test.<br  />
+ </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stream</td><td>Output where the starred banner has to be written </td></tr>
+    <tr><td class="paramname">string2print</td><td>vector of TString that the user wants to print </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="PrintFuncInfo_8cpp_source.html#l00170">170</a> of file <a class="el" href="PrintFuncInfo_8cpp_source.html">PrintFuncInfo.cpp</a>.</p>
+
+</div>
+</div>
 <a id="a1d90178ce27c0748f7e07319bb752dad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d90178ce27c0748f7e07319bb752dad">&#9670;&nbsp;</a></span>PrintFuncInfo()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d90178ce27c0748f7e07319bb752dad">&#9670;&nbsp;</a></span>PrintFuncInfo() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -110,7 +155,19 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="PrintFuncInfo_8cpp_source.html#l00025">25</a> of file <a class="el" href="PrintFuncInfo_8cpp_source.html">PrintFuncInfo.cpp</a>.</p>
+<p>Function used to print a banner with function info. </p>
+<p>This function is used to print a banner with some "*" characters.<br  />
+These "*" are arranged in a rectangular format.<br  />
+They contains information given by the user as a vector of TString.<br  />
+Global variable <code>ncolumns</code> can be defined by the user: the function will appropriately cut the strings.<br  />
+</p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">string2print</td><td>vector of TString that the user wants to print </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="PrintFuncInfo_8cpp_source.html#l00026">26</a> of file <a class="el" href="PrintFuncInfo_8cpp_source.html">PrintFuncInfo.cpp</a>.</p>
 
 </div>
 </div>

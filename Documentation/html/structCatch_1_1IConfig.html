@@ -113,6 +113,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa288bf92ccd0aafd85409d8aefdf738c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abaa97d281484278291f0d3db6d404aeb"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structCatch_1_1ShowDurations.html#a82fa0174554187220c1eda175f122ee1">ShowDurations::OrNot</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCatch_1_1IConfig.html#abaa97d281484278291f0d3db6d404aeb">showDurations</a> () const =0</td></tr>
 <tr class="separator:abaa97d281484278291f0d3db6d404aeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a160c6f6e19ed6ae946f7a9e737099189"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCatch_1_1IConfig.html#a160c6f6e19ed6ae946f7a9e737099189">minDuration</a> () const =0</td></tr>
+<tr class="separator:a160c6f6e19ed6ae946f7a9e737099189"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03a2fd8221d896d12bf3684ab2a03588"><td class="memItemLeft" align="right" valign="top">virtual TestSpec const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCatch_1_1IConfig.html#a03a2fd8221d896d12bf3684ab2a03588">testSpec</a> () const =0</td></tr>
 <tr class="separator:a03a2fd8221d896d12bf3684ab2a03588"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49a475bbeb3180c06799d6d958914649"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCatch_1_1IConfig.html#a49a475bbeb3180c06799d6d958914649">hasTestFilters</a> () const =0</td></tr>
@@ -150,7 +152,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="catch_8hpp_source.html#l04505">4505</a> of file <a class="el" href="catch_8hpp_source.html">catch.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="catch_8hpp_source.html#l04502">4502</a> of file <a class="el" href="catch_8hpp_source.html">catch.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="adadf7c57478e4b0c83bea5b38d2dbc87"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adadf7c57478e4b0c83bea5b38d2dbc87">&#9670;&nbsp;</a></span>~IConfig()</h2>
@@ -439,6 +441,31 @@ Additional Inherited Members</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">virtual bool Catch::IConfig::includeSuccessfulResults </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a160c6f6e19ed6ae946f7a9e737099189"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a160c6f6e19ed6ae946f7a9e737099189">&#9670;&nbsp;</a></span>minDuration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual double Catch::IConfig::minDuration </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>

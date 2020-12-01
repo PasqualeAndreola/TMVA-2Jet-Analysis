@@ -155,8 +155,10 @@ $(function() {
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">default</span>:</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        printf(<span class="stringliteral">&quot;Unknown: %s\n&quot;</span>, name);</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">return</span> return_val;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">if</span> (status &lt; 0) <span class="keywordflow">return</span> status;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">return</span> return_val;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="astructopdata_html_a45e0f6b082939684945a016bbc053507"><div class="ttname"><a href="structopdata.html#a45e0f6b082939684945a016bbc053507">opdata::recurs</a></div><div class="ttdeci">unsigned recurs</div><div class="ttdef"><b>Definition:</b> <a href="Opdata_8h_source.html#l00019">Opdata.h:19</a></div></div>
 <div class="ttc" id="astructopdata_html"><div class="ttname"><a href="structopdata.html">opdata</a></div><div class="ttdoc">Recursive structure used to store every token referred to all group's dataset</div><div class="ttdef"><b>Definition:</b> <a href="Opdata_8h_source.html#l00017">Opdata.h:17</a></div></div>

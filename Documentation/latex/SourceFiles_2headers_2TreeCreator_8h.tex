@@ -1,0 +1,43 @@
+\hypertarget{SourceFiles_2headers_2TreeCreator_8h}{}\doxysection{Source\+Files/headers/\+Tree\+Creator.h File Reference}
+\label{SourceFiles_2headers_2TreeCreator_8h}\index{SourceFiles/headers/TreeCreator.h@{SourceFiles/headers/TreeCreator.h}}
+
+
+Header file for \mbox{\hyperlink{TestFiles_2SourceFiles_2TreeCreator_8cpp_a4adefe4feab254092e7affdb23612755}{Tree\+Creator}} function.  
+
+
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{SourceFiles_2headers_2TreeCreator_8h_a4adefe4feab254092e7affdb23612755}{Tree\+Creator}} (const char $\ast$filename)
+\begin{DoxyCompactList}\small\item\em Function that opens the $\ast$.h5 file and calls the \mbox{\hyperlink{TestFiles_2SourceFiles_2headers_2Dataset__2Dread_8h_a2dc8bccd62c373531d819d9900038ebc}{Dataset\+\_\+2\+Dread}} function for every dataset stored in that particular file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for \mbox{\hyperlink{TestFiles_2SourceFiles_2TreeCreator_8cpp_a4adefe4feab254092e7affdb23612755}{Tree\+Creator}} function. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{SourceFiles_2headers_2TreeCreator_8h_a4adefe4feab254092e7affdb23612755}\label{SourceFiles_2headers_2TreeCreator_8h_a4adefe4feab254092e7affdb23612755}} 
+\index{TreeCreator.h@{TreeCreator.h}!TreeCreator@{TreeCreator}}
+\index{TreeCreator@{TreeCreator}!TreeCreator.h@{TreeCreator.h}}
+\doxysubsubsection{\texorpdfstring{TreeCreator()}{TreeCreator()}}
+{\footnotesize\ttfamily int Tree\+Creator (\begin{DoxyParamCaption}\item[{const char $\ast$}]{filename }\end{DoxyParamCaption})}
+
+
+
+Function that opens the $\ast$.h5 file and calls the \mbox{\hyperlink{TestFiles_2SourceFiles_2headers_2Dataset__2Dread_8h_a2dc8bccd62c373531d819d9900038ebc}{Dataset\+\_\+2\+Dread}} function for every dataset stored in that particular file. 
+
+This function opens a $\ast$.h5 file, then opens a token-\/selected dataset and begin the \mbox{\hyperlink{TestFiles_2SourceFiles_2headers_2Dataset__2Dread_8h_a2dc8bccd62c373531d819d9900038ebc}{Dataset\+\_\+2\+Dread}} iteration.~\newline
+Note that there is a switch selecting the datatype which will be used as templated argument forthe function \mbox{\hyperlink{TestFiles_2SourceFiles_2headers_2Dataset__2Dread_8h_a2dc8bccd62c373531d819d9900038ebc}{Dataset\+\_\+2\+Dread}} .~\newline
+It returns 0 if there is no error during the execution.
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$filename} & Name of the $\ast$.h5 file that has to be analyzed and name of the $\ast$.root file that will include trees filled with data read from each dataset. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 20 of file Tree\+Creator.\+cpp.
+

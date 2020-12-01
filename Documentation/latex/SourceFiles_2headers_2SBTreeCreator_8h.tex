@@ -1,0 +1,48 @@
+\hypertarget{SourceFiles_2headers_2SBTreeCreator_8h}{}\doxysection{Source\+Files/headers/\+S\+B\+Tree\+Creator.h File Reference}
+\label{SourceFiles_2headers_2SBTreeCreator_8h}\index{SourceFiles/headers/SBTreeCreator.h@{SourceFiles/headers/SBTreeCreator.h}}
+
+
+Header file for \mbox{\hyperlink{TestFiles_2SourceFiles_2SBTreeCreator_8cpp_a05a336536b4319d31340617578e3d3f0}{S\+B\+Tree\+Creator}} function.  
+
+
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{SourceFiles_2headers_2SBTreeCreator_8h_a05a336536b4319d31340617578e3d3f0}{S\+B\+Tree\+Creator}} (const char $\ast$filename, const char $\ast$outputname, int sbflag, int number)
+\begin{DoxyCompactList}\small\item\em Function that create a $\ast$.root file containing signal/background/event kinematic trees. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for \mbox{\hyperlink{TestFiles_2SourceFiles_2SBTreeCreator_8cpp_a05a336536b4319d31340617578e3d3f0}{S\+B\+Tree\+Creator}} function. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{SourceFiles_2headers_2SBTreeCreator_8h_a05a336536b4319d31340617578e3d3f0}\label{SourceFiles_2headers_2SBTreeCreator_8h_a05a336536b4319d31340617578e3d3f0}} 
+\index{SBTreeCreator.h@{SBTreeCreator.h}!SBTreeCreator@{SBTreeCreator}}
+\index{SBTreeCreator@{SBTreeCreator}!SBTreeCreator.h@{SBTreeCreator.h}}
+\doxysubsubsection{\texorpdfstring{SBTreeCreator()}{SBTreeCreator()}}
+{\footnotesize\ttfamily int S\+B\+Tree\+Creator (\begin{DoxyParamCaption}\item[{const char $\ast$}]{filename,  }\item[{const char $\ast$}]{outputname,  }\item[{int}]{sbflag,  }\item[{int}]{number }\end{DoxyParamCaption})}
+
+
+
+Function that create a $\ast$.root file containing signal/background/event kinematic trees. 
+
+This function is designed to distinguish signal from background using either the {\ttfamily sbflag} or other eventual event identifier.~\newline
+Returns 0 if there is no error during execution.
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$filename} & Name of the $\ast$.root file that include trees to be distinguished in signal/background \\
+\hline
+{\em $\ast$outputname} & Name of the $\ast$.root file that will contain signal, background and event trees \\
+\hline
+{\em sbflag} & Some files contain only one kind of event. This \char`\"{}flag\char`\"{} identifies if a file is a pure signal or a pure background one \\
+\hline
+{\em number} & Number refered to the position of the file in the list of input files that has to be analyzed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 22 of file S\+B\+Tree\+Creator.\+cpp.
+

@@ -1,0 +1,216 @@
+\hypertarget{StatusPrinter_8cpp}{}\doxysection{Source\+Files/\+Status\+Printer.cpp File Reference}
+\label{StatusPrinter_8cpp}\index{SourceFiles/StatusPrinter.cpp@{SourceFiles/StatusPrinter.cpp}}
+
+
+Source file for \mbox{\hyperlink{StatusPrinter_8cpp_a023d70526dae5983da06500a9ac2435a}{Status\+Printer}} function implementation.  
+
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structTIME}{T\+I\+ME}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{StatusPrinter_8cpp_ab702106cf3b3e96750b6845ded4e0299}{R\+E\+S\+ET}}~\char`\"{}\textbackslash{}033\mbox{[}0m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{StatusPrinter_8cpp_a7b3b25cba33b07c303f3060fe41887f6}{B\+L\+A\+CK}}~\char`\"{}\textbackslash{}033\mbox{[}30m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{StatusPrinter_8cpp_a8d23feea868a983c8c2b661e1e16972f}{R\+ED}}~\char`\"{}\textbackslash{}033\mbox{[}31m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{StatusPrinter_8cpp_acfbc006ea433ad708fdee3e82996e721}{G\+R\+E\+EN}}~\char`\"{}\textbackslash{}033\mbox{[}32m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{StatusPrinter_8cpp_abf681265909adf3d3e8116c93c0ba179}{Y\+E\+L\+L\+OW}}~\char`\"{}\textbackslash{}033\mbox{[}33m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{StatusPrinter_8cpp_a79d10e672abb49ad63eeaa8aaef57c38}{B\+L\+UE}}~\char`\"{}\textbackslash{}033\mbox{[}34m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{StatusPrinter_8cpp_a6f699060902f800f12aaae150f3a708e}{M\+A\+G\+E\+N\+TA}}~\char`\"{}\textbackslash{}033\mbox{[}35m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{StatusPrinter_8cpp_ad243f93c16bc4c1d3e0a13b84421d760}{C\+Y\+AN}}~\char`\"{}\textbackslash{}033\mbox{[}36m\char`\"{}
+\item 
+\#define \mbox{\hyperlink{StatusPrinter_8cpp_a87b537f5fa5c109d3c05c13d6b18f382}{W\+H\+I\+TE}}~\char`\"{}\textbackslash{}033\mbox{[}37m\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{StatusPrinter_8cpp_aa2c9007d85848dc5b0e2bfc628d23b50}{Status\+Printer}} (int progress)
+\begin{DoxyCompactList}\small\item\em Function used to print a banner with a progression bar. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{StatusPrinter_8cpp_a023d70526dae5983da06500a9ac2435a}{Status\+Printer}} (std\+::ostream \&stream, int progress)
+\begin{DoxyCompactList}\small\item\em Function used to print a banner with a progression bar. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const int \mbox{\hyperlink{StatusPrinter_8cpp_a6bf021aaf5106c13824f3d8f61ecd5c1}{ncolumns}} = 55
+\item 
+struct \mbox{\hyperlink{structTIME}{T\+I\+ME}} \mbox{\hyperlink{StatusPrinter_8cpp_ad342264c66ec18b635e515bfb9176f61}{timepoint}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Source file for \mbox{\hyperlink{StatusPrinter_8cpp_a023d70526dae5983da06500a9ac2435a}{Status\+Printer}} function implementation. 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{StatusPrinter_8cpp_a7b3b25cba33b07c303f3060fe41887f6}\label{StatusPrinter_8cpp_a7b3b25cba33b07c303f3060fe41887f6}} 
+\index{StatusPrinter.cpp@{StatusPrinter.cpp}!BLACK@{BLACK}}
+\index{BLACK@{BLACK}!StatusPrinter.cpp@{StatusPrinter.cpp}}
+\doxysubsubsection{\texorpdfstring{BLACK}{BLACK}}
+{\footnotesize\ttfamily \#define B\+L\+A\+CK~\char`\"{}\textbackslash{}033\mbox{[}30m\char`\"{}}
+
+
+
+Definition at line 20 of file Status\+Printer.\+cpp.
+
+\mbox{\Hypertarget{StatusPrinter_8cpp_a79d10e672abb49ad63eeaa8aaef57c38}\label{StatusPrinter_8cpp_a79d10e672abb49ad63eeaa8aaef57c38}} 
+\index{StatusPrinter.cpp@{StatusPrinter.cpp}!BLUE@{BLUE}}
+\index{BLUE@{BLUE}!StatusPrinter.cpp@{StatusPrinter.cpp}}
+\doxysubsubsection{\texorpdfstring{BLUE}{BLUE}}
+{\footnotesize\ttfamily \#define B\+L\+UE~\char`\"{}\textbackslash{}033\mbox{[}34m\char`\"{}}
+
+
+
+Definition at line 24 of file Status\+Printer.\+cpp.
+
+\mbox{\Hypertarget{StatusPrinter_8cpp_ad243f93c16bc4c1d3e0a13b84421d760}\label{StatusPrinter_8cpp_ad243f93c16bc4c1d3e0a13b84421d760}} 
+\index{StatusPrinter.cpp@{StatusPrinter.cpp}!CYAN@{CYAN}}
+\index{CYAN@{CYAN}!StatusPrinter.cpp@{StatusPrinter.cpp}}
+\doxysubsubsection{\texorpdfstring{CYAN}{CYAN}}
+{\footnotesize\ttfamily \#define C\+Y\+AN~\char`\"{}\textbackslash{}033\mbox{[}36m\char`\"{}}
+
+
+
+Definition at line 26 of file Status\+Printer.\+cpp.
+
+\mbox{\Hypertarget{StatusPrinter_8cpp_acfbc006ea433ad708fdee3e82996e721}\label{StatusPrinter_8cpp_acfbc006ea433ad708fdee3e82996e721}} 
+\index{StatusPrinter.cpp@{StatusPrinter.cpp}!GREEN@{GREEN}}
+\index{GREEN@{GREEN}!StatusPrinter.cpp@{StatusPrinter.cpp}}
+\doxysubsubsection{\texorpdfstring{GREEN}{GREEN}}
+{\footnotesize\ttfamily \#define G\+R\+E\+EN~\char`\"{}\textbackslash{}033\mbox{[}32m\char`\"{}}
+
+
+
+Definition at line 22 of file Status\+Printer.\+cpp.
+
+\mbox{\Hypertarget{StatusPrinter_8cpp_a6f699060902f800f12aaae150f3a708e}\label{StatusPrinter_8cpp_a6f699060902f800f12aaae150f3a708e}} 
+\index{StatusPrinter.cpp@{StatusPrinter.cpp}!MAGENTA@{MAGENTA}}
+\index{MAGENTA@{MAGENTA}!StatusPrinter.cpp@{StatusPrinter.cpp}}
+\doxysubsubsection{\texorpdfstring{MAGENTA}{MAGENTA}}
+{\footnotesize\ttfamily \#define M\+A\+G\+E\+N\+TA~\char`\"{}\textbackslash{}033\mbox{[}35m\char`\"{}}
+
+
+
+Definition at line 25 of file Status\+Printer.\+cpp.
+
+\mbox{\Hypertarget{StatusPrinter_8cpp_a8d23feea868a983c8c2b661e1e16972f}\label{StatusPrinter_8cpp_a8d23feea868a983c8c2b661e1e16972f}} 
+\index{StatusPrinter.cpp@{StatusPrinter.cpp}!RED@{RED}}
+\index{RED@{RED}!StatusPrinter.cpp@{StatusPrinter.cpp}}
+\doxysubsubsection{\texorpdfstring{RED}{RED}}
+{\footnotesize\ttfamily \#define R\+ED~\char`\"{}\textbackslash{}033\mbox{[}31m\char`\"{}}
+
+
+
+Definition at line 21 of file Status\+Printer.\+cpp.
+
+\mbox{\Hypertarget{StatusPrinter_8cpp_ab702106cf3b3e96750b6845ded4e0299}\label{StatusPrinter_8cpp_ab702106cf3b3e96750b6845ded4e0299}} 
+\index{StatusPrinter.cpp@{StatusPrinter.cpp}!RESET@{RESET}}
+\index{RESET@{RESET}!StatusPrinter.cpp@{StatusPrinter.cpp}}
+\doxysubsubsection{\texorpdfstring{RESET}{RESET}}
+{\footnotesize\ttfamily \#define R\+E\+S\+ET~\char`\"{}\textbackslash{}033\mbox{[}0m\char`\"{}}
+
+
+
+Definition at line 19 of file Status\+Printer.\+cpp.
+
+\mbox{\Hypertarget{StatusPrinter_8cpp_a87b537f5fa5c109d3c05c13d6b18f382}\label{StatusPrinter_8cpp_a87b537f5fa5c109d3c05c13d6b18f382}} 
+\index{StatusPrinter.cpp@{StatusPrinter.cpp}!WHITE@{WHITE}}
+\index{WHITE@{WHITE}!StatusPrinter.cpp@{StatusPrinter.cpp}}
+\doxysubsubsection{\texorpdfstring{WHITE}{WHITE}}
+{\footnotesize\ttfamily \#define W\+H\+I\+TE~\char`\"{}\textbackslash{}033\mbox{[}37m\char`\"{}}
+
+
+
+Definition at line 27 of file Status\+Printer.\+cpp.
+
+\mbox{\Hypertarget{StatusPrinter_8cpp_abf681265909adf3d3e8116c93c0ba179}\label{StatusPrinter_8cpp_abf681265909adf3d3e8116c93c0ba179}} 
+\index{StatusPrinter.cpp@{StatusPrinter.cpp}!YELLOW@{YELLOW}}
+\index{YELLOW@{YELLOW}!StatusPrinter.cpp@{StatusPrinter.cpp}}
+\doxysubsubsection{\texorpdfstring{YELLOW}{YELLOW}}
+{\footnotesize\ttfamily \#define Y\+E\+L\+L\+OW~\char`\"{}\textbackslash{}033\mbox{[}33m\char`\"{}}
+
+
+
+Definition at line 23 of file Status\+Printer.\+cpp.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{StatusPrinter_8cpp_aa2c9007d85848dc5b0e2bfc628d23b50}\label{StatusPrinter_8cpp_aa2c9007d85848dc5b0e2bfc628d23b50}} 
+\index{StatusPrinter.cpp@{StatusPrinter.cpp}!StatusPrinter@{StatusPrinter}}
+\index{StatusPrinter@{StatusPrinter}!StatusPrinter.cpp@{StatusPrinter.cpp}}
+\doxysubsubsection{\texorpdfstring{StatusPrinter()}{StatusPrinter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Status\+Printer (\begin{DoxyParamCaption}\item[{int}]{progress }\end{DoxyParamCaption})}
+
+
+
+Function used to print a banner with a progression bar. 
+
+This function is used to print a banner with some \char`\"{}\mbox{[}====$>$\mbox{]} x\%\char`\"{} characters.~\newline
+They contains information about the runtime and the progress of time consuming functions.~\newline
+Global variable {\ttfamily ncolumns} can be defined by the user\+: the function will appropriately cut the progress bar.~\newline
+
+\begin{DoxyParams}{Parameters}
+{\em progress} & Completion percentage of the function being executed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 43 of file Status\+Printer.\+cpp.
+
+\mbox{\Hypertarget{StatusPrinter_8cpp_a023d70526dae5983da06500a9ac2435a}\label{StatusPrinter_8cpp_a023d70526dae5983da06500a9ac2435a}} 
+\index{StatusPrinter.cpp@{StatusPrinter.cpp}!StatusPrinter@{StatusPrinter}}
+\index{StatusPrinter@{StatusPrinter}!StatusPrinter.cpp@{StatusPrinter.cpp}}
+\doxysubsubsection{\texorpdfstring{StatusPrinter()}{StatusPrinter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Status\+Printer (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{stream,  }\item[{int}]{progress }\end{DoxyParamCaption})}
+
+
+
+Function used to print a banner with a progression bar. 
+
+This function is the overloaded version of \mbox{\hyperlink{StatusPrinter_8cpp_aa2c9007d85848dc5b0e2bfc628d23b50}{.\textbackslash{}n}} The user can set an ofstream to write the output to whatever he/she likes.~\newline
+The developer used this to make unit test.~\newline
+ 
+\begin{DoxyParams}{Parameters}
+{\em stream} & Output where the starred banner has to be written \\
+\hline
+{\em progress} & Completion percentage of the function being executed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 120 of file Status\+Printer.\+cpp.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{StatusPrinter_8cpp_a6bf021aaf5106c13824f3d8f61ecd5c1}\label{StatusPrinter_8cpp_a6bf021aaf5106c13824f3d8f61ecd5c1}} 
+\index{StatusPrinter.cpp@{StatusPrinter.cpp}!ncolumns@{ncolumns}}
+\index{ncolumns@{ncolumns}!StatusPrinter.cpp@{StatusPrinter.cpp}}
+\doxysubsubsection{\texorpdfstring{ncolumns}{ncolumns}}
+{\footnotesize\ttfamily const int ncolumns = 55}
+
+Number of columns of the bar that will be printed 
+
+Definition at line 40 of file Status\+Printer.\+cpp.
+
+\mbox{\Hypertarget{StatusPrinter_8cpp_ad342264c66ec18b635e515bfb9176f61}\label{StatusPrinter_8cpp_ad342264c66ec18b635e515bfb9176f61}} 
+\index{StatusPrinter.cpp@{StatusPrinter.cpp}!timepoint@{timepoint}}
+\index{timepoint@{timepoint}!StatusPrinter.cpp@{StatusPrinter.cpp}}
+\doxysubsubsection{\texorpdfstring{timepoint}{timepoint}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structTIME}{T\+I\+ME}} timepoint}
+
+
+
+Definition at line 41 of file Status\+Printer.\+cpp.
+

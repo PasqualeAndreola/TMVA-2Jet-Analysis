@@ -62,9 +62,9 @@ using \mbox{\hyperlink{namespaceCatch_1_1Generators_a1519f304113619d7d18670e2f08
 \item 
 {\footnotesize template$<$typename T , typename U , typename... Gs$>$ }\\auto \mbox{\hyperlink{namespaceCatch_1_1Generators_aac8c5682b95d3467b013de492f21e7e2}{make\+Generators}} (\mbox{\hyperlink{structCatch_1_1Generators_1_1as}{as}}$<$ T $>$, U \&\&val, Gs \&\&... more\+Generators) -\/$>$ \mbox{\hyperlink{classCatch_1_1Generators_1_1Generators}{Generators}}$<$ T $>$
 \item 
-auto \mbox{\hyperlink{namespaceCatch_1_1Generators_a36413e3baec520d89d21bea23b7bea5b}{acquire\+Generator\+Tracker}} (\mbox{\hyperlink{structCatch_1_1SourceLineInfo}{Source\+Line\+Info}} const \&line\+Info) -\/$>$ \mbox{\hyperlink{structCatch_1_1IGeneratorTracker}{I\+Generator\+Tracker}} \&
+auto \mbox{\hyperlink{namespaceCatch_1_1Generators_ac1fe3550c5f97370fc6729e04d7571b8}{acquire\+Generator\+Tracker}} (\mbox{\hyperlink{classCatch_1_1StringRef}{String\+Ref}} generator\+Name, \mbox{\hyperlink{structCatch_1_1SourceLineInfo}{Source\+Line\+Info}} const \&line\+Info) -\/$>$ \mbox{\hyperlink{structCatch_1_1IGeneratorTracker}{I\+Generator\+Tracker}} \&
 \item 
-{\footnotesize template$<$typename L $>$ }\\auto \mbox{\hyperlink{namespaceCatch_1_1Generators_adbda9e2d18cd3e4dbb124c7d8830c97b}{generate}} (\mbox{\hyperlink{structCatch_1_1SourceLineInfo}{Source\+Line\+Info}} const \&line\+Info, L const \&generator\+Expression) -\/$>$ decltype(std\+::declval$<$ decltype(generator\+Expression())$>$().get())
+{\footnotesize template$<$typename L $>$ }\\auto \mbox{\hyperlink{namespaceCatch_1_1Generators_a3b0ab1f589b1d1e0e92afcd12cf4ab12}{generate}} (\mbox{\hyperlink{classCatch_1_1StringRef}{String\+Ref}} generator\+Name, \mbox{\hyperlink{structCatch_1_1SourceLineInfo}{Source\+Line\+Info}} const \&line\+Info, L const \&generator\+Expression) -\/$>$ decltype(std\+::declval$<$ decltype(generator\+Expression())$>$().get())
 \item 
 {\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{classCatch_1_1Generators_1_1GeneratorWrapper}{Generator\+Wrapper}}$<$ T $>$ \mbox{\hyperlink{namespaceCatch_1_1Generators_a972480864d60131946f6f53c566de070}{take}} (size\+\_\+t target, \mbox{\hyperlink{classCatch_1_1Generators_1_1GeneratorWrapper}{Generator\+Wrapper}}$<$ T $>$ \&\&generator)
 \item 
@@ -99,16 +99,16 @@ auto \mbox{\hyperlink{namespaceCatch_1_1Generators_a36413e3baec520d89d21bea23b7b
 
 
 
-Definition at line 3859 of file catch.\+hpp.
+Definition at line 3850 of file catch.\+hpp.
 
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{namespaceCatch_1_1Generators_a36413e3baec520d89d21bea23b7bea5b}\label{namespaceCatch_1_1Generators_a36413e3baec520d89d21bea23b7bea5b}} 
+\mbox{\Hypertarget{namespaceCatch_1_1Generators_ac1fe3550c5f97370fc6729e04d7571b8}\label{namespaceCatch_1_1Generators_ac1fe3550c5f97370fc6729e04d7571b8}} 
 \index{Catch::Generators@{Catch::Generators}!acquireGeneratorTracker@{acquireGeneratorTracker}}
 \index{acquireGeneratorTracker@{acquireGeneratorTracker}!Catch::Generators@{Catch::Generators}}
 \doxysubsubsection{\texorpdfstring{acquireGeneratorTracker()}{acquireGeneratorTracker()}}
-{\footnotesize\ttfamily auto Catch\+::\+Generators\+::acquire\+Generator\+Tracker (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCatch_1_1SourceLineInfo}{Source\+Line\+Info}} const \&}]{line\+Info }\end{DoxyParamCaption}) -\/$>$  \mbox{\hyperlink{structCatch_1_1IGeneratorTracker}{I\+Generator\+Tracker}} \&}
+{\footnotesize\ttfamily auto Catch\+::\+Generators\+::acquire\+Generator\+Tracker (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCatch_1_1StringRef}{String\+Ref}}}]{generator\+Name,  }\item[{\mbox{\hyperlink{structCatch_1_1SourceLineInfo}{Source\+Line\+Info}} const \&}]{line\+Info }\end{DoxyParamCaption}) -\/$>$  \mbox{\hyperlink{structCatch_1_1IGeneratorTracker}{I\+Generator\+Tracker}} \&}
 
 \mbox{\Hypertarget{namespaceCatch_1_1Generators_a0ac5eeee0354973c318f62d0937a7981}\label{namespaceCatch_1_1Generators_a0ac5eeee0354973c318f62d0937a7981}} 
 \index{Catch::Generators@{Catch::Generators}!chunk@{chunk}}
@@ -119,7 +119,7 @@ Definition at line 3859 of file catch.\+hpp.
 
 
 
-Definition at line 4326 of file catch.\+hpp.
+Definition at line 4323 of file catch.\+hpp.
 
 \mbox{\Hypertarget{namespaceCatch_1_1Generators_afd87f4cbf259f2252aee164d6905b18b}\label{namespaceCatch_1_1Generators_afd87f4cbf259f2252aee164d6905b18b}} 
 \index{Catch::Generators@{Catch::Generators}!filter@{filter}}
@@ -130,7 +130,7 @@ Definition at line 4326 of file catch.\+hpp.
 
 
 
-Definition at line 4188 of file catch.\+hpp.
+Definition at line 4185 of file catch.\+hpp.
 
 \mbox{\Hypertarget{namespaceCatch_1_1Generators_aeb88d6a42add0362432ce03fa35b6dd4}\label{namespaceCatch_1_1Generators_aeb88d6a42add0362432ce03fa35b6dd4}} 
 \index{Catch::Generators@{Catch::Generators}!from\_range@{from\_range}}
@@ -141,7 +141,7 @@ Definition at line 4188 of file catch.\+hpp.
 
 
 
-Definition at line 4738 of file catch.\+hpp.
+Definition at line 4736 of file catch.\+hpp.
 
 \mbox{\Hypertarget{namespaceCatch_1_1Generators_a9d2acedb284b77addf4397c1c26918f3}\label{namespaceCatch_1_1Generators_a9d2acedb284b77addf4397c1c26918f3}} 
 \index{Catch::Generators@{Catch::Generators}!from\_range@{from\_range}}
@@ -152,18 +152,18 @@ Definition at line 4738 of file catch.\+hpp.
 
 
 
-Definition at line 4732 of file catch.\+hpp.
+Definition at line 4730 of file catch.\+hpp.
 
-\mbox{\Hypertarget{namespaceCatch_1_1Generators_adbda9e2d18cd3e4dbb124c7d8830c97b}\label{namespaceCatch_1_1Generators_adbda9e2d18cd3e4dbb124c7d8830c97b}} 
+\mbox{\Hypertarget{namespaceCatch_1_1Generators_a3b0ab1f589b1d1e0e92afcd12cf4ab12}\label{namespaceCatch_1_1Generators_a3b0ab1f589b1d1e0e92afcd12cf4ab12}} 
 \index{Catch::Generators@{Catch::Generators}!generate@{generate}}
 \index{generate@{generate}!Catch::Generators@{Catch::Generators}}
 \doxysubsubsection{\texorpdfstring{generate()}{generate()}}
 {\footnotesize\ttfamily template$<$typename L $>$ \\
-auto Catch\+::\+Generators\+::generate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCatch_1_1SourceLineInfo}{Source\+Line\+Info}} const \&}]{line\+Info,  }\item[{L const \&}]{generator\+Expression }\end{DoxyParamCaption}) -\/$>$ decltype(std\+::declval$<$decltype(generator\+Expression())$>$().get()) }
+auto Catch\+::\+Generators\+::generate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCatch_1_1StringRef}{String\+Ref}}}]{generator\+Name,  }\item[{\mbox{\hyperlink{structCatch_1_1SourceLineInfo}{Source\+Line\+Info}} const \&}]{line\+Info,  }\item[{L const \&}]{generator\+Expression }\end{DoxyParamCaption}) -\/$>$ decltype(std\+::declval$<$decltype(generator\+Expression())$>$().get()) }
 
 
 
-Definition at line 4089 of file catch.\+hpp.
+Definition at line 4080 of file catch.\+hpp.
 
 \mbox{\Hypertarget{namespaceCatch_1_1Generators_aac8c5682b95d3467b013de492f21e7e2}\label{namespaceCatch_1_1Generators_aac8c5682b95d3467b013de492f21e7e2}} 
 \index{Catch::Generators@{Catch::Generators}!makeGenerators@{makeGenerators}}
@@ -174,7 +174,7 @@ auto Catch\+::\+Generators\+::make\+Generators (\begin{DoxyParamCaption}\item[{\
 
 
 
-Definition at line 4079 of file catch.\+hpp.
+Definition at line 4070 of file catch.\+hpp.
 
 \mbox{\Hypertarget{namespaceCatch_1_1Generators_abefb1a0fab3c669b98a53037b3286d22}\label{namespaceCatch_1_1Generators_abefb1a0fab3c669b98a53037b3286d22}} 
 \index{Catch::Generators@{Catch::Generators}!makeGenerators@{makeGenerators}}
@@ -185,7 +185,7 @@ auto Catch\+::\+Generators\+::make\+Generators (\begin{DoxyParamCaption}\item[{\
 
 
 
-Definition at line 4071 of file catch.\+hpp.
+Definition at line 4062 of file catch.\+hpp.
 
 \mbox{\Hypertarget{namespaceCatch_1_1Generators_a7cc95d72b060e2819b2edbbdbf8c646b}\label{namespaceCatch_1_1Generators_a7cc95d72b060e2819b2edbbdbf8c646b}} 
 \index{Catch::Generators@{Catch::Generators}!makeGenerators@{makeGenerators}}
@@ -196,7 +196,7 @@ auto Catch\+::\+Generators\+::make\+Generators (\begin{DoxyParamCaption}\item[{\
 
 
 
-Definition at line 4067 of file catch.\+hpp.
+Definition at line 4058 of file catch.\+hpp.
 
 \mbox{\Hypertarget{namespaceCatch_1_1Generators_ab22ab581e83e71530d8bbd1c14f94abc}\label{namespaceCatch_1_1Generators_ab22ab581e83e71530d8bbd1c14f94abc}} 
 \index{Catch::Generators@{Catch::Generators}!makeGenerators@{makeGenerators}}
@@ -207,7 +207,7 @@ auto Catch\+::\+Generators\+::make\+Generators (\begin{DoxyParamCaption}\item[{T
 
 
 
-Definition at line 4075 of file catch.\+hpp.
+Definition at line 4066 of file catch.\+hpp.
 
 \mbox{\Hypertarget{namespaceCatch_1_1Generators_af33fd06c51ac9173c3bee2ddee2559a6}\label{namespaceCatch_1_1Generators_af33fd06c51ac9173c3bee2ddee2559a6}} 
 \index{Catch::Generators@{Catch::Generators}!map@{map}}
@@ -218,7 +218,7 @@ Definition at line 4075 of file catch.\+hpp.
 
 
 
-Definition at line 4276 of file catch.\+hpp.
+Definition at line 4273 of file catch.\+hpp.
 
 \mbox{\Hypertarget{namespaceCatch_1_1Generators_a5003f0b96aaa4b1a53ebd81f4e93ab0c}\label{namespaceCatch_1_1Generators_a5003f0b96aaa4b1a53ebd81f4e93ab0c}} 
 \index{Catch::Generators@{Catch::Generators}!random@{random}}
@@ -229,7 +229,7 @@ std\+::enable\+\_\+if$<$std\+::is\+\_\+integral$<$T$>$\+::\mbox{\hyperlink{names
 
 
 
-Definition at line 4643 of file catch.\+hpp.
+Definition at line 4641 of file catch.\+hpp.
 
 \mbox{\Hypertarget{namespaceCatch_1_1Generators_a677b543146adcdfe23fdfff48007a57e}\label{namespaceCatch_1_1Generators_a677b543146adcdfe23fdfff48007a57e}} 
 \index{Catch::Generators@{Catch::Generators}!random@{random}}
@@ -240,7 +240,7 @@ std\+::enable\+\_\+if$<$std\+::is\+\_\+floating\+\_\+point$<$T$>$\+::\mbox{\hype
 
 
 
-Definition at line 4652 of file catch.\+hpp.
+Definition at line 4650 of file catch.\+hpp.
 
 \mbox{\Hypertarget{namespaceCatch_1_1Generators_a75b1b4ab3b52a8d99f9d049824500371}\label{namespaceCatch_1_1Generators_a75b1b4ab3b52a8d99f9d049824500371}} 
 \index{Catch::Generators@{Catch::Generators}!range@{range}}
@@ -251,7 +251,7 @@ Definition at line 4652 of file catch.\+hpp.
 
 
 
-Definition at line 4698 of file catch.\+hpp.
+Definition at line 4696 of file catch.\+hpp.
 
 \mbox{\Hypertarget{namespaceCatch_1_1Generators_a3c79134931f824e63588bfa5baa77a43}\label{namespaceCatch_1_1Generators_a3c79134931f824e63588bfa5baa77a43}} 
 \index{Catch::Generators@{Catch::Generators}!range@{range}}
@@ -262,7 +262,7 @@ Definition at line 4698 of file catch.\+hpp.
 
 
 
-Definition at line 4692 of file catch.\+hpp.
+Definition at line 4690 of file catch.\+hpp.
 
 \mbox{\Hypertarget{namespaceCatch_1_1Generators_a3a30dce0fd8e3818baaca086ba5fd35a}\label{namespaceCatch_1_1Generators_a3a30dce0fd8e3818baaca086ba5fd35a}} 
 \index{Catch::Generators@{Catch::Generators}!repeat@{repeat}}
@@ -273,7 +273,7 @@ Definition at line 4692 of file catch.\+hpp.
 
 
 
-Definition at line 4244 of file catch.\+hpp.
+Definition at line 4241 of file catch.\+hpp.
 
 \mbox{\Hypertarget{namespaceCatch_1_1Generators_a6e0436ad4eddeabdc34281119201dbfe}\label{namespaceCatch_1_1Generators_a6e0436ad4eddeabdc34281119201dbfe}} 
 \index{Catch::Generators@{Catch::Generators}!table@{table}}
@@ -284,7 +284,7 @@ Definition at line 4244 of file catch.\+hpp.
 
 
 
-Definition at line 4058 of file catch.\+hpp.
+Definition at line 4049 of file catch.\+hpp.
 
 \mbox{\Hypertarget{namespaceCatch_1_1Generators_a972480864d60131946f6f53c566de070}\label{namespaceCatch_1_1Generators_a972480864d60131946f6f53c566de070}} 
 \index{Catch::Generators@{Catch::Generators}!take@{take}}
@@ -295,7 +295,7 @@ Definition at line 4058 of file catch.\+hpp.
 
 
 
-Definition at line 4149 of file catch.\+hpp.
+Definition at line 4146 of file catch.\+hpp.
 
 \mbox{\Hypertarget{namespaceCatch_1_1Generators_a3c4989dd0dca44455f55484cedaa18da}\label{namespaceCatch_1_1Generators_a3c4989dd0dca44455f55484cedaa18da}} 
 \index{Catch::Generators@{Catch::Generators}!value@{value}}
@@ -306,7 +306,7 @@ Definition at line 4149 of file catch.\+hpp.
 
 
 
-Definition at line 4005 of file catch.\+hpp.
+Definition at line 3996 of file catch.\+hpp.
 
 \mbox{\Hypertarget{namespaceCatch_1_1Generators_a55ca9a1132e662d9603c516161dcae35}\label{namespaceCatch_1_1Generators_a55ca9a1132e662d9603c516161dcae35}} 
 \index{Catch::Generators@{Catch::Generators}!values@{values}}
@@ -317,5 +317,5 @@ Definition at line 4005 of file catch.\+hpp.
 
 
 
-Definition at line 4009 of file catch.\+hpp.
+Definition at line 4000 of file catch.\+hpp.
 

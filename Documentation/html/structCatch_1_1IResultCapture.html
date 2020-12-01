@@ -90,8 +90,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4e152bc43dc0933684e31fa67a58195d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afcc71eef8ca821ae132cced4a2be6988"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCatch_1_1IResultCapture.html#afcc71eef8ca821ae132cced4a2be6988">sectionEndedEarly</a> (<a class="el" href="structCatch_1_1SectionEndInfo.html">SectionEndInfo</a> const &amp;endInfo)=0</td></tr>
 <tr class="separator:afcc71eef8ca821ae132cced4a2be6988"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab020d111e29ad1cabe1227dcfda712ef"><td class="memItemLeft" align="right" valign="top">virtual auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCatch_1_1IResultCapture.html#ab020d111e29ad1cabe1227dcfda712ef">acquireGeneratorTracker</a> (<a class="el" href="structCatch_1_1SourceLineInfo.html">SourceLineInfo</a> const &amp;lineInfo) -&gt; <a class="el" href="structCatch_1_1IGeneratorTracker.html">IGeneratorTracker</a> &amp;=0</td></tr>
-<tr class="separator:ab020d111e29ad1cabe1227dcfda712ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f93a848e0a48b630ca9ecbf225e4817"><td class="memItemLeft" align="right" valign="top">virtual auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCatch_1_1IResultCapture.html#a8f93a848e0a48b630ca9ecbf225e4817">acquireGeneratorTracker</a> (<a class="el" href="classCatch_1_1StringRef.html">StringRef</a> generatorName, <a class="el" href="structCatch_1_1SourceLineInfo.html">SourceLineInfo</a> const &amp;lineInfo) -&gt; <a class="el" href="structCatch_1_1IGeneratorTracker.html">IGeneratorTracker</a> &amp;=0</td></tr>
+<tr class="separator:a8f93a848e0a48b630ca9ecbf225e4817"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91d154c1e087e383dcde5aad95cb6a05"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCatch_1_1IResultCapture.html#a91d154c1e087e383dcde5aad95cb6a05">pushScopedMessage</a> (<a class="el" href="structCatch_1_1MessageInfo.html">MessageInfo</a> const &amp;message)=0</td></tr>
 <tr class="separator:a91d154c1e087e383dcde5aad95cb6a05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42bcb13276706bf8c3ce081ce16d37fd"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCatch_1_1IResultCapture.html#a42bcb13276706bf8c3ce081ce16d37fd">popScopedMessage</a> (<a class="el" href="structCatch_1_1MessageInfo.html">MessageInfo</a> const &amp;message)=0</td></tr>
@@ -125,7 +125,7 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="catch_8hpp_source.html#l02462">2462</a> of file <a class="el" href="catch_8hpp_source.html">catch.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="catch_8hpp_source.html#l02453">2453</a> of file <a class="el" href="catch_8hpp_source.html">catch.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a3bd16719d6772b7470887fc36c6d0808"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3bd16719d6772b7470887fc36c6d0808">&#9670;&nbsp;</a></span>~IResultCapture()</h2>
@@ -153,8 +153,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab020d111e29ad1cabe1227dcfda712ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab020d111e29ad1cabe1227dcfda712ef">&#9670;&nbsp;</a></span>acquireGeneratorTracker()</h2>
+<a id="a8f93a848e0a48b630ca9ecbf225e4817"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f93a848e0a48b630ca9ecbf225e4817">&#9670;&nbsp;</a></span>acquireGeneratorTracker()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -165,9 +165,19 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual auto Catch::IResultCapture::acquireGeneratorTracker </td>
           <td>(</td>
+          <td class="paramtype"><a class="el" href="classCatch_1_1StringRef.html">StringRef</a>&#160;</td>
+          <td class="paramname"><em>generatorName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype"><a class="el" href="structCatch_1_1SourceLineInfo.html">SourceLineInfo</a> const &amp;&#160;</td>
-          <td class="paramname"><em>lineInfo</em></td><td>)</td>
-          <td> -&gt;  <a class="el" href="structCatch_1_1IGeneratorTracker.html">IGeneratorTracker</a> &amp;</td>
+          <td class="paramname"><em>lineInfo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> -&gt;  <a class="el" href="structCatch_1_1IGeneratorTracker.html">IGeneratorTracker</a> &amp;</td>
         </tr>
       </table>
   </td>

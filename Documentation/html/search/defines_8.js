@@ -1,9 +1,14 @@
 var searchData=
 [
-  ['scenario_1760',['SCENARIO',['../catch_8hpp.html#acf8f441c7b9d70251ccbb7ccd8b83183',1,'catch.hpp']]],
-  ['scenario_5fmethod_1761',['SCENARIO_METHOD',['../catch_8hpp.html#add17eb8f8d85412a08a8a048cd38f33b',1,'catch.hpp']]],
-  ['section_1762',['SECTION',['../catch_8hpp.html#ad512fd95a78b95770b9759823f8fbc21',1,'catch.hpp']]],
-  ['static_5frequire_1763',['STATIC_REQUIRE',['../catch_8hpp.html#abad9ff23b730469f209b010e0ac4687c',1,'catch.hpp']]],
-  ['static_5frequire_5ffalse_1764',['STATIC_REQUIRE_FALSE',['../catch_8hpp.html#ae7506af68f12e7efdb22e951b911b5a0',1,'catch.hpp']]],
-  ['succeed_1765',['SUCCEED',['../catch_8hpp.html#a8e852a9421caf4fda4e1903d9f02bcf5',1,'catch.hpp']]]
+  ['red_1817',['RED',['../StatusPrinter_8cpp.html#a8d23feea868a983c8c2b661e1e16972f',1,'StatusPrinter.cpp']]],
+  ['register_5ftest_5fcase_1818',['REGISTER_TEST_CASE',['../catch_8hpp.html#a784b9192db328b4f21186f9b26e4146e',1,'catch.hpp']]],
+  ['require_1819',['REQUIRE',['../catch_8hpp.html#ad57835ba8f1bb419a865ada6bd011a85',1,'catch.hpp']]],
+  ['require_5ffalse_1820',['REQUIRE_FALSE',['../catch_8hpp.html#ada5065594bafc152162761ace47c1dcb',1,'catch.hpp']]],
+  ['require_5fnothrow_1821',['REQUIRE_NOTHROW',['../catch_8hpp.html#ab0148f0dfca438f7aa01974e9c33216a',1,'catch.hpp']]],
+  ['require_5fthat_1822',['REQUIRE_THAT',['../catch_8hpp.html#ac1354db6f3e9c1e0a8eda0eea7ff1f0a',1,'catch.hpp']]],
+  ['require_5fthrows_1823',['REQUIRE_THROWS',['../catch_8hpp.html#ae3c33faa1d31a2bb0811dac74b994e3e',1,'catch.hpp']]],
+  ['require_5fthrows_5fas_1824',['REQUIRE_THROWS_AS',['../catch_8hpp.html#ae24a059e3c28ff3eea69be48282f5f81',1,'catch.hpp']]],
+  ['require_5fthrows_5fmatches_1825',['REQUIRE_THROWS_MATCHES',['../catch_8hpp.html#a54473a48ac2ac55bfe1165b69e1b8010',1,'catch.hpp']]],
+  ['require_5fthrows_5fwith_1826',['REQUIRE_THROWS_WITH',['../catch_8hpp.html#aa39a017db507132071d2819f087b2f28',1,'catch.hpp']]],
+  ['reset_1827',['RESET',['../StatusPrinter_8cpp.html#ab702106cf3b3e96750b6845ded4e0299',1,'StatusPrinter.cpp']]]
 ];

@@ -110,7 +110,7 @@ int main(int argc, char *argv[])
   string TMVAReaderoutputname = "WprimoEventClassification";
 
   // Number of jets that has to be clustered from event data
-  unsigned long sbjetnumber = 100000, eventjetnumber = 100000;
+  unsigned long sbjetnumber = 200000, eventjetnumber = 200000;
   double_t R = 1.0, pT_min = 20;
 
   // Defining number of jets that has to be put in the TMVA factory

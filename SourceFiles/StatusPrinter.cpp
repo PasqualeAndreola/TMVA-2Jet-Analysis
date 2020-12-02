@@ -47,7 +47,7 @@ void StatusPrinter(int progress)
         timepoint.start = chrono::steady_clock::now();
         cout << endl;
         cout << RED << "[";
-        int completamento = (int)ncolumns * progress;
+        int completamento = round(ncolumns * progress / 100);
         for (int i = 0; i < ncolumns; ++i)
         {
             if (i < completamento)
@@ -64,7 +64,7 @@ void StatusPrinter(int progress)
     else if (progress == 100)
     {
         cout << GREEN << "[";
-        int completamento = (int)ncolumns * progress;
+        int completamento = round(ncolumns * progress / 100);
         for (int i = 0; i < ncolumns; ++i)
         {
             if (i < completamento)
@@ -87,7 +87,7 @@ void StatusPrinter(int progress)
             timepoint.first = chrono::steady_clock::now() - (timepoint.start);
         }
         cout << YELLOW << "[";
-        int completamento = (int)ncolumns * progress;
+        int completamento = round(ncolumns * progress / 100);
         for (int i = 0; i < ncolumns; ++i)
         {
             if (i < completamento)
@@ -124,7 +124,7 @@ void StatusPrinter(std::ostream &stream, int progress)
         timepoint.start = chrono::steady_clock::now();
         stream << endl;
         stream << RED << "[";
-        int completamento = (int)ncolumns * progress;
+        int completamento = round(ncolumns * progress / 100);
         for (int i = 0; i < ncolumns; ++i)
         {
             if (i < completamento)
@@ -141,7 +141,7 @@ void StatusPrinter(std::ostream &stream, int progress)
     else if (progress == 100)
     {
         stream << GREEN << "[";
-        int completamento = (int)ncolumns * progress;
+        int completamento = round(ncolumns * progress / 100);
         for (int i = 0; i < ncolumns; ++i)
         {
             if (i < completamento)
@@ -164,7 +164,7 @@ void StatusPrinter(std::ostream &stream, int progress)
             timepoint.first = chrono::steady_clock::now() - (timepoint.start);
         }
         stream << YELLOW << "[";
-        int completamento = (int)ncolumns * progress;
+        int completamento = round(ncolumns * progress / 100);
         for (int i = 0; i < ncolumns; ++i)
         {
             if (i < completamento)

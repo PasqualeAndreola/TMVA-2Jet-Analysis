@@ -4,7 +4,7 @@
  */
 
 /*!
- *  \fn void Dataset_2Dread(hid_t dataset_id, int bufferdimension, int datasetnumber, const char *outfile) Dataset_2Dread.h "Dataset_2Dread.h"
+ *  \fn void Dataset_2Dread(hid_t dataset_id, int datasetnumber, const char *outfile) Dataset_2Dread.h "Dataset_2Dread.h"
  *  \brief This function is used to read a dataset of dimension 1 or 2 from a *.h5 file.
  * 
  *  This function is used to read a dataset of dimension 1 or 2 from a *.h5 file.\n

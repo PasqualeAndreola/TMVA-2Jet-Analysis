@@ -30,6 +30,9 @@ using namespace fastjet;
 
 int SBTreeJetKinematicsCreator(const char *filename, const char *jetfilename, int numberoffiles, unsigned long int sbjetnumber, unsigned long int eventjetnumber, double_t R, double_t pT_min)
 {
+    /*Number of hadrons per row*/
+    unsigned long int nhadrons = 700;
+
     /*Printing fastjet banner*/
     ClusterSequence::print_banner();
 
@@ -99,7 +102,8 @@ int SBTreeJetKinematicsCreator(const char *filename, const char *jetfilename, in
             /*Getting particles' kinematic quantities*/
             SBOutputroot.cd();
             TTree *Kinematics = (TTree *)SBOutputroot.Get(TString::Format("%s%d", stringit->Data(), treenumber));
-            cout << endl << TString::Format("Now working on %s%d tree", stringit->Data(), treenumber) << endl;
+            cout << endl
+                 << TString::Format("Now working on %s%d tree", stringit->Data(), treenumber) << endl;
             TBranch *pT_branch = Kinematics->GetBranch("pT");
             pT_branch->SetAddress(&pT);
             TBranch *eta_branch = Kinematics->GetBranch("eta");
@@ -107,17 +111,18 @@ int SBTreeJetKinematicsCreator(const char *filename, const char *jetfilename, in
             TBranch *phi_branch = Kinematics->GetBranch("phi");
             phi_branch->SetAddress(&phi);
 
-            /*There are 700 particles per row*/
-            unsigned long int jetnumber = sbjetnumber * 700;
+            /*There are nhadrons particles per row*/
+            unsigned long int jetnumber = sbjetnumber * nhadrons;
             unsigned long int nentries = (unsigned long int)Kinematics->GetEntries();
             cout << TString::Format("%s%d", stringit->Data(), treenumber) << " stores " << nentries << " entries" << endl;
             if (nentries != 0)
             {
+                counter = 0;
                 if (stringit->CompareTo("EventKinematics") == 0)
-                    jetnumber = eventjetnumber * 700;
-                for (unsigned long int i = 0; i < min(jetnumber, nentries); i += 700)
+                    jetnumber = eventjetnumber * nhadrons;
+                for (unsigned long int i = 0; i < min(jetnumber, nentries); i += nhadrons)
                 {
-                    for (int j = 0; j < 700; ++j)
+                    for (unsigned long int j = 0; j < nhadrons; ++j)
                     {
                         pT_branch->GetEntry(i + j);
                         eta_branch->GetEntry(i + j);
@@ -140,36 +145,57 @@ int SBTreeJetKinematicsCreator(const char *filename, const char *jetfilename, in
                     /*If there is any previous tree, it is going to be overwritten!*/
                     if (stringit->CompareTo("BackTrainingKinematics") == 0)
                     {
-                        if (counter/(min(jetnumber, nentries)-700)*100 >= progress)
+                        if (counter / (min(jetnumber, nentries) - nhadrons) * 100 >= progress)
                         {
                             StatusPrinter(progress);
-                            progress = progress + min(jetnumber, nentries)/700;
+                            if (progress == 100)
+                            {
+                                progress = 0;
+                            }
+                            else
+                            {
+                                progress = progress + 1;
+                            }
                         }
-                        counter = counter + 700;
+                        counter = counter + nhadrons;
                         BackgroundJet.Fill();
                         SBJetOutputroot.cd();
                         BackgroundJet.Write("", TObject::kOverwrite);
                     }
                     else if (stringit->CompareTo("SignalTrainingKinematics") == 0)
                     {
-                        if (counter/(min(jetnumber, nentries)-700)*100 >= progress)
+                        if (counter / (min(jetnumber, nentries) - nhadrons) * 100 >= progress)
                         {
                             StatusPrinter(progress);
-                            progress = progress + min(jetnumber, nentries)/700;
+                            if (progress == 100)
+                            {
+                                progress = 0;
+                            }
+                            else
+                            {
+                                progress = progress + 1;
+                            }
                         }
-                        counter = counter + 700;                        
+                        counter = counter + nhadrons;
                         SignalJet.Fill();
                         SBJetOutputroot.cd();
                         SignalJet.Write("", TObject::kOverwrite);
                     }
                     else if (stringit->CompareTo("EventKinematics") == 0)
                     {
-                        if (counter/(min(jetnumber, nentries)-700)*100 >= progress)
+                        if (counter / (min(jetnumber, nentries) - nhadrons) * 100 >= progress)
                         {
                             StatusPrinter(progress);
-                            progress = progress + min(jetnumber, nentries)/700;
+                            if (progress == 100)
+                            {
+                                progress = 0;
+                            }
+                            else
+                            {
+                                progress = progress + 1;
+                            }
                         }
-                        counter = counter + 700;                        
+                        counter = counter + nhadrons;
                         EventJet.Fill();
                         SBJetOutputroot.cd();
                         EventJet.Write("", TObject::kOverwrite);
@@ -177,11 +203,6 @@ int SBTreeJetKinematicsCreator(const char *filename, const char *jetfilename, in
                     else
                         break;
                     jets.clear();
-                }
-                if (progress == 100)
-                {
-                    StatusPrinter(100);
-                    progress = 0;
                 }
             }
         }

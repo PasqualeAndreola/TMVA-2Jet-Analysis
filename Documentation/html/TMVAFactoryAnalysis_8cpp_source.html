@@ -125,25 +125,25 @@ $(function() {
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            configString += <span class="stringliteral">&quot;:ErrorStrategy=CROSSENTROPY&quot;</span>;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            configString += <span class="stringliteral">&quot;:WeightInitialization=XAVIERUNIFORM&quot;</span>;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            TString layoutString = <span class="stringliteral">&quot;Layout=TANH|100, TANH|50, TANH|10, LINEAR&quot;</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            TString layoutString = <span class="stringliteral">&quot;Layout=TANH|100, TANH|50, TANH|10&quot;</span>;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            TString trainingString1 = <span class="stringliteral">&quot;TrainingStrategy=LearningRate=1e-2,Momentum=0.5, Repetitions=1,ConvergenceSteps=100,BatchSize=100,DropConfig=0.0+0.5+0.5+0.0&quot;</span>;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            trainingString1.Append(<span class="stringliteral">&quot;,WeightDecay=0.001,Regularization=L2,TestRepetitions=15,Multithreading=True&quot;</span>);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            TString trainingString1 = <span class="stringliteral">&quot;TrainingStrategy=LearningRate=1e-1,Momentum=0.2, Repetitions=100,ConvergenceSteps=100,BatchSize=100,DropConfig=0.0+0.5+0.5+0.0&quot;</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            trainingString1.Append(<span class="stringliteral">&quot;,WeightDecay=0.001,Regularization=NONE,TestRepetitions=15,Multithreading=True&quot;</span>);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            TString trainingString2 = <span class="stringliteral">&quot; | LearningRate=1e-3,Momentum=0.1, Repetitions=1,ConvergenceSteps=100,BatchSize=50,DropConfig=0.0+0.1+0.1+0.0&quot;</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            TString trainingString2 = <span class="stringliteral">&quot; | LearningRate=1e-2,Momentum=0.1, Repetitions=100,ConvergenceSteps=100,BatchSize=50,DropConfig=0.0+0.1+0.1+0.0&quot;</span>;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            trainingString2.Append(<span class="stringliteral">&quot;,WeightDecay=0.001,Regularization=L2,TestRepetitions=15,Multithreading=True&quot;</span>);</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            TString trainingString3 = <span class="stringliteral">&quot; | LearningRate=1e-4,Momentum=0.0, Repetitions=10,ConvergenceSteps=100,BatchSize=25,DropConfig=0.0+0.1+0.1+0.0&quot;</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            TString trainingString3 = <span class="stringliteral">&quot; | LearningRate=1e-3,Momentum=0.0, Repetitions=100,ConvergenceSteps=100,BatchSize=25,DropConfig=0.0+0.1+0.1+0.0&quot;</span>;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            trainingString3.Append(<span class="stringliteral">&quot;,WeightDecay=0.001,Regularization=L2,TestRepetitions=15,Multithreading=True&quot;</span>);</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            configString += <span class="stringliteral">&quot;:&quot;</span> + layoutString + <span class="stringliteral">&quot;:&quot;</span> + trainingString1;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            factory-&gt;BookMethod(loader, TMVA::Types::kDL, <span class="stringliteral">&quot;kDL1&quot;</span>, configString);</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            configString += trainingString2;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            factory-&gt;BookMethod(loader, TMVA::Types::kDL, <span class="stringliteral">&quot;kDL2&quot;</span>, configString);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            configString += trainingString3;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            factory-&gt;BookMethod(loader, TMVA::Types::kDL, <span class="stringliteral">&quot;kDL3&quot;</span>, configString);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="comment">/*configString += trainingString2;</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">            factory-&gt;BookMethod(loader, TMVA::Types::kDL, &quot;kDL2&quot;, configString);</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">            configString += trainingString3;</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">            factory-&gt;BookMethod(loader, TMVA::Types::kDL, &quot;kDL3&quot;, configString);*/</span></div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        }</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (stringit-&gt;CompareTo(<span class="stringliteral">&quot;kMLP&quot;</span>) == 0)</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        {</div>
